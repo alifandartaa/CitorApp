@@ -29,4 +29,10 @@
     <string name="first_type_wash">Layanan Pencucian Dasar</string>
     <string name="choose">Pilih</string>
     <string name="second_type_wash">Layanan Pencucian Dasar dan Tingkat Lanjut</string>
+    <string name="value_name_profile">Value Name Profile</string>
+    <string name="change_profile">Ubah Profil</string>
+    <string name="setting">Pengaturan</string>
+    <string name="help">Bantuan</string>
+    <string name="privacy_policy">Kebijakan Privasi</string>
+    <string name="logout">Keluar</string>
 </resources>
