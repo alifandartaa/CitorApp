@@ -21,4 +21,12 @@
     <string name="tab_text_1">Masuk</string>
     <string name="tab_text_2">Daftar</string>
     <string name="value_email_login">E-Mail</string>
+    <string name="txt_example_washer">Jaya Makmur Wash</string>
+    <string name="txt_example_washer_address">Jl. M.T. Haryono 13</string>
+    <string name="txt_look_washer_map">Cari di Maps</string>
+    <string name="txt_exampe_name_washer">Achmad Wicaksono</string>
+    <string name="txt_example_role_washer">Master washer</string>
+    <string name="first_type_wash">Layanan Pencucian Dasar</string>
+    <string name="choose">Pilih</string>
+    <string name="second_type_wash">Layanan Pencucian Dasar dan Tingkat Lanjut</string>
 </resources>
