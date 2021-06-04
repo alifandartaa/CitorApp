@@ -1,3 +1,24 @@
 <resources>
     <string name="app_name">CitorApp</string>
+    <string name="value_phone_login">Nomor Telepon</string>
+    <string name="value_password_login">Kata Sandi</string>
+    <string name="login">Masuk</string>
+    <string name="register">Daftar</string>
+    <string name="value_name_register">Nama</string>
+    <string name="value_email_register">E-Mail</string>
+    <string name="value_phone_register">Nomor Telepon</string>
+    <string name="value_password_register">Kata Sandi</string>
+    <string name="value_password_verify_register">Konfirmasi Kata Sandi</string>
+    <string name="verify">Verifikasi</string>
+    <string name="term1">Setujui</string>
+    <string name="txt_open_term">Syarat &amp; Ketentuan</string>
+    <string name="txt_term2">Layanan</string>
+    <string name="txt_ask_account">Sudah punya akun?</string>
+    <string name="resend_otp">Kirim Ulang</string>
+    <string name="txt_ask_resend_otp">Kode otp tidak terkirim?</string>
+    <string name="txt_verify_otp">Verifikasi OTP</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="tab_text_1">Masuk</string>
+    <string name="tab_text_2">Daftar</string>
+    <string name="value_email_login">E-Mail</string>
 </resources>
