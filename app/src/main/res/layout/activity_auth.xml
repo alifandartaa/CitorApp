@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_auth"
+    android:background="@drawable/bg_auth_fix"
     android:fitsSystemWindows="true"
     android:paddingHorizontal="32dp"
     android:paddingTop="32dp"
     android:paddingBottom="64dp"
-    tools:context=".AuthActivity">
+    tools:context=".auth.AuthActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"

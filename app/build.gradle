@@ -47,4 +47,5 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
     implementation "de.hdodenhof:circleimageview:$circleImageVersion"
     implementation "androidx.viewpager2:viewpager2:$viewPager2Version"
+    implementation "com.airbnb.android:lottie:$lottieVersion"
 }

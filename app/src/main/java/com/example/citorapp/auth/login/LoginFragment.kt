@@ -1,4 +1,4 @@
-package com.example.citorapp.login
+package com.example.citorapp.auth.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -26,7 +26,7 @@ class LoginFragment : Fragment() {
         if (activity != null) {
             loginBinding.btnLogin.setOnClickListener {
                 if (isDataFilled()) {
-                    val intent = Intent(activity, OtpInputActivity::class.java)
+                    val intent = Intent(activity, EmailConfirmActivity::class.java)
                     startActivity(intent)
                 }
             }

@@ -1,4 +1,4 @@
-package com.example.citorapp.register
+package com.example.citorapp.auth.register
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -15,7 +15,7 @@ class RegisterFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         registerBinding = FragmentRegisterBinding.inflate(layoutInflater, container, false)
         return registerBinding.root
     }

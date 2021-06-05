@@ -1,8 +1,9 @@
-package com.example.citorapp
+package com.example.citorapp.auth
 
 import android.os.Bundle
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
+import com.example.citorapp.R
 import com.example.citorapp.databinding.ActivityAuthBinding
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -23,7 +24,7 @@ class AuthActivity : AppCompatActivity() {
         authBinding = ActivityAuthBinding.inflate(layoutInflater)
         setContentView(authBinding.root)
 
-        val sectionsPagerAdapter = SectionsPagerAdapter(this)
+        val sectionsPagerAdapter = AuthPagerAdapter(this)
         authBinding.vpAuth.adapter = sectionsPagerAdapter
         TabLayoutMediator(authBinding.tabsAuth, authBinding.vpAuth) { tab, position ->
             tab.text = resources.getString(TAB_TITLES[position])
