@@ -1,4 +1,4 @@
-package com.example.citorapp.detailVendor
+package com.example.citorapp.home.detailVendor
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment

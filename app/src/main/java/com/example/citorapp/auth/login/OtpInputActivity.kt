@@ -11,7 +11,7 @@ import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.example.citorapp.R
 import com.example.citorapp.databinding.ActivityOtpInputBinding
-import com.example.citorapp.detailVendor.DetailVendorActivity
+import com.example.citorapp.home.detailVendor.DetailVendorActivity
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.snackbar.Snackbar
 

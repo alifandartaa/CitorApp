@@ -60,4 +60,12 @@
     <string name="verify_success">Verifikasi Sukses!</string>
     <string name="done">Selesai</string>
     <string name="otp_already_send">Kode OTP telah dikirim</string>
+    <string name="title_activity_main">MainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <string name="akun_saya">Akun Saya</string>
+    <string name="history">Riwayat</string>
+    <string name="home">Beranda</string>
+    <string name="notifikasi">Notifikasi</string>
 </resources>

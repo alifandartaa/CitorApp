@@ -1,4 +1,4 @@
-package com.example.citorapp.detailVendor
+package com.example.citorapp.home.detailVendor
 
 data class WashTypeEntity(
     var image: String,

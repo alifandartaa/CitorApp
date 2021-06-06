@@ -1,4 +1,4 @@
-package com.example.citorapp.detailVendor
+package com.example.citorapp.home.detailVendor
 
 import android.content.Intent
 import android.os.Bundle
