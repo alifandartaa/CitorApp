@@ -68,4 +68,13 @@
     <string name="history">Riwayat</string>
     <string name="home">Beranda</string>
     <string name="notifikasi">Notifikasi</string>
+    <string name="layanan">Layanan</string>
+    <string name="teratas">Teratas</string>
+    <string name="terdekat">Terdekat</string>
+    <string name="voucher">Voucher</string>
+    <string name="posisi_kamu">Posisi Kamu</string>
+    <string name="jl_mt_haryono">Jl. MT Haryono</string>
+    <string name="jaya_makmur_wash">Jaya Makmur Wash</string>
+    <string name="dekat">Terdekat</string>
+    <string name="alamat_ex">Jl. Gajayana XI A</string>
 </resources>
