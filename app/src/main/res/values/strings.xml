@@ -65,7 +65,7 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="akun_saya">Akun Saya</string>
-    <string name="history">Riwayat</string>
+    <string name="history">Aktivitas Saya</string>
     <string name="home">Beranda</string>
     <string name="notifikasi">Notifikasi</string>
     <string name="layanan">Layanan</string>
@@ -77,4 +77,5 @@
     <string name="jaya_makmur_wash">Jaya Makmur Wash</string>
     <string name="dekat">Terdekat</string>
     <string name="alamat_ex">Jl. Gajayana XI A</string>
+    <string name="pembayaran">Pembayaran berhasil! Silahkan menuju “Jaya Abadi Motor Wash” untuk mencuci motor kamu!</string>
 </resources>
