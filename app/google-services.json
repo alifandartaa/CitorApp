@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "184822929196",
+    "project_id": "citor-062021",
+    "storage_bucket": "citor-062021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:184822929196:android:bc27ab7267e4e0f0cd7e89",
+        "android_client_info": {
+          "package_name": "com.example.citorapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "184822929196-74dv7pedsi6rvgq6jj452a653gf0q7ep.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCxK9duKIqTyWSmIp957Ker9AsuOMGvoXE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "184822929196-74dv7pedsi6rvgq6jj452a653gf0q7ep.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

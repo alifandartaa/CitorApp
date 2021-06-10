@@ -82,4 +82,10 @@
     <string name="booking2">Silahkan memilih waktu yang tersedia untuk dipesan</string>
     <string name="selengkapnya">selengkapnya</string>
     <string name="berjalan">berjalan</string>
+    <string name="try_again">Silahkan Coba Lagi</string>
+    <string name="email_pass_not_match">Maaf Email / Kata Sandi Anda Salah</string>
+    <string name="email_not_registered">Maaf Email Anda Belum Terdaftar</string>
+    <string name="confirm_logout">Apakah Anda Yakin Ingin Keluar?</string>
+    <string name="no">Tidak</string>
+    <string name="yes">Ya</string>
 </resources>

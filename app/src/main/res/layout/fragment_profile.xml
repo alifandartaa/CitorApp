@@ -117,6 +117,7 @@
                 android:background="@color/bluePrimary" />
 
             <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_logout"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
