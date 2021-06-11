@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_home"
     android:orientation="vertical"
-    tools:context=".home.detailVendor.BookingActivity">
+    tools:context=".home.detailBooking.BookingActivity">
 
     <FrameLayout
         android:id="@+id/fl_booking"
@@ -26,208 +27,71 @@
             android:background="@drawable/img_arrow_back"
             android:scaleType="fitXY"
             tools:ignore="ContentDescription" />
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/booking"
             android:layout_gravity="center"
-            android:textSize="28sp"
+            android:gravity="center"
+            android:text="@string/waktu_pesan"
             android:textColor="@color/white"
-            android:gravity="center"/>
+            android:textSize="28sp" />
     </FrameLayout>
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/booking2"
         android:layout_gravity="center"
+        android:gravity="center"
+        android:paddingStart="12dp"
         android:paddingTop="12dp"
         android:paddingEnd="12dp"
-        android:paddingStart="12dp"
-        android:textSize="20sp"
+        android:text="@string/pilihan_waktu_pemesanan"
         android:textColor="@color/black"
-        android:gravity="center"/>
-        <LinearLayout
+        android:textSize="20sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            card_view:cardBackgroundColor="#6DCE53" />
+
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:orientation="horizontal">
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/black"
+            android:text="@string/dapat_dipesan" />
 
-            <LinearLayout
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <Button
-                    android:id="@+id/btn_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="08:00-08:30" />
-                <Button
-                    android:id="@+id/btn_2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="09:00-09:30" />
-                <Button
-                    android:id="@+id/btn_3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="10:00-10:30" />
-                <Button
-                    android:id="@+id/btn_4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="11:00-11:30" />
-                <Button
-                    android:id="@+id/btn_5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="12:00-12:30" />
-                <Button
-                    android:id="@+id/btn_6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="13:00-13:30" />
-                <Button
-                    android:id="@+id/btn_7"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="14:00-14:30" />
-                <Button
-                    android:id="@+id/btn_8"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="15:00-15:30" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_marginTop="12dp"
-                android:layout_marginStart="24dp"
-                android:layout_marginEnd="24dp"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-                <Button
-                    android:id="@+id/btn_9"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="08:00-08:30" />
-                <Button
-                    android:id="@+id/btn_10"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="09:00-09:30" />
-                <Button
-                    android:id="@+id/btn_11"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="10:00-10:30" />
-                <Button
-                    android:id="@+id/btn_12"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="11:00-11:30" />
-                <Button
-                    android:id="@+id/btn_13"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="12:00-12:30" />
-                <Button
-                    android:id="@+id/btn_14"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="13:00-13:30" />
-                <Button
-                    android:id="@+id/btn_15"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="14:00-14:30" />
-                <Button
-                    android:id="@+id/btn_16"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="12dp"
-                    android:paddingTop="12dp"
-                    android:paddingBottom="12dp"
-                    android:paddingStart="24dp"
-                    android:paddingEnd="24dp"
-                    android:text="15:00-15:30" />
-            </LinearLayout>
-        </LinearLayout>
+        <androidx.cardview.widget.CardView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            card_view:cardBackgroundColor="#ED4040" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
+            android:textColor="@color/black"
+            android:text="@string/penuh" />
+
+    </LinearLayout>
+
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_booking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        tools:listitem="@layout/item_booking" />
 
 
 </LinearLayout>

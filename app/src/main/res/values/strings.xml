@@ -78,8 +78,8 @@
     <string name="dekat">Terdekat</string>
     <string name="alamat_ex">Jl. Gajayana XI A</string>
     <string name="pembayaran">Pembayaran berhasil! Silahkan menuju “Jaya Abadi Motor Wash” untuk mencuci motor kamu!</string>
-    <string name="booking">Waktu Pemesanan</string>
-    <string name="booking2">Silahkan memilih waktu yang tersedia untuk dipesan</string>
+    <string name="waktu_pesan">Waktu Pemesanan</string>
+    <string name="pilihan_waktu_pemesanan">Silahkan memilih waktu yang tersedia untuk dipesan</string>
     <string name="selengkapnya">selengkapnya</string>
     <string name="berjalan">berjalan</string>
     <string name="try_again">Silahkan Coba Lagi</string>
@@ -88,4 +88,6 @@
     <string name="confirm_logout">Apakah Anda Yakin Ingin Keluar?</string>
     <string name="no">Tidak</string>
     <string name="yes">Ya</string>
+    <string name="dapat_dipesan">Dapat di Pesan</string>
+    <string name="penuh">penuh</string>
 </resources>
