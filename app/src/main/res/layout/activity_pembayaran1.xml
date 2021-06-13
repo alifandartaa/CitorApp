@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#3D84A8"
+    tools:context=".home.pembayaran.PembayaranActivity1">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/appBarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:minHeight="?attr/actionBarSize"
+                android:theme="?attr/actionBarTheme"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageButton
+                android:id="@+id/btnKembali"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginStart="16dp"
+                android:background="@drawable/ic_arrow_back"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:fontFamily="@font/poppins"
+                android:text="@string/nama_cuci_motor"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/btnKembali"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="350dp"
+        android:layout_height="600dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/bg_pembayaran"
+        android:elevation="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto"
+            android:text="@string/rangkuman"
+            android:textColor="#3D84A8"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvKodePesanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="40dp"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/kode_pesanan"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <TextView
+            android:id="@+id/tvJenisLayanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/jenis_layanan"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tvKodePesanan"
+            app:layout_constraintTop_toBottomOf="@+id/tvKodePesanan" />
+
+        <TextView
+            android:id="@+id/tvWaktuPemesanan"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/waktu_pemesanan"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tvJenisLayanan"
+            app:layout_constraintTop_toBottomOf="@+id/tvJenisLayanan" />
+
+        <TextView
+            android:id="@+id/tvMetodePembayaran"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:paddingLeft="8dp"
+            android:paddingTop="8dp"
+            android:paddingBottom="8dp"
+            android:text="@string/metode_pembayaran"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tvWaktuPemesanan"
+            app:layout_constraintTop_toBottomOf="@+id/tvWaktuPemesanan" />
+
+        <TextView
+            android:id="@+id/tvHarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/harga_pesan"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tvMetodePembayaran"
+            app:layout_constraintTop_toBottomOf="@+id/tvMetodePembayaran" />
+
+        <TextView
+            android:id="@+id/tvPoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/poin_pesan"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="@+id/tvHarga"
+            app:layout_constraintTop_toBottomOf="@+id/tvHarga" />
+
+        <TextView
+            android:id="@+id/tvTitikKode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/titik_dua"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvKodePesanan"
+            app:layout_constraintStart_toStartOf="@+id/guideline2"
+            app:layout_constraintTop_toTopOf="@+id/tvKodePesanan" />
+
+        <TextView
+            android:id="@+id/tvTitikJenis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/titik_dua"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvJenisLayanan"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitikKode"
+            app:layout_constraintStart_toStartOf="@+id/tvTitikKode"
+            app:layout_constraintTop_toTopOf="@+id/tvJenisLayanan" />
+
+        <TextView
+            android:id="@+id/tvTitikWaktu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/titik_dua"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvWaktuPemesanan"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitikJenis"
+            app:layout_constraintStart_toStartOf="@+id/tvTitikJenis"
+            app:layout_constraintTop_toTopOf="@+id/tvWaktuPemesanan" />
+
+        <TextView
+            android:id="@+id/tvTitikMetode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/titik_dua"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvMetodePembayaran"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitikWaktu"
+            app:layout_constraintStart_toStartOf="@+id/tvTitikWaktu"
+            app:layout_constraintTop_toTopOf="@+id/tvMetodePembayaran" />
+
+        <TextView
+            android:id="@+id/tvTitikHarga"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/titik_dua"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvHarga"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitikMetode"
+            app:layout_constraintStart_toStartOf="@+id/tvTitikMetode"
+            app:layout_constraintTop_toTopOf="@+id/tvHarga" />
+
+        <TextView
+            android:id="@+id/tvTitikPoin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins"
+            android:text="@string/titik_dua"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvPoin"
+            app:layout_constraintEnd_toEndOf="@+id/tvTitikHarga"
+            app:layout_constraintStart_toStartOf="@+id/tvTitikHarga"
+            app:layout_constraintTop_toTopOf="@+id/tvPoin" />
+
+        <TextView
+            android:id="@+id/tvKode1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/kode1"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitikKode"
+            app:layout_constraintStart_toEndOf="@+id/tvTitikKode"
+            app:layout_constraintTop_toTopOf="@+id/tvTitikKode" />
+
+        <TextView
+            android:id="@+id/tvJenis1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/detailing"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitikJenis"
+            app:layout_constraintStart_toEndOf="@+id/tvTitikJenis"
+            app:layout_constraintTop_toTopOf="@+id/tvTitikJenis" />
+
+        <TextView
+            android:id="@+id/tvWaktu1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/waktu1"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitikWaktu"
+            app:layout_constraintStart_toEndOf="@+id/tvTitikWaktu"
+            app:layout_constraintTop_toTopOf="@+id/tvTitikWaktu" />
+
+        <TextView
+            android:id="@+id/tvMetode1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/metode1"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitikMetode"
+            app:layout_constraintStart_toEndOf="@+id/tvTitikMetode"
+            app:layout_constraintTop_toTopOf="@+id/tvTitikMetode" />
+
+        <TextView
+            android:id="@+id/tvHarga1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/harga1"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitikHarga"
+            app:layout_constraintStart_toEndOf="@+id/tvTitikHarga"
+            app:layout_constraintTop_toTopOf="@+id/tvTitikHarga" />
+
+        <TextView
+            android:id="@+id/tvPoin1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/poppins"
+            android:padding="8dp"
+            android:text="@string/poin1"
+            android:textColor="@color/black"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTitikPoin"
+            app:layout_constraintStart_toEndOf="@+id/tvTitikPoin"
+            app:layout_constraintTop_toTopOf="@+id/tvTitikPoin" />
+
+        <Button
+            android:id="@+id/btnMetode"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/ic_arrow_forward"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="@+id/tvMetode1"
+            app:layout_constraintStart_toEndOf="@+id/tvMetode1"
+            app:layout_constraintTop_toTopOf="@+id/tvMetode1" />
+
+        <Button
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="32dp"
+            android:background="@drawable/bg_pembayaran"
+            android:fontFamily="@font/poppins"
+            android:text="@string/konfirmasi_pembayaran"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvPoin" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="189dp" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
