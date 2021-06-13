@@ -90,7 +90,8 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp">
 
             <CheckBox
                 android:id="@+id/cb_terms_register"
@@ -138,13 +139,14 @@
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="16dp"
+            android:enabled="false"
             android:paddingHorizontal="36dp"
             android:paddingVertical="8dp"
             android:text="@string/register"
-            app:cornerRadius="15dp"
             android:textAllCaps="false"
             android:textSize="18sp"
-            app:backgroundTint="@color/bluePrimary" />
+            app:backgroundTint="@color/bluePrimary"
+            app:cornerRadius="15dp" />
 
     </LinearLayout>
 

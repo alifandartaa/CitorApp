@@ -31,6 +31,10 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        registerBinding.cbTermsRegister.setOnCheckedChangeListener { buttonView, isChecked ->
+            registerBinding.btnRegister.isEnabled =  isChecked
+        }
         if (activity != null) {
             registerBinding.btnRegister.setOnClickListener {
                 if (isDataFilled()) {
@@ -68,10 +72,6 @@ class RegisterFragment : Fragment() {
         } else if (registerBinding.tvValuePasswordRegister.text.toString() == "") {
             registerBinding.tvValuePasswordRegister.error = "Harap isi kata sandi dengan benar"
             registerBinding.tvValuePasswordRegister.requestFocus()
-            return false
-        } else if (!registerBinding.cbTermsRegister.isChecked) {
-            registerBinding.cbTermsRegister.error = "Harap centang persyaratan"
-            registerBinding.cbTermsRegister.requestFocus()
             return false
         }
         return true
