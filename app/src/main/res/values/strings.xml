@@ -78,8 +78,8 @@
     <string name="dekat">Terdekat</string>
     <string name="alamat_ex">Jl. Gajayana XI A</string>
     <string name="pembayaran">Pembayaran berhasil! Silahkan menuju “Jaya Abadi Motor Wash” untuk mencuci motor kamu!</string>
-    <string name="waktu_pesan">Waktu Pemesanan</string>
-    <string name="pilihan_waktu_pemesanan">Silahkan memilih waktu yang tersedia untuk dipesan</string>
+    <string name="booking">Waktu Pemesanan</string>
+    <string name="booking2">Silahkan memilih waktu yang tersedia untuk dipesan</string>
     <string name="selengkapnya">selengkapnya</string>
     <string name="berjalan">berjalan</string>
     <string name="try_again">Silahkan Coba Lagi</string>
@@ -88,6 +88,33 @@
     <string name="confirm_logout">Apakah Anda Yakin Ingin Keluar?</string>
     <string name="no">Tidak</string>
     <string name="yes">Ya</string>
-    <string name="dapat_dipesan">Dapat di Pesan</string>
-    <string name="penuh">penuh</string>
+    <string name="titik_dua">:</string>
+    <string name="kode1">USR-009000</string>
+    <string name="detailing">DETAILING</string>
+    <string name="waktu1">08.00 - 10.00 WIB</string>
+    <string name="metode1">pilih metode</string>
+    <string name="konfirmasi_pembayaran">Konfirmasi</string>
+    <string name="rangkuman">Rangkuman</string>
+    <string name="nama_cuci_motor">Nama Cuci Motor</string>
+    <string name="kode_pesanan">Kode Pesanan</string>
+    <string name="jenis_layanan">Jenis Layanan</string>
+    <string name="waktu_pemesanan">Waktu Pemesanan</string>
+    <string name="metode_pembayaran">Metode Pembayaran</string>
+    <string name="harga_pesan">Harga</string>
+    <string name="poin_pesan">Poin</string>
+    <string name="harga1">Rp. 15.000,-</string>
+    <string name="poin1">15 Poin</string>
+    <string name="text_kode_pembayaran">Kode Pembayaran</string>
+    <string name="kode_pemb">099923193193913129</string>
+    <string name="pilih">Pilih</string>
+    <string name="pilih_metode_pembayaran">Pilih Metode Pembayaran</string>
+    <string name="shopeepay">ShopeePay</string>
+    <string name="ovo">OVO</string>
+    <string name="waktu_pesan">Waktu Pemesanan</string>
+    <string name="pilihan_waktu_pemesanan">Silahkan memilih waktu yang tersedia untuk dipesan</string>
+    <string name="dapat_dipesan">Dapat dipesan</string>
+    <string name="penuh">Penuh</string>
+    <string-array name="kategori">
+        <item>Kategori</item>
+    </string-array>
 </resources>
