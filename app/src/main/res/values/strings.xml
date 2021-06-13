@@ -114,6 +114,8 @@
     <string name="pilihan_waktu_pemesanan">Silahkan memilih waktu yang tersedia untuk dipesan</string>
     <string name="dapat_dipesan">Dapat dipesan</string>
     <string name="penuh">Penuh</string>
+    <string name="ask_email_1">Apakah benar</string>
+    <string name="ask_email_2">merupakan e-mail Anda?</string>
     <string-array name="kategori">
         <item>Kategori</item>
     </string-array>

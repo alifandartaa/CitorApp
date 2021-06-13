@@ -8,13 +8,30 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
 
 interface AuthService {
-    //AUTH
+    //login
     @FormUrlEncoded
     @POST("auth/login")
     fun login(
         @Field("email") email: String,
         @Field("password") password: String,
     ): Call<LoginResponse>
+
+    //precheck email
+    @FormUrlEncoded
+    @POST("auth/precheckEmail")
+    fun precheck(
+        @Field("email") email: String
+    ): Call<DefaultResponse>
+
+    //register
+    @FormUrlEncoded
+    @POST("auth/register")
+    fun register(
+        @Field("nama") nama: String,
+        @Field("email") email: String,
+        @Field("nohp") nohp: String,
+        @Field("password") password: String,
+    ): Call<DefaultResponse>
 
     @FormUrlEncoded
     @POST("auth/addToken")
