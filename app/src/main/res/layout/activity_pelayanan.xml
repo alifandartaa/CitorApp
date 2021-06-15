@@ -5,16 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_home"
-    tools:context=".home.PelayananActivity">
+    android:padding="8dp"
+    tools:context=".home.pelayanan.PelayananActivity">
 
     <ImageButton
-        android:id="@+id/btnKembali"
+        android:id="@+id/btn_back"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentStart="true"
-        android:layout_margin="8dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="16dp"
         android:background="@drawable/ic_arrow_back"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -27,57 +25,54 @@
         android:fontFamily="@font/poppins"
         android:padding="8dp"
         android:text="@string/terdekat"
-        android:textSize="18sp"
+        android:textSize="20sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/btnKembali"
-        app:layout_constraintStart_toEndOf="@+id/btnKembali"
-        app:layout_constraintTop_toTopOf="@+id/btnKembali" />
+        app:layout_constraintBottom_toBottomOf="@+id/btn_back"
+        app:layout_constraintStart_toEndOf="@+id/btn_back"
+        app:layout_constraintTop_toTopOf="@+id/btn_back" />
 
     <TextView
-        android:id="@+id/tv_posisi"
+        android:id="@+id/tv_position"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="26dp"
         android:layout_marginTop="16dp"
         android:fontFamily="@font/poppins"
-        android:padding="8sp"
+        android:padding="4sp"
         android:text="@string/posisi_kamu"
         android:textColor="@color/blue2"
-        android:textSize="16sp"
+        android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btnKembali"
-        tools:ignore="SmallSp" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_back" />
 
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
-        android:layout_width="360dp"
-        android:layout_height="40dp"
+        android:id="@+id/sv_location"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:background="@drawable/bg_search"
-        app:layout_constraintEnd_toEndOf="@+id/relativeLayout"
-        app:layout_constraintStart_toStartOf="@+id/relativeLayout"
-        app:layout_constraintTop_toBottomOf="@+id/relativeLayout" />
+        android:padding="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/layout_location"
+        app:layout_constraintStart_toStartOf="@+id/layout_location"
+        app:layout_constraintTop_toBottomOf="@+id/layout_location" />
 
     <RelativeLayout
-        android:id="@+id/relativeLayout"
-        android:layout_width="360dp"
+        android:id="@+id/layout_location"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-
         android:background="@drawable/bg_search"
+        android:padding="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tv_posisi">
+        app:layout_constraintTop_toBottomOf="@+id/tv_position">
 
         <TextView
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:fontFamily="@font/poppins"
             android:gravity="center_vertical"
             android:padding="8dp"
@@ -91,46 +86,41 @@
         android:id="@+id/spinner"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
         android:layout_marginTop="20dp"
         android:background="@drawable/bg_kategori"
         android:entries="@array/kategori"
         android:padding="16dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchView" />
+        app:layout_constraintStart_toStartOf="@+id/sv_location"
+        app:layout_constraintTop_toBottomOf="@+id/sv_location" />
+
+    <!--    <ScrollView-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:scrollbars="vertical"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintHorizontal_bias="0.491"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@+id/spinner">-->
+
+    <!--        <androidx.recyclerview.widget.RecyclerView-->
+    <!--            android:id="@+id/rv_location"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="16dp"-->
+    <!--            tools:listitem="@layout/item_tempat" />-->
+    <!--    </ScrollView>-->
+
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_tempat"
+        android:id="@+id/rv_location"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
         android:layout_marginTop="16dp"
-        android:layout_marginEnd="8dp"
+        android:scrollbars="vertical"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/spinner"
         tools:listitem="@layout/item_tempat" />
-
-    <!--    <com.google.android.material.textfield.TextInputLayout-->
-    <!--        android:id="@+id/textInputLayout"-->
-    <!--        style="@style/Widget.MaterialComponents.TextInputLayout.FilledBox.Dense.ExposedDropdownMenu"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:background="@drawable/bg_kategori"-->
-    <!--        android:layout_marginTop="16dp"-->
-    <!--        app:layout_constraintStart_toStartOf="@+id/searchView"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/searchView">-->
-
-    <!--        <AutoCompleteTextView-->
-    <!--            android:id="@+id/autoCompleteTextView"-->
-    <!--            android:layout_width="wrap_content"-->
-    <!--            android:layout_height="wrap_content"-->
-    <!--            android:layout_weight="1"-->
-    <!--            android:inputType="none"-->
-    <!--            android:text="Kategori" />-->
-
-    <!--    </com.google.android.material.textfield.TextInputLayout>-->
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

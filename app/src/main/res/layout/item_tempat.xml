@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="350dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="16dp"
     app:cardCornerRadius="20dp">
@@ -18,14 +18,14 @@
             android:background="@drawable/bg_motorcycle">
 
             <ToggleButton
-                android:id="@+id/toggleButton"
+                android:id="@+id/btn_like"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:background="@drawable/ic_favorite"
-                android:textOn=""
-                android:textOff=""
                 android:layout_gravity="right"
                 android:layout_margin="8dp"
+                android:background="@drawable/ic_favorite"
+                android:textOff=""
+                android:textOn=""
                 tools:ignore="RtlHardcoded,UsingOnClickInXml" />
         </FrameLayout>
 
@@ -36,7 +36,7 @@
             android:background="#3D84A8">
 
             <TextView
-                android:id="@+id/tv_tempatCuci"
+                android:id="@+id/tv_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -44,26 +44,40 @@
                 android:padding="4dp"
                 android:text="@string/jaya_makmur_wash"
                 android:textColor="@color/white"
-                android:textSize="12sp"
+                android:textSize="14sp"
                 tools:ignore="RelativeOverlap" />
 
             <TextView
-                android:id="@+id/tv_alamat"
+                android:id="@+id/tv_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_below="@id/tv_tempatCuci"
+                android:layout_below="@id/tv_name"
                 android:layout_alignParentStart="true"
                 android:fontFamily="@font/poppins"
                 android:padding="4dp"
                 android:text="@string/jl_mt_haryono"
                 android:textColor="@color/white"
-                android:textSize="12sp" />
+                android:textSize="14sp" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginHorizontal="8dp"
+                android:layout_toStartOf="@+id/img_forward"
+                android:padding="4dp"
+                android:text="@string/status_buka"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                tools:ignore="RelativeOverlap" />
 
             <ImageView
-                android:id="@+id/img_arahMaju"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:id="@+id/img_forward"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
+                android:layout_centerVertical="true"
                 android:background="@drawable/ic_arrow_forward"
                 android:padding="4dp"
                 tools:ignore="ContentDescription" />
