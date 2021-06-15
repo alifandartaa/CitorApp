@@ -93,7 +93,7 @@
     <string name="detailing">DETAILING</string>
     <string name="waktu1">08.00 - 10.00 WIB</string>
     <string name="metode1">pilih metode</string>
-    <string name="konfirmasi_pembayaran">Konfirmasi</string>
+    <string name="konfirmasi_pembayaran">Konfirmasi Pembayaran</string>
     <string name="rangkuman">Rangkuman</string>
     <string name="nama_cuci_motor">Nama Cuci Motor</string>
     <string name="kode_pesanan">Kode Pesanan</string>
@@ -116,6 +116,13 @@
     <string name="penuh">Penuh</string>
     <string name="ask_email_1">Apakah benar</string>
     <string name="ask_email_2">merupakan e-mail Anda?</string>
+    <string name="cuci_dimana">Mau mencuci dimana hari ini ?</string>
+    <string name="apa_kabar">Apa Kabar Hari Ini ?</string>
+    <string name="nama_user">Dila</string>
+    <string name="hi">Hi</string>
+    <string name="point_user">10</string>
+    <string name="poin_kamu">Poin Kamu</string>
+    <string name="status_buka">Buka Hari Ini</string>
     <string-array name="kategori">
         <item>Kategori</item>
     </string-array>

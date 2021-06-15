@@ -22,7 +22,7 @@
 
         </activity>
 
-        <activity android:name=".home.PelayananActivity">
+        <activity android:name=".home.pelayanan.PelayananActivity">
 
         </activity>
         <activity
@@ -33,13 +33,11 @@
         <activity
             android:name=".auth.AuthActivity"
             android:windowSoftInputMode="stateHidden|adjustPan">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
         <activity android:name=".home.detailVendor.DetailVendorActivity" />
         <activity android:name=".auth.login.OtpInputActivity" />
