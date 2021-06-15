@@ -1,9 +1,11 @@
 package com.example.citorapp.home.detailVendor
 
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.citorapp.databinding.ItemWashTypeBinding
+import com.example.citorapp.home.detailBooking.BookingActivity
 
 class VendorWashTypeAdapter : RecyclerView.Adapter<VendorWashTypeAdapter.WashTypeHolder>() {
 
@@ -20,6 +22,10 @@ class VendorWashTypeAdapter : RecyclerView.Adapter<VendorWashTypeAdapter.WashTyp
         fun bind(washType: WashTypeEntity) {
             with(binding) {
                 tvNameType.text = washType.name
+                btnChooseType.setOnClickListener {
+                    val intent = Intent(itemView.context, BookingActivity::class.java)
+                    itemView.context.startActivity(intent)
+                }
             }
         }
     }
