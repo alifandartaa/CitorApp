@@ -85,4 +85,8 @@ dependencies {
 
     //Material Dialog
     implementation 'dev.shreyaspatil.MaterialDialog:MaterialDialog:2.1.1'
+
+    //Loading Animation
+    implementation 'com.github.ybq:Android-SpinKit:1.4.0'
+    implementation 'br.com.simplepass:loading-button-android:2.2.0'
 }

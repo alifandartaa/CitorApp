@@ -11,6 +11,7 @@ import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.example.citorapp.R
 import com.example.citorapp.auth.AuthActivity
+import com.example.citorapp.auth.register.EmailConfirmActivity
 import com.example.citorapp.databinding.ActivityOtpInputBinding
 import com.example.citorapp.retrofit.AuthService
 import com.example.citorapp.retrofit.RetrofitClient
@@ -44,16 +45,20 @@ class OtpInputActivity : AppCompatActivity() {
                 otpInputBinding.root,
                 getString(R.string.otp_already_send),
                 Snackbar.LENGTH_SHORT
-            )
-                .show()
+            ).show()
         }
 
         otpInputBinding.btnVerifyOtp.setOnClickListener {
-            val nama = intent.getStringExtra(EmailConfirmActivity.nama).toString()
             val email = intent.getStringExtra(EmailConfirmActivity.email).toString()
-            val nohp = intent.getStringExtra(EmailConfirmActivity.nohp).toString()
-            val password = intent.getStringArrayExtra(EmailConfirmActivity.password).toString()
-            registrasi(nama, email, nohp, password)
+            val otp1 = otpInputBinding.etOtp1.text.toString()
+            val otp2 = otpInputBinding.etOtp2.text.toString()
+            val otp3 = otpInputBinding.etOtp3.text.toString()
+            val otp4 = otpInputBinding.etOtp4.text.toString()
+            val otp5 = otpInputBinding.etOtp5.text.toString()
+            val otp6 = otpInputBinding.etOtp6.text.toString()
+            val otp = otp1 + otp2 + otp3 + otp4 + otp5 + otp6
+            otpInputBinding.btnVerifyOtp.startAnimation()
+            verifyOtp(email, otp)
         }
     }
 
@@ -70,6 +75,38 @@ class OtpInputActivity : AppCompatActivity() {
             finish()
         }
         dialog.show()
+    }
+
+    private fun verifyOtp(email: String, otp: String) {
+        val service = RetrofitClient().apiRequest().create(AuthService::class.java)
+        service.verifyOtp(email, otp).enqueue(object : Callback<DefaultResponse> {
+            override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
+                if (response.isSuccessful) {
+                    when (response.body()!!.status) {
+                        "success" -> {
+                            otpInputBinding.btnVerifyOtp.revertAnimation {
+                                otpInputBinding.btnVerifyOtp.text = "Berhasil"
+                            }
+                            val nama = intent.getStringExtra(nama).toString()
+                            val nohp = intent.getStringExtra(nohp).toString()
+                            val password = intent.getStringExtra(password).toString()
+                            registrasi(nama, email, nohp, password)
+                        }
+                        "not_match" -> {
+                            otpInputBinding.btnVerifyOtp.revertAnimation {
+                                otpInputBinding.btnVerifyOtp.text = getString(R.string.verify)
+                            }
+                            Toasty.error(this@OtpInputActivity, R.string.otp_not_match, Toasty.LENGTH_LONG).show()
+                        }
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                Toasty.error(this@OtpInputActivity, R.string.try_again, Toasty.LENGTH_LONG).show()
+            }
+
+        })
     }
 
     private fun registrasi(nama: String, email: String, nohp: String, password: String) {

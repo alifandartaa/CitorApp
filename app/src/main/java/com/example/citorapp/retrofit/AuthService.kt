@@ -33,6 +33,21 @@ interface AuthService {
         @Field("password") password: String,
     ): Call<DefaultResponse>
 
+    //request OTP
+    @FormUrlEncoded
+    @POST("auth/requestOtp")
+    fun requestOtp(
+        @Field("email") email: String
+    ): Call<DefaultResponse>
+
+    //verify OTP
+    @FormUrlEncoded
+    @POST("auth/verifyOtp")
+    fun verifyOtp(
+        @Field("email") email: String,
+        @Field("otp") otp: String
+    ): Call<DefaultResponse>
+
     @FormUrlEncoded
     @POST("auth/addToken")
     fun addToken(

@@ -165,7 +165,7 @@
                     tools:ignore="LabelFor" />
             </LinearLayout>
 
-            <com.google.android.material.button.MaterialButton
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
                 android:id="@+id/btn_verify_otp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -175,8 +175,13 @@
                 android:paddingHorizontal="32dp"
                 android:text="@string/verify"
                 android:textAllCaps="false"
-                app:cornerRadius="30dp"
-                android:textSize="18sp" />
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                app:backgroundTint="@color/bluePrimary"
+                app:finalCornerAngle="100dp"
+                app:initialCornerAngle="100dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_width="4dp" />
         </LinearLayout>
 
 

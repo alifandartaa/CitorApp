@@ -119,4 +119,5 @@
     <string-array name="kategori">
         <item>Kategori</item>
     </string-array>
+    <string name="otp_not_match">Kode OTP tidak cocok</string>
 </resources>

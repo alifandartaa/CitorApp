@@ -10,7 +10,7 @@
     android:paddingHorizontal="32dp"
     android:paddingTop="32dp"
     android:paddingBottom="64dp"
-    tools:context=".auth.login.EmailConfirmActivity">
+    tools:context=".auth.register.EmailConfirmActivity">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
@@ -78,7 +78,7 @@
                 android:textAlignment="center"
                 android:textColor="#324B4A" />
 
-            <com.google.android.material.button.MaterialButton
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
                 android:id="@+id/btn_back"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
@@ -88,19 +88,37 @@
                 android:paddingHorizontal="32dp"
                 android:text="@string/back"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="14sp"
                 app:cornerRadius="30dp" />
 
-            <com.google.android.material.button.MaterialButton
+            <!--            <com.google.android.material.button.MaterialButton-->
+            <!--                android:id="@+id/btn_send_otp"-->
+            <!--                android:layout_width="200dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_gravity="center_horizontal"-->
+            <!--                android:paddingHorizontal="32dp"-->
+            <!--                android:text="@string/txt_send_otp"-->
+            <!--                android:textAllCaps="false"-->
+            <!--                android:textSize="14sp"-->
+            <!--                app:cornerRadius="30dp" />-->
+
+            <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
                 android:id="@+id/btn_send_otp"
                 android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
+                android:layout_marginTop="16dp"
                 android:paddingHorizontal="32dp"
                 android:text="@string/txt_send_otp"
                 android:textAllCaps="false"
+                android:textColor="@color/white"
                 android:textSize="14sp"
-                app:cornerRadius="30dp" />
+                app:backgroundTint="@color/bluePrimary"
+                app:finalCornerAngle="100dp"
+                app:initialCornerAngle="100dp"
+                app:spinning_bar_color="#FFF"
+                app:spinning_bar_width="4dp" />
         </LinearLayout>
 
 

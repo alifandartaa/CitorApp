@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.citorapp.R.string
-import com.example.citorapp.auth.login.EmailConfirmActivity
+import com.example.citorapp.auth.register.EmailConfirmActivity
 import com.example.citorapp.databinding.FragmentRegisterBinding
 import com.example.citorapp.retrofit.AuthService
 import com.example.citorapp.retrofit.RetrofitClient
@@ -33,7 +33,7 @@ class RegisterFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         registerBinding.cbTermsRegister.setOnCheckedChangeListener { buttonView, isChecked ->
-            registerBinding.btnRegister.isEnabled =  isChecked
+            registerBinding.btnRegister.isEnabled = isChecked
         }
         if (activity != null) {
             registerBinding.btnRegister.setOnClickListener {

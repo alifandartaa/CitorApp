@@ -28,7 +28,7 @@
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
-        <activity android:name=".auth.login.EmailConfirmActivity" />
+        <activity android:name=".auth.register.EmailConfirmActivity" />
         <activity android:name=".ProfileTestActivity" />
         <activity
             android:name=".auth.AuthActivity"

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center"
+    android:orientation="vertical"
     android:paddingHorizontal="16dp"
     tools:context=".auth.login.LoginFragment">
 
@@ -45,18 +45,34 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.button.MaterialButton
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/btn_login"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_gravity="center_horizontal"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:paddingHorizontal="36dp"-->
+    <!--        android:paddingVertical="8dp"-->
+    <!--        android:text="@string/login"-->
+    <!--        android:textAllCaps="false"-->
+    <!--        android:textSize="18sp"-->
+    <!--        app:backgroundTint="@color/bluePrimary"-->
+    <!--        app:cornerRadius="15dp" />-->
+
+    <br.com.simplepass.loadingbutton.customViews.CircularProgressButton
         android:id="@+id/btn_login"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="16dp"
-        android:paddingHorizontal="36dp"
-        android:paddingVertical="8dp"
         android:text="@string/login"
         android:textAllCaps="false"
+        android:textColor="@color/white"
         android:textSize="18sp"
-        app:cornerRadius="15dp"
-        app:backgroundTint="@color/bluePrimary" />
+        app:backgroundTint="@color/bluePrimary"
+        app:finalCornerAngle="100dp"
+        app:initialCornerAngle="100dp"
+        app:spinning_bar_color="#FFF"
+        app:spinning_bar_width="4dp" />
 
 </LinearLayout>

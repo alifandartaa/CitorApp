@@ -48,6 +48,7 @@ class LoginFragment : Fragment() {
                 val email = loginBinding.tvValueEmailLogin.text.toString()
                 val pass = loginBinding.tvValuePasswordLogin.text.toString()
                 if (isDataFilled()) {
+                    loginBinding.btnLogin.startAnimation()
                     loginprocess(email, pass)
                 }
             }
@@ -80,6 +81,9 @@ class LoginFragment : Fragment() {
                 if (response.isSuccessful) {
                     when (response.body()!!.status) {
                         "success" -> {
+                            loginBinding.btnLogin.revertAnimation {
+                                loginBinding.btnLogin.text = "Berhasil"
+                            }
                             myPreferences.setValue(Constants.USER, Constants.LOGIN)
                             myPreferences.setValue(Constants.USER_ID, response.body()!!.data[0].iduser)
                             myPreferences.setValue(Constants.USER_NAMA, response.body()!!.data[0].nama)
@@ -93,9 +97,15 @@ class LoginFragment : Fragment() {
                             activity?.finish()
                         }
                         "failed" -> {
+                            loginBinding.btnLogin.revertAnimation {
+                                loginBinding.btnLogin.text = getString(R.string.login)
+                            }
                             Toasty.error(requireContext(), R.string.email_pass_not_match, Toasty.LENGTH_LONG).show()
                         }
                         "not_exist" -> {
+                            loginBinding.btnLogin.revertAnimation {
+                                loginBinding.btnLogin.text = getString(R.string.login)
+                            }
                             Toasty.error(requireContext(), R.string.email_not_registered, Toasty.LENGTH_LONG).show()
                         }
                     }
