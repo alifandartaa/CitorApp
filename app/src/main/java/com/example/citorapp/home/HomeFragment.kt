@@ -5,13 +5,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import android.widget.TextView
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.citorapp.R
 import com.example.citorapp.databinding.FragmentHomeBinding
+import com.example.citorapp.home.pelayanan.PelayananActivity
 
 class HomeFragment : Fragment() {
 
@@ -35,9 +32,25 @@ class HomeFragment : Fragment() {
 
         bindingHome = FragmentHomeBinding.inflate(inflater, container, false)
 
-        binding.btnCari.setOnClickListener(){
+        binding.btnSearch.setOnClickListener(){
             val intent = Intent(this@HomeFragment.requireContext(), PelayananActivity::class.java)
             startActivity(intent)
+        }
+
+        binding.btnService.setOnClickListener(){
+
+        }
+
+        binding.btnRating.setOnClickListener(){
+
+        }
+
+        binding.btnLocation.setOnClickListener(){
+
+        }
+
+        binding.btnVoucher.setOnClickListener(){
+
         }
         return binding.root
 
