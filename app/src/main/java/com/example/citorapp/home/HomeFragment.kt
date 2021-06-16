@@ -9,10 +9,13 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.citorapp.databinding.FragmentHomeBinding
 import com.example.citorapp.home.pelayanan.PelayananActivity
+import com.example.citorapp.utils.Constants
+import com.example.citorapp.utils.MySharedPreferences
 
 class HomeFragment : Fragment() {
 
     private lateinit var homeViewModel: HomeViewModel
+    private lateinit var myPreferences: MySharedPreferences
 
     private var bindingHome: FragmentHomeBinding? = null
     private val binding get() = bindingHome!!
@@ -22,38 +25,41 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-//        val root = inflater.inflate(R.layout.fragment_home, container, false)
-////        val textView: TextView = root.findViewById(R.id.text_home)
-////        homeViewModel.text.observe(viewLifecycleOwner, Observer {
-////            textView.text = it
-////        })
+        homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         bindingHome = FragmentHomeBinding.inflate(inflater, container, false)
+        return binding.root
+    }
 
-        binding.btnSearch.setOnClickListener(){
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        myPreferences = MySharedPreferences(requireContext())
+
+        val userName = myPreferences.getValue(Constants.USER_NAMA).toString()
+        val point = myPreferences.getValue(Constants.USER_POIN).toString()
+
+        binding.tvName.text = userName
+        binding.tvPoint.text = point
+
+        binding.btnSearch.setOnClickListener() {
             val intent = Intent(this@HomeFragment.requireContext(), PelayananActivity::class.java)
             startActivity(intent)
         }
 
-        binding.btnService.setOnClickListener(){
+        binding.btnService.setOnClickListener() {
 
         }
 
-        binding.btnRating.setOnClickListener(){
+        binding.btnRating.setOnClickListener() {
 
         }
 
-        binding.btnLocation.setOnClickListener(){
+        binding.btnLocation.setOnClickListener() {
 
         }
 
-        binding.btnVoucher.setOnClickListener(){
+        binding.btnVoucher.setOnClickListener() {
 
         }
-        return binding.root
-
-
     }
 }

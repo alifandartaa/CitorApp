@@ -22,7 +22,6 @@ class ProfileFragment : Fragment() {
     private lateinit var profileBinding: FragmentProfileBinding
     private lateinit var myPreferences: MySharedPreferences
 
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,8 +34,8 @@ class ProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         myPreferences = MySharedPreferences(requireContext())
 
-        val namaUser = myPreferences.getValue(Constants.USER_NAMA).toString()
-        profileBinding.tvUserName.text = namaUser
+        val userName = myPreferences.getValue(Constants.USER_NAMA).toString()
+        profileBinding.tvUserName.text = userName
 
         val foto = myPreferences.getValue(Constants.USER_FOTO).toString()
         Glide.with(requireContext())

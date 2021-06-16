@@ -8,7 +8,6 @@
     android:padding="8dp"
     tools:context=".home.HomeFragment">
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -16,14 +15,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-
         <TextView
             android:id="@+id/tv_text_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
             android:text="@string/poin_kamu"
-            android:textColor="#A39696"
+            android:textColor="@color/md_cyan_900"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -33,9 +32,9 @@
             android:id="@+id/tv_point"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/point_user"
-            android:textColor="#458CAD"
             android:padding="4dp"
+            android:text="@string/point_user"
+            android:textColor="@color/md_cyan_A700"
             android:textSize="35sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="@+id/tv_text_point"
@@ -48,7 +47,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"
             android:text="@string/hi"
-            android:textColor="#A39696"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/md_cyan_500"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,9 +58,9 @@
             android:id="@+id/tv_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
+            android:layout_marginStart="4dp"
             android:text="@string/nama_user"
-            android:textColor="#A39696"
+            android:textColor="@color/md_cyan_500"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/tv_hi"
@@ -72,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/apa_kabar"
-            android:textColor="#A39696"
+            android:textColor="@color/md_cyan_500"
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="@+id/tv_hi"
