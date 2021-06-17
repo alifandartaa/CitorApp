@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.citorapp.databinding.FragmentHomeBinding
-import com.example.citorapp.home.pelayanan.PelayananActivity
+import com.example.citorapp.home.searchVendor.SearchVendorActivity
 import com.example.citorapp.utils.Constants
 import com.example.citorapp.utils.MySharedPreferences
 
@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         homeViewModel = ViewModelProvider(this).get(HomeViewModel::class.java)
 
         bindingHome = FragmentHomeBinding.inflate(inflater, container, false)
@@ -42,7 +42,7 @@ class HomeFragment : Fragment() {
         binding.tvPoint.text = point
 
         binding.btnSearch.setOnClickListener() {
-            val intent = Intent(this@HomeFragment.requireContext(), PelayananActivity::class.java)
+            val intent = Intent(this@HomeFragment.requireContext(), SearchVendorActivity::class.java)
             startActivity(intent)
         }
 

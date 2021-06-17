@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CitorApp">
-        <activity android:name=".home.pelayanan.PelayananActivity">
+        <activity android:name=".home.searchVendor.SearchVendorActivity">
 
         </activity>
         <activity
@@ -28,6 +28,8 @@
         </activity>
         <activity android:name=".home.detailVendor.DetailVendorActivity" />
         <activity android:name=".auth.login.OtpInputActivity" />
+        <activity android:name=".home.detailBooking.BookingActivity" />
+        <activity android:name=".home.payment.FixPaymentActivity" />
     </application>
 
 </manifest>

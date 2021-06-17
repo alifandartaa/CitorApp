@@ -18,13 +18,32 @@ object BookingData {
         "14:30-15:00",
         "15:00-15:30",
         "15:30-16:00",
-        )
-    val listData: ArrayList<BookingModel>
+    )
+    private val statusOpenTime = arrayOf(
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        true,
+        false,
+        true,
+        true,
+        false,
+        true,
+        true,
+    )
+    val listData: ArrayList<BookingEntity>
         get() {
-            val list = arrayListOf<BookingModel>()
+            val list = arrayListOf<BookingEntity>()
             for (position in waktuBooking.indices) {
-                val booking = BookingModel()
+                val booking = BookingEntity()
                 booking.jamBuka = waktuBooking[position]
+                booking.status = statusOpenTime[position]
                 list.add(booking)
             }
             return list

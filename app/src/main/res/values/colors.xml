@@ -10,11 +10,10 @@
 
     <color name="bluePrimary">#3D84A8</color>
     <color name="blue2">#ABEDD8</color>
+    <color name="greenOpen">#6DCE53</color>
+    <color name="redClose">#ED4040</color>
     <color name="gradient">
-        <gradient
-            android:startColor="#3F86A9"
-            android:endColor="#A7E6D8"
-            android:type="linear" />
+        <gradient android:endColor="#A7E6D8" android:startColor="#3F86A9" android:type="linear" />
     </color>
 
     <!--reds-->

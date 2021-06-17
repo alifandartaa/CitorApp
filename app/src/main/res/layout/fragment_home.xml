@@ -89,6 +89,7 @@
             android:fontFamily="@font/poppins"
             android:padding="16dp"
             android:text="@string/cuci_dimana"
+            android:textAllCaps="false"
             android:textColor="#A39696"
             android:textSize="16sp"
             android:textStyle="bold"

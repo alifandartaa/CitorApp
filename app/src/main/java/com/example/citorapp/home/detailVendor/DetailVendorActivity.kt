@@ -36,6 +36,10 @@ class DetailVendorActivity : AppCompatActivity() {
         }.attach()
         supportActionBar?.elevation = 0f
 
+        activityDetailVendorBinding.btnBack.setOnClickListener {
+            super.onBackPressed()
+        }
+
         activityDetailVendorBinding.tvVendorMap.setOnClickListener {
             val intent = Intent(this, ProfileTestActivity::class.java)
             startActivity(intent)

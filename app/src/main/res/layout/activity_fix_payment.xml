@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#3D84A8"
-    tools:context=".home.pembayaran.FixPaymentActivity">
+    tools:context=".home.payment.FixPaymentActivity">
+
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -33,8 +34,8 @@
 
             <ImageButton
                 android:id="@+id/btn_back"
-                android:layout_width="50dp"
-                android:layout_height="50dp"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/ic_arrow_back"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -43,42 +44,55 @@
                 tools:ignore="ContentDescription" />
 
             <TextView
+                android:id="@+id/tv_vendor_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:fontFamily="@font/poppins"
                 android:text="@string/nama_cuci_motor"
-                android:textColor="@color/black"
+                android:textColor="@color/bluePrimary"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/btn_back"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingVertical="30dp"
-            android:paddingHorizontal="8dp">
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="30dp">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout"
+            <androidx.cardview.widget.CardView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_pembayaran"
-                android:elevation="20dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/tv_summary"
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintLayout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:fontFamily="@font/roboto"
-                    android:text="@string/rangkuman"
+                    android:background="@drawable/bg_pembayaran"
+                    android:padding="8dp"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:id="@+id/tv_summary"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:fontFamily="@font/roboto"
+                        android:text="@string/rangkuman"
                     android:textColor="#3D84A8"
                     android:textSize="20sp"
                     android:textStyle="bold"
@@ -245,7 +259,7 @@
                     app:layout_constraintTop_toTopOf="@+id/tv_point" />
 
                 <TextView
-                    android:id="@+id/tv_detail_order"
+                    android:id="@+id/tv_order_code_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -259,7 +273,7 @@
                     app:layout_constraintTop_toTopOf="@+id/tv_colon_code" />
 
                 <TextView
-                    android:id="@+id/tv_detail_service"
+                    android:id="@+id/tv_type_service_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -273,7 +287,7 @@
                     app:layout_constraintTop_toTopOf="@+id/tv_colon_service" />
 
                 <TextView
-                    android:id="@+id/tv_detail_time"
+                    android:id="@+id/tv_order_time_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -285,28 +299,31 @@
                     app:layout_constraintStart_toEndOf="@+id/tv_colon_time"
                     app:layout_constraintTop_toTopOf="@+id/tv_colon_time" />
 
-                <TextView
-                    android:id="@+id/tv_detail_method"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/poppins"
-                    android:padding="8dp"
-                    android:text="@string/metode1"
-                    android:textColor="@color/black"
-                    android:textSize="16sp"
-                    android:textStyle="italic"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_colon_method"
-                    app:layout_constraintStart_toEndOf="@+id/tv_colon_method"
-                    app:layout_constraintTop_toTopOf="@+id/tv_colon_method" />
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_payment_method"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
+                        android:fontFamily="@font/poppins"
+                        android:padding="8dp"
+                        android:text="@string/metode1"
+                        android:textAllCaps="false"
+                        android:textColor="@color/black"
+                        android:textSize="16sp"
+                        android:textStyle="italic"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_colon_method"
+                        app:layout_constraintStart_toEndOf="@+id/tv_colon_method"
+                        app:layout_constraintTop_toTopOf="@+id/tv_colon_method" />
 
-                <TextView
-                    android:id="@+id/tv_detail_price"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:fontFamily="@font/poppins"
-                    android:padding="8dp"
+                    <TextView
+                        android:id="@+id/tv_price_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="@font/poppins"
+                        android:padding="8dp"
                     android:text="@string/harga1"
                     android:textColor="@color/black"
                     android:textSize="16sp"
@@ -315,7 +332,7 @@
                     app:layout_constraintTop_toTopOf="@+id/tv_colon_price" />
 
                 <TextView
-                    android:id="@+id/tv_detail_point"
+                    android:id="@+id/tv_point_value"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
@@ -328,24 +345,14 @@
                     app:layout_constraintStart_toEndOf="@+id/tv_colon_point"
                     app:layout_constraintTop_toTopOf="@+id/tv_colon_point" />
 
-                <Button
-                    android:id="@+id/btn_method"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/ic_arrow_forward"
-                    android:textColor="@color/black"
-                    app:layout_constraintBottom_toBottomOf="@+id/tv_detail_method"
-                    app:layout_constraintStart_toEndOf="@+id/tv_detail_method"
-                    app:layout_constraintTop_toTopOf="@+id/tv_detail_method" />
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/layout_code"
                     android:layout_width="240dp"
                     android:layout_height="90dp"
                     android:layout_marginTop="32dp"
-                    android:visibility="visible"
                     android:background="@drawable/bg_kode"
+                    android:visibility="gone"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/tv_point">
@@ -384,7 +391,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <Button
-                    android:id="@+id/btn_confirm"
+                    android:id="@+id/btn_confirm_payment"
                     android:layout_width="wrap_content"
                     android:layout_height="50dp"
                     android:layout_marginTop="24dp"
@@ -401,14 +408,16 @@
                     app:layout_constraintTop_toBottomOf="@+id/layout_code" />
 
 
-                <androidx.constraintlayout.widget.Guideline
-                    android:id="@+id/guideline2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    app:layout_constraintGuide_begin="189dp" />
+                    <androidx.constraintlayout.widget.Guideline
+                        android:id="@+id/guideline2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        app:layout_constraintGuide_begin="189dp" />
 
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </LinearLayout>
 </ScrollView>

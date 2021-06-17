@@ -105,7 +105,7 @@
     <string name="harga1">Rp. 15.000,-</string>
     <string name="poin1">15 Poin</string>
     <string name="text_kode_pembayaran">Kode Pembayaran</string>
-    <string name="kode_pemb">099923193193913129</string>
+    <string name="kode_pemb">0</string>
     <string name="pilih">Pilih</string>
     <string name="pilih_metode_pembayaran">Pilih Metode Pembayaran</string>
     <string name="shopeepay">ShopeePay</string>
@@ -127,4 +127,7 @@
         <item>Kategori</item>
     </string-array>
     <string name="otp_not_match">Kode OTP tidak cocok</string>
+    <string name="example_text_history">Pencucian motor pada Suka Makmur sedang berjalan</string>
+    <string name="txt_detail_history">Selengkapnya...</string>
+    <string name="txt_complete_payment">Pembayaran Telah Berhasil!</string>
 </resources>

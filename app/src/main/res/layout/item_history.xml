@@ -4,52 +4,52 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/card_view"
     android:layout_width="match_parent"
-    android:layout_height="100dp"
+    android:layout_height="wrap_content"
     android:layout_gravity="center"
-    android:layout_marginLeft="8dp"
-    android:layout_marginTop="4dp"
-    android:layout_marginRight="8dp"
-    android:layout_marginBottom="4dp"
+    android:layout_margin="16dp"
     card_view:cardCornerRadius="16dp">
 
-    <RelativeLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/card_border"
-        android:padding="8dp">
+        android:layout_height="120dp"
+        android:background="@drawable/card_border">
 
-        <de.hdodenhof.circleimageview.CircleImageView
-            android:id="@+id/img_item_photo"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_centerVertical="true"
+        <ImageView
+            android:id="@+id/iv_time"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:background="@drawable/ic_history2" />
+            android:src="@drawable/ic_outline_time_black_24dp"
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toStartOf="parent"
+
+            card_view:layout_constraintTop_toTopOf="parent"
+            tools:ignore="ContentDescription" />
 
         <TextView
             android:id="@+id/tv_history"
-            android:layout_width="match_parent"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginStart="8dp"
-            android:layout_marginEnd="8dp"
-            android:layout_toEndOf="@id/img_item_photo"
-            android:textSize="16sp"
+            android:layout_marginStart="24dp"
+            android:fontFamily="@font/poppins"
+            android:text="@string/example_text_history"
+            android:textColor="@color/bluePrimary"
             android:textStyle="bold"
-            tools:text="aktivitas yang berjalan" />
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintStart_toEndOf="@id/iv_time"
+            card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="4dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="10dp"
+            android:text="@string/txt_detail_history"
+            android:textColor="@color/black"
+            android:textStyle="bold"
             android:layout_marginEnd="16dp"
-            android:textSize="12sp"
-            tools:text="selengkapnya..." />
+            card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent" />
 
-    </RelativeLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.cardview.widget.CardView>
