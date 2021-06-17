@@ -2,9 +2,11 @@ package com.example.citorapp.home.searchVendor
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ArrayAdapter
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.citorapp.R
 import com.example.citorapp.databinding.ActivitySearchVendorBinding
 
 class SearchVendorActivity : AppCompatActivity() {
@@ -24,6 +26,10 @@ class SearchVendorActivity : AppCompatActivity() {
 
         searchVendorAdapter = SearchVendorAdapter()
         setupListItemVendor()
+
+        val areaCategory = resources.getStringArray(R.array.area_category)
+        val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, areaCategory)
+        searchVendorBinding.ctvArea.setAdapter(arrayAdapter)
     }
 
     private fun setupListItemVendor() {

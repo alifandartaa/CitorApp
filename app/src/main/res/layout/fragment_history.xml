@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/bg_home"
     android:orientation="vertical"
     tools:context=".history.HistoryFragment">
@@ -22,6 +23,39 @@
             android:textColor="@color/bluePrimary"
             android:textSize="20sp" />
     </FrameLayout>
+
+    <com.google.android.material.chip.ChipGroup
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        app:checkedChip="@id/chip_cat_progress"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_cat_progress"
+            style="@style/customChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Sedang Berjalan"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:chipStrokeColor="@color/md_grey_500"
+            app:chipStrokeWidth="0.5dp" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/chip_cat_done"
+            style="@style/customChipStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Selesai"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            app:chipStrokeColor="@color/md_grey_500"
+            app:chipStrokeWidth="0.5dp" />
+
+    </com.google.android.material.chip.ChipGroup>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_history"

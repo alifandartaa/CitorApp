@@ -123,8 +123,10 @@
     <string name="point_user">10</string>
     <string name="poin_kamu">Poin Kamu</string>
     <string name="status_buka">Buka Hari Ini</string>
-    <string-array name="kategori">
-        <item>Kategori</item>
+    <string-array name="area_category">
+        <item>Lowokwaru</item>
+        <item>Sawojajar</item>
+        <item>Wagir</item>
     </string-array>
     <string name="otp_not_match">Kode OTP tidak cocok</string>
     <string name="example_text_history">Pencucian motor pada Suka Makmur sedang berjalan</string>

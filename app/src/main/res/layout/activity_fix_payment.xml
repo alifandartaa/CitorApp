@@ -288,7 +288,7 @@
 
                 <TextView
                     android:id="@+id/tv_order_time_value"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="8dp"
                     android:fontFamily="@font/poppins"
@@ -297,22 +297,27 @@
                     android:textSize="16sp"
                     app:layout_constraintBottom_toBottomOf="@+id/tv_colon_time"
                     app:layout_constraintStart_toEndOf="@+id/tv_colon_time"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="@+id/tv_colon_time" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btn_payment_method"
                         style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="8dp"
                         android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
                         android:fontFamily="@font/poppins"
                         android:padding="8dp"
+                        android:textColor="@color/md_grey_700"
+                        android:textColorHint="@color/bluePrimary"
                         android:text="@string/metode1"
                         android:textAllCaps="false"
-                        android:textColor="@color/black"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintWidth_percent="0.5"
                         android:textSize="16sp"
                         android:textStyle="italic"
+                        app:rippleColor="@color/bluePrimary"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_colon_method"
                         app:layout_constraintStart_toEndOf="@+id/tv_colon_method"
                         app:layout_constraintTop_toTopOf="@+id/tv_colon_method" />

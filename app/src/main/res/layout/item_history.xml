@@ -28,26 +28,27 @@
 
         <TextView
             android:id="@+id/tv_history"
-            android:layout_width="250dp"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
+            android:layout_marginStart="8dp"
             android:fontFamily="@font/poppins"
             android:text="@string/example_text_history"
             android:textColor="@color/bluePrimary"
             android:textStyle="bold"
             card_view:layout_constraintBottom_toBottomOf="parent"
+            card_view:layout_constraintEnd_toEndOf="parent"
             card_view:layout_constraintStart_toEndOf="@id/iv_time"
             card_view:layout_constraintTop_toTopOf="parent" />
 
         <TextView
             android:id="@+id/tv_detail"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
+            android:layout_height="0dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="8dp"
             android:text="@string/txt_detail_history"
             android:textColor="@color/black"
             android:textStyle="bold"
-            android:layout_marginEnd="16dp"
             card_view:layout_constraintBottom_toBottomOf="parent"
             card_view:layout_constraintEnd_toEndOf="parent" />
 
