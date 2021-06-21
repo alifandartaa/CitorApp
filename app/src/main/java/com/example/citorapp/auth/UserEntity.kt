@@ -1,6 +1,6 @@
-package com.example.citorapp.model
+package com.example.citorapp.auth
 
-class MUser(
+class UserEntity(
     var iduser: String = "",
     var nama: String = "",
     var email: String = "",

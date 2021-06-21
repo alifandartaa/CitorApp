@@ -31,9 +31,10 @@
 
 
         <RelativeLayout
+            android:id="@+id/rl_item_vendor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#3D84A8">
+            android:background="@color/bluePrimary">
 
             <TextView
                 android:id="@+id/tv_name"

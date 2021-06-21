@@ -6,12 +6,13 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.citorapp.databinding.ItemWashTypeBinding
 import com.example.citorapp.home.detailBooking.BookingActivity
+import com.example.citorapp.home.searchVendor.VendorItemEntity
 
 class VendorWashTypeAdapter : RecyclerView.Adapter<VendorWashTypeAdapter.WashTypeHolder>() {
 
-    private var listWashType = ArrayList<WashTypeEntity>()
+    private var listWashType = ArrayList<VendorItemEntity>()
 
-    fun setListWashType(listWashType: List<WashTypeEntity>?) {
+    fun setListWashType(listWashType: List<VendorItemEntity>?) {
         if (listWashType == null) return
         this.listWashType.clear()
         this.listWashType.addAll(listWashType)
@@ -19,9 +20,9 @@ class VendorWashTypeAdapter : RecyclerView.Adapter<VendorWashTypeAdapter.WashTyp
 
     class WashTypeHolder(private val binding: ItemWashTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(washType: WashTypeEntity) {
+        fun bind(washType: VendorItemEntity) {
             with(binding) {
-                tvNameType.text = washType.name
+                tvNameType.text = washType.judul
                 btnChooseType.setOnClickListener {
                     val intent = Intent(itemView.context, BookingActivity::class.java)
                     itemView.context.startActivity(intent)

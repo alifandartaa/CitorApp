@@ -1,6 +1,7 @@
 package com.example.citorapp.home.searchVendor
 
 import android.content.Intent
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -20,16 +21,24 @@ class SearchVendorAdapter : RecyclerView.Adapter<SearchVendorAdapter.VendorItemH
     class VendorItemHolder(private val binding: ItemVendorBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(vendorItem: VendorItemEntity) {
             with(binding) {
-                tvName.text = vendorItem.name
-                tvAddress.text = vendorItem.address
-                if (vendorItem.status) {
+                tvName.text = vendorItem.nama_mitra
+                tvAddress.text = vendorItem.alamat_mitra
+                if (vendorItem.statusBuka == "buka") {
                     tvStatus.text = "BUKA HARI INI"
+                    itemView.setOnClickListener {
+                        val intent = Intent(itemView.context, DetailVendorActivity::class.java)
+                            .apply {
+                                putExtra(DetailVendorActivity.vendorId, vendorItem.idmitra)
+                                putExtra(DetailVendorActivity.vendorName, vendorItem.nama_mitra)
+                                putExtra(DetailVendorActivity.vendorAddress, vendorItem.alamat_mitra)
+                                putExtra(DetailVendorActivity.lat, vendorItem.lat)
+                                putExtra(DetailVendorActivity.long, vendorItem.long)
+                            }
+                        itemView.context.startActivity(intent)
+                    }
                 } else {
                     tvStatus.text = "TUTUP"
-                }
-                itemView.setOnClickListener {
-                    val intent = Intent(itemView.context, DetailVendorActivity::class.java)
-                    itemView.context.startActivity(intent)
+                    rlItemVendor.setBackgroundColor(Color.parseColor("#466a7d"))
                 }
             }
         }

@@ -7,13 +7,23 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.citorapp.R
 import com.example.citorapp.databinding.FragmentVendorServicesBinding
-
+import com.example.citorapp.retrofit.DataService
+import com.example.citorapp.retrofit.RetrofitClient
+import com.example.citorapp.retrofit.response.MitraResponse
+import com.example.citorapp.utils.Constants
+import com.example.citorapp.utils.MySharedPreferences
+import es.dmoral.toasty.Toasty
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class VendorServicesFragment : Fragment() {
 
     private lateinit var vendorServicesBinding: FragmentVendorServicesBinding
     private lateinit var vendorWashTypeAdapter: VendorWashTypeAdapter
+    private lateinit var myPreferences: MySharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -26,32 +36,44 @@ class VendorServicesFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        myPreferences = MySharedPreferences(requireContext())
+
+        val tokenAuth = myPreferences.getValue(Constants.TokenAuth).toString()
+
         if (activity != null) {
+            val id = arguments?.getString("id").toString()
             vendorWashTypeAdapter = VendorWashTypeAdapter()
-            setupListWashType()
+            setupListWashType(id, tokenAuth)
+            showLoading(true)
         }
     }
 
-    private fun setupListWashType() {
-        showLoading(true)
+    private fun setupListWashType(idmitra: String, tokenAuth: String) {
+        val service = RetrofitClient().apiRequest().create(DataService::class.java)
+        service.getLayanan(idmitra, "Bearer $tokenAuth").enqueue(object : Callback<MitraResponse> {
+            override fun onResponse(call: Call<MitraResponse>, response: Response<MitraResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == "success") {
+                        val listData = response.body()!!.data
+                        vendorWashTypeAdapter.setListWashType(listData)
+                        showLoading(false)
+                        vendorWashTypeAdapter.notifyDataSetChanged()
 
-        val listDummy = ArrayList<WashTypeEntity>()
-        val data1 = WashTypeEntity("tes", "Layanan Cuci Dasar")
-        val data2 = WashTypeEntity("tes", "Layanan Cuci Dasar dan Cuci Lebih Dalam")
-        val data3 = WashTypeEntity("tes", "Layanan Cuci Dasar dan Cuci Busa")
-        listDummy.add(data1)
-        listDummy.add(data2)
-        listDummy.add(data3)
-        vendorWashTypeAdapter.setListWashType(listDummy)
-        showLoading(false)
-        vendorWashTypeAdapter.notifyDataSetChanged()
+                        with(vendorServicesBinding.rvWashType) {
+                            layoutManager = LinearLayoutManager(requireContext())
+                            itemAnimator = DefaultItemAnimator()
+                            setHasFixedSize(true)
+                            adapter = vendorWashTypeAdapter
+                        }
+                    }
+                }
+            }
 
-        with(vendorServicesBinding.rvWashType) {
-            layoutManager = LinearLayoutManager(requireContext())
-            itemAnimator = DefaultItemAnimator()
-            setHasFixedSize(true)
-            adapter = vendorWashTypeAdapter
-        }
+            override fun onFailure(call: Call<MitraResponse>, t: Throwable) {
+                Toasty.error(requireContext(), R.string.try_again, Toasty.LENGTH_LONG).show()
+            }
+
+        })
     }
 
     private fun showLoading(state: Boolean) {
