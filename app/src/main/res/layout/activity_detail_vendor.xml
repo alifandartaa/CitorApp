@@ -24,19 +24,20 @@
             tools:ignore="ContentDescription" />
 
         <LinearLayout
-            android:layout_width="200dp"
-            android:layout_height="100dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_gravity="end|bottom"
             android:alpha="0.5"
             android:background="@color/bluePrimary"
-            android:orientation="vertical" />
+            android:orientation="vertical" >
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_vendor_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginEnd="32dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_gravity="end|center_horizontal"
             android:text="@string/txt_example_washer"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -45,9 +46,9 @@
             android:id="@+id/tv_vendor_address"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="end|center_vertical"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="32dp"
+            android:layout_gravity="end|center_horizontal"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
             android:text="@string/txt_example_washer_address"
             android:textColor="@color/white"
             android:textSize="14sp" />
@@ -57,7 +58,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_marginEnd="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
             android:drawableEnd="@drawable/ic_map_white_24dp"
             android:elevation="4dp"
             android:text="@string/txt_look_washer_map"
@@ -65,7 +68,7 @@
             android:textColor="@color/white"
             android:textSize="12sp"
             app:cornerRadius="10dp" />
-
+        </LinearLayout>
     </FrameLayout>
 
     <com.google.android.material.tabs.TabLayout
