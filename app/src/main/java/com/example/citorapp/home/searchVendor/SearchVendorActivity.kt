@@ -1,8 +1,11 @@
 package com.example.citorapp.home.searchVendor
 
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.ArrayAdapter
+import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -18,23 +21,40 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
+
 class SearchVendorActivity : AppCompatActivity() {
 
     private lateinit var searchVendorBinding: ActivitySearchVendorBinding
     private lateinit var searchVendorAdapter: SearchVendorAdapter
     private lateinit var myPreferences: MySharedPreferences
+//    private lateinit var itemlist: ArrayList<VendorItemEntity>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         searchVendorBinding = ActivitySearchVendorBinding.inflate(layoutInflater)
         setContentView(searchVendorBinding.root)
+
+
         myPreferences = MySharedPreferences(this@SearchVendorActivity)
 
         val tokenAuth = myPreferences.getValue(Constants.TokenAuth).toString()
         searchVendorBinding.btnBack.setOnClickListener {
             super.onBackPressed()
         }
+
+
+        searchVendorBinding.svLocation.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                searchVendorAdapter.filter.filter(query)
+                return true
+            }
+
+            override fun onQueryTextChange(query: String?): Boolean {
+                searchVendorAdapter.filter.filter(query)
+                return true
+            }
+        })
 
         searchVendorAdapter = SearchVendorAdapter()
         setupListItemVendor(tokenAuth)
@@ -81,4 +101,5 @@ class SearchVendorActivity : AppCompatActivity() {
             searchVendorBinding.progressBar.visibility = View.GONE
         }
     }
+
 }
