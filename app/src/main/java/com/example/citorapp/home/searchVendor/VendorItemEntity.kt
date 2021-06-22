@@ -9,5 +9,8 @@ data class VendorItemEntity(
     var long: String,
     var idlayanan: String,
     var judul: String,
-    var harga: String
+    var harga: String,
+    var idjam_buka: String,
+    var jam_buka: String,
+    var status: String
 )

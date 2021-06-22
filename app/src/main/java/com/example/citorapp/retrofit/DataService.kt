@@ -21,4 +21,12 @@ interface DataService {
         @Field("idmitra") idmitra: String,
         @Header("Authorization") token: String
     ): Call<MitraResponse>
+
+    //get jam buka mitra
+    @FormUrlEncoded
+    @POST("main/getJamBuka")
+    fun getJamBuka(
+        @Field("idmitra") idmitra: String,
+        @Header("Authorization") token: String
+    ): Call<MitraResponse>
 }

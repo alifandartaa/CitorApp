@@ -15,14 +15,14 @@ class DetailVendorPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapt
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
-            0 -> fragment = makeVendorService(fragment)
+            0 -> fragment = makeVendorService()
             1 -> fragment = VendorScheduleFragment()
         }
         return fragment as Fragment
     }
 
-    private fun makeVendorService(fragment: Fragment?): Fragment? {
-        var fragment1 = fragment
+    private fun makeVendorService(): Fragment? {
+        val fragment1: Fragment?
         fragment1 = VendorServicesFragment()
         fragment1.arguments = bundle
         return fragment1

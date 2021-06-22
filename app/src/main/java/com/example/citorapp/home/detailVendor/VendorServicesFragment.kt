@@ -29,8 +29,7 @@ class VendorServicesFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        vendorServicesBinding =
-            FragmentVendorServicesBinding.inflate(layoutInflater, container, false)
+        vendorServicesBinding = FragmentVendorServicesBinding.inflate(layoutInflater, container, false)
         return vendorServicesBinding.root
     }
 
@@ -42,7 +41,7 @@ class VendorServicesFragment : Fragment() {
 
         if (activity != null) {
             val id = arguments?.getString("id").toString()
-            vendorWashTypeAdapter = VendorWashTypeAdapter()
+            vendorWashTypeAdapter = VendorWashTypeAdapter(id)
             setupListWashType(id, tokenAuth)
             showLoading(true)
         }
@@ -55,6 +54,7 @@ class VendorServicesFragment : Fragment() {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == "success") {
                         val listData = response.body()!!.data
+
                         vendorWashTypeAdapter.setListWashType(listData)
                         showLoading(false)
                         vendorWashTypeAdapter.notifyDataSetChanged()

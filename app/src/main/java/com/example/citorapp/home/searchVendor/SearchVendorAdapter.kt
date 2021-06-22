@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.citorapp.databinding.ItemVendorBinding
+import com.example.citorapp.home.detailBooking.BookingActivity
 import com.example.citorapp.home.detailVendor.DetailVendorActivity
 
 class SearchVendorAdapter : RecyclerView.Adapter<SearchVendorAdapter.VendorItemHolder>() {
@@ -38,7 +39,8 @@ class SearchVendorAdapter : RecyclerView.Adapter<SearchVendorAdapter.VendorItemH
                     }
                 } else {
                     tvStatus.text = "TUTUP"
-                    rlItemVendor.setBackgroundColor(Color.parseColor("#466a7d"))
+                    rlItemVendor.setBackgroundColor(Color.parseColor("#455A64"))
+                    cvItemBooking.isEnabled = false
                 }
             }
         }

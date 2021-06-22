@@ -55,37 +55,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <androidx.cardview.widget.CardView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            card_view:cardBackgroundColor="#6DCE53" />
+            card_view:cardBackgroundColor="@color/greenOpen" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
-            android:textColor="@color/black"
-            android:text="@string/dapat_dipesan" />
+            android:text="@string/dapat_dipesan"
+            android:textColor="@color/black" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="24dp"
             android:layout_height="24dp"
-            card_view:cardBackgroundColor="#ED4040" />
+            card_view:cardBackgroundColor="@color/redClose" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
             android:layout_marginEnd="12dp"
-            android:textColor="@color/black"
-            android:text="@string/penuh" />
+            android:text="@string/penuh"
+            android:textColor="@color/black" />
 
     </LinearLayout>
-
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_booking"

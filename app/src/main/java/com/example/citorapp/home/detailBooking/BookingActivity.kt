@@ -4,45 +4,71 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
+import com.example.citorapp.R
 import com.example.citorapp.databinding.ActivityBookingBinding
+import com.example.citorapp.retrofit.DataService
+import com.example.citorapp.retrofit.RetrofitClient
+import com.example.citorapp.retrofit.response.MitraResponse
+import com.example.citorapp.utils.Constants
+import com.example.citorapp.utils.MySharedPreferences
+import es.dmoral.toasty.Toasty
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class BookingActivity : AppCompatActivity() {
 
     private lateinit var bookingBinding: ActivityBookingBinding
     private lateinit var bookingAdapter: BookingAdapter
+    private lateinit var myPreferences: MySharedPreferences
+
+    companion object {
+        const val vendorId = "vendor_id"
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
         bookingBinding = ActivityBookingBinding.inflate(layoutInflater)
         setContentView(bookingBinding.root)
+        myPreferences = MySharedPreferences(this@BookingActivity)
+
+        val tokenAuth = myPreferences.getValue(Constants.TokenAuth).toString()
 
         bookingBinding.btnBack.setOnClickListener {
             super.onBackPressed()
         }
+        val idVendor = intent.getStringExtra(vendorId).toString()
 
         bookingAdapter = BookingAdapter()
-        setupListItemBooking()
+        setupListItemBooking(idVendor, tokenAuth)
     }
 
-    private fun setupListItemBooking() {
-//        showLoading(true)
-//        val listDummy = ArrayList<VendorItemEntity>()
-//        val data1 = VendorItemEntity("Jaya Makmur Wash", "Jl. MT Haryono IX No.13", true)
-//        val data2 = VendorItemEntity("Putra Cuci Motor", "Jl. MT Haryono II No. 9", true)
-//        val data3 = VendorItemEntity("Klaker Wash",  "JL. Klayatan 3 No.16C", false)
-//        listDummy.add(data1)
-//        listDummy.add(data2)
-//        listDummy.add(data3)
-        bookingAdapter.setListBookingItem(BookingData.listData)
-//        showLoading(false)
-        bookingAdapter.notifyDataSetChanged()
+    private fun setupListItemBooking(idMitra: String, tokenAuth: String) {
+        val service = RetrofitClient().apiRequest().create(DataService::class.java)
+        service.getJamBuka(idMitra, "Bearer $tokenAuth").enqueue(object : Callback<MitraResponse>{
+            override fun onResponse(call: Call<MitraResponse>, response: Response<MitraResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == "success") {
+                        val listData = response.body()!!.data
+                        bookingAdapter.setListBookingItem(listData)
+                        bookingAdapter.notifyDataSetChanged()
+                        with(bookingBinding.rvBooking) {
+                            layoutManager = GridLayoutManager(context, 2)
+                            itemAnimator = DefaultItemAnimator()
+                            setHasFixedSize(true)
+                            adapter = bookingAdapter
+                        }
+                    }
+                }
+            }
 
-        with(bookingBinding.rvBooking) {
-            layoutManager = GridLayoutManager(context, 2)
-            itemAnimator = DefaultItemAnimator()
-            setHasFixedSize(true)
-            adapter = bookingAdapter
-        }
+            override fun onFailure(call: Call<MitraResponse>, t: Throwable) {
+                Toasty.error(this@BookingActivity, R.string.try_again, Toasty.LENGTH_LONG).show()
+            }
+
+        })
+//        showLoading(true)
+//        showLoading(false)
+
     }
 }
