@@ -24,6 +24,8 @@ class BookingActivity : AppCompatActivity() {
 
     companion object {
         const val vendorId = "vendor_id"
+        const val service = "service"
+        const val price = "price"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -37,9 +39,16 @@ class BookingActivity : AppCompatActivity() {
         bookingBinding.btnBack.setOnClickListener {
             super.onBackPressed()
         }
-        val idVendor = intent.getStringExtra(vendorId).toString()
 
-        bookingAdapter = BookingAdapter()
+        val idVendor = intent.getStringExtra(vendorId).toString()
+        val service = intent.getStringExtra(service).toString()
+        val price = intent.getStringExtra(price).toString()
+        val listInfo = ArrayList<String>()
+        listInfo.add(idVendor)
+        listInfo.add(service)
+        listInfo.add(price)
+
+        bookingAdapter = BookingAdapter(listInfo)
         setupListItemBooking(idVendor, tokenAuth)
     }
 

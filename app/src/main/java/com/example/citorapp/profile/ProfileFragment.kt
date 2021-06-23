@@ -9,13 +9,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
+import com.example.citorapp.R
+import com.example.citorapp.auth.AuthActivity
 import com.example.citorapp.databinding.FragmentProfileBinding
 import com.example.citorapp.utils.Constants
 import com.example.citorapp.utils.MySharedPreferences
 import dev.shreyaspatil.MaterialDialog.MaterialDialog
-import com.example.citorapp.R
-import com.example.citorapp.auth.AuthActivity
-import com.example.citorapp.auth.login.LoginFragment
 
 class ProfileFragment : Fragment() {
 
@@ -57,13 +56,15 @@ class ProfileFragment : Fragment() {
                 }
                 .setNegativeButton(
                     getString(R.string.yes), R.drawable.logout_icon
-                ) { dialogInterface, which ->
+                ) { dialogInterface, _ ->
                     myPreferences.setValue(Constants.USER, "")
                     myPreferences.setValue(Constants.USER_ID, "")
                     myPreferences.setValue(Constants.USER_NAMA, "")
                     myPreferences.setValue(Constants.USER_EMAIL, "")
                     myPreferences.setValue(Constants.USER_NOHP, "")
                     myPreferences.setValue(Constants.DEVICE_TOKEN, "")
+                    myPreferences.setValue(Constants.USER_FOTO, "")
+                    myPreferences.setValue(Constants.USER_POIN, "")
 
                     startActivity(Intent(context, AuthActivity::class.java))
                     activity?.finish()

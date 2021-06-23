@@ -91,7 +91,7 @@
     <string name="titik_dua">:</string>
     <string name="kode1">USR-009000</string>
     <string name="detailing">DETAILING</string>
-    <string name="waktu1">08.00 - 10.00 WIB</string>
+    <string name="waktu1">08.00 - 10.00</string>
     <string name="metode1">pilih metode</string>
     <string name="konfirmasi_pembayaran">Konfirmasi Pembayaran</string>
     <string name="rangkuman">Rangkuman Pesanan</string>
@@ -102,8 +102,8 @@
     <string name="metode_pembayaran">Metode Pembayaran</string>
     <string name="harga_pesan">Harga</string>
     <string name="poin_pesan">Poin</string>
-    <string name="harga1">Rp. 15.000,-</string>
-    <string name="poin1">15 Poin</string>
+    <string name="harga1">15.000,-</string>
+    <string name="poin1">15</string>
     <string name="text_kode_pembayaran">Kode Pembayaran</string>
     <string name="kode_pemb">0</string>
     <string name="pilih">Pilih</string>

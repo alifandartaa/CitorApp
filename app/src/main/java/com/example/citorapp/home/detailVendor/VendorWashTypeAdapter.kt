@@ -30,6 +30,8 @@ class VendorWashTypeAdapter(private val vendorId: String) : RecyclerView.Adapter
                     val intent = Intent(itemView.context, BookingActivity::class.java)
                         .apply {
                             putExtra(BookingActivity.vendorId, id)
+                            putExtra(BookingActivity.service, washType.judul)
+                            putExtra(BookingActivity.price, washType.harga)
                         }
                     itemView.context.startActivity(intent)
                 }

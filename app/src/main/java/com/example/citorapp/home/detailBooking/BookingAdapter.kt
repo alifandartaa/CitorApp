@@ -1,6 +1,7 @@
 package com.example.citorapp.home.detailBooking
 
 import android.content.Intent
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
@@ -10,7 +11,7 @@ import com.example.citorapp.databinding.ItemBookingBinding
 import com.example.citorapp.home.payment.FixPaymentActivity
 import com.example.citorapp.home.searchVendor.VendorItemEntity
 
-class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingItemViewHolder>() {
+class BookingAdapter(private val listInfo: ArrayList<String>) : RecyclerView.Adapter<BookingAdapter.BookingItemViewHolder>() {
 
     private var listBookingItem = ArrayList<VendorItemEntity>()
 
@@ -21,14 +22,23 @@ class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingItemViewHolder
     }
 
     class BookingItemViewHolder(private val binding: ItemBookingBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(bookingItem: VendorItemEntity) {
+        fun bind(listInfo: ArrayList<String>, bookingItem: VendorItemEntity) {
             with(binding) {
                 tvJamBuka.text = bookingItem.jam_buka
 
                 when (bookingItem.status) {
                     "tersedia" -> {
+                        val vendorId = listInfo[0]
+                        val service = listInfo[1]
+                        val price = listInfo[2]
                         itemView.setOnClickListener {
                             val intent = Intent(itemView.context, FixPaymentActivity::class.java)
+                                .apply {
+                                    putExtra(FixPaymentActivity.vendorId, vendorId)
+                                    putExtra(FixPaymentActivity.service, service)
+                                    putExtra(FixPaymentActivity.price, price)
+                                    putExtra(FixPaymentActivity.timeService, bookingItem.jam_buka)
+                                }
                             itemView.context.startActivity(intent)
                         }
                     }
@@ -53,7 +63,8 @@ class BookingAdapter : RecyclerView.Adapter<BookingAdapter.BookingItemViewHolder
 
     override fun onBindViewHolder(holder: BookingItemViewHolder, position: Int) {
         val bookingItem = listBookingItem[position]
-        holder.bind(bookingItem)
+        val infoList = listInfo
+        holder.bind(infoList, bookingItem)
     }
 
     override fun getItemCount(): Int {
