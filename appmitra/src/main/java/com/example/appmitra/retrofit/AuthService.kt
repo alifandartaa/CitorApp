@@ -10,7 +10,7 @@ import retrofit2.http.POST
 interface AuthService {
     //login
     @FormUrlEncoded
-    @POST("auth/login")
+    @POST("auth_mitra/login")
     fun login(
         @Field("email") email: String,
         @Field("password") password: String,

@@ -7,7 +7,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.Header
 import retrofit2.http.POST
 
-interface fDataService {
+interface DataService {
     //get data mitra
     @POST("main/getMitra")
     fun getMitra(

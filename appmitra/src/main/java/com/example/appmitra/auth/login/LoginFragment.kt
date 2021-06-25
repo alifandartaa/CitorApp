@@ -85,13 +85,13 @@ class LoginFragment : Fragment() {
                                 loginBinding.btnLogin.text = "Berhasil"
                             }
                             myPreferences.setValue(Constants.USER, Constants.LOGIN)
-                            myPreferences.setValue(Constants.USER_ID, response.body()!!.data[0].iduser)
-                            myPreferences.setValue(Constants.USER_NAMA, response.body()!!.data[0].nama)
-                            myPreferences.setValue(Constants.USER_EMAIL, response.body()!!.data[0].email)
-                            myPreferences.setValue(Constants.USER_NOHP, response.body()!!.data[0].nohp)
+                            myPreferences.setValue(Constants.VENDOR_ID, response.body()!!.data[0].idmitra)
+                            myPreferences.setValue(Constants.VENDOR_NAMA, response.body()!!.data[0].nama)
+                            myPreferences.setValue(Constants.VENDOR_EMAIL, response.body()!!.data[0].email)
+                            myPreferences.setValue(Constants.VENDOR_NOHP, response.body()!!.data[0].nohp)
                             myPreferences.setValue(Constants.USER_POIN, response.body()!!.data[0].poin)
                             myPreferences.setValue(Constants.DEVICE_TOKEN, response.body()!!.data[0].device_token)
-                            myPreferences.setValue(Constants.USER_FOTO, response.body()!!.data[0].foto_path)
+                            myPreferences.setValue(Constants.VENDOR_FOTO, response.body()!!.data[0].foto_path)
                             myPreferences.setValue(Constants.TokenAuth, response.body()!!.tokenAuth)
                             startActivity(Intent(requireContext(), MainActivity::class.java))
                             activity?.finish()

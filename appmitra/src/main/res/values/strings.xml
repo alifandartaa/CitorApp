@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">appmitra</string>
+    <string name="app_name">Mitra CITOR</string>
     <string name="value_phone_login">Nomor Telepon</string>
     <string name="value_password_login">Kata Sandi</string>
     <string name="login">Masuk</string>

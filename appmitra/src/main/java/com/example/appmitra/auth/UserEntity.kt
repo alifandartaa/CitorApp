@@ -1,7 +1,7 @@
 package com.example.appmitra.auth
 
 class UserEntity(
-    var iduser: String = "",
+    var idmitra: String = "",
     var nama: String = "",
     var email: String = "",
     var nohp: String = "",
