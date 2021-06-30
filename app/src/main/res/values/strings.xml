@@ -133,4 +133,6 @@
     <string name="txt_detail_history">Selengkapnya...</string>
     <string name="txt_complete_payment">Pembayaran Telah Berhasil!</string>
     <string name="harga">15.000</string>
+    <string name="on_progress">Sedang Berjalan</string>
+    <string name="done">Selesai</string>
 </resources>

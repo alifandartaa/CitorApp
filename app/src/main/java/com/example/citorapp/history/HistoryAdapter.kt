@@ -18,8 +18,10 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryItemViewHolder
     class HistoryItemViewHolder(private val binding: ItemHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(historyItem: HistoryEntity) {
             with(binding) {
-                if (historyItem.status == "progress") {
-                    tvHistory.text = "Pencucian motor pada ${historyItem.vendorName} sedang berjalan"
+                if (historyItem.status == "berjalan") {
+                    tvHistory.text = "Pencucian motor pada ${historyItem.nama_mitra} sedang berjalan"
+                } else if (historyItem.status == "selesai") {
+                    tvHistory.text = "Pencucian motor pada ${historyItem.nama_mitra} telah selesai"
                 }
             }
         }

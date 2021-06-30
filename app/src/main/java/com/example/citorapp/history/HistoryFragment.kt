@@ -5,15 +5,18 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.citorapp.databinding.FragmentHistoryBinding
+import com.example.citorapp.utils.Constants
+import com.example.citorapp.utils.MySharedPreferences
 
 class HistoryFragment : Fragment() {
 
-    private lateinit var historyViewModel: HistoryViewModel
     private lateinit var historyBinding: FragmentHistoryBinding
     private lateinit var historyAdapter: HistoryAdapter
+    private lateinit var myPreferences: MySharedPreferences
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,34 +29,47 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
+        myPreferences = MySharedPreferences(requireActivity())
+        val idUser = myPreferences.getValue(Constants.USER_ID).toString()
+        val tokenAuth = myPreferences.getValue(Constants.TokenAuth).toString()
         if (activity != null) {
             historyAdapter = HistoryAdapter()
-            setupListHistory()
+            setupListHistory(idUser, tokenAuth)
         }
     }
 
-    private fun setupListHistory() {
-        val listDummy = ArrayList<HistoryEntity>()
-        val data1 = HistoryEntity("Suka Makmur", "progress")
-        val data2 = HistoryEntity("Damai Jaya", "progress")
-        val data3 = HistoryEntity("Damai Jaya", "progress")
-        val data4 = HistoryEntity("Damai Jaya", "progress")
-        val data5 = HistoryEntity("Damai Jaya", "progress")
-        val data6 = HistoryEntity("Damai Jaya", "progress")
-        val data7 = HistoryEntity("Damai Jaya", "progress")
-        val data8 = HistoryEntity("Damai Jaya", "progress")
-        listDummy.add(data1)
-        listDummy.add(data2)
-        listDummy.add(data3)
-        listDummy.add(data4)
-        listDummy.add(data5)
-        listDummy.add(data6)
-        listDummy.add(data7)
-        listDummy.add(data8)
-        historyAdapter.setListHistoryItem(listDummy)
-//        showLoading(false)
-        historyAdapter.notifyDataSetChanged()
+    private fun setupListHistory(idUser: String, tokenAuth: String) {
+        val viewModel = ViewModelProvider(this, ViewModelProvider.NewInstanceFactory()).get(HistoryViewModel::class.java)
+
+        viewModel.loadListHistoryFromDatabase(idUser, tokenAuth)
+
+        viewModel.getListDataHistory().observe(requireActivity(), { historyItems ->
+
+            val listProgress = ArrayList<HistoryEntity>()
+            val listDone = ArrayList<HistoryEntity>()
+            if (historyItems != null) {
+                historyItems.forEach {
+                    if (it.status == "berjalan") {
+                        listProgress.add(it)
+                    } else if (it.status == "selesai") {
+                        listDone.add(it)
+                    }
+                }
+                historyBinding.cgStatusHistory.setOnCheckedChangeListener { group, checkedId ->
+                    when (checkedId) {
+                        historyBinding.chipCatProgress.id -> {
+                            historyAdapter.setListHistoryItem(listProgress)
+                            historyAdapter.notifyDataSetChanged()
+                        }
+                        historyBinding.chipCatDone.id -> {
+                            historyAdapter.setListHistoryItem(listDone)
+                            historyAdapter.notifyDataSetChanged()
+                        }
+                    }
+                }
+
+            }
+        })
 
         with(historyBinding.rvHistory) {
             layoutManager = LinearLayoutManager(requireContext())

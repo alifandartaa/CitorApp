@@ -1,5 +1,6 @@
 package com.example.citorapp.retrofit
 
+import com.example.citorapp.retrofit.response.HistoryResponse
 import com.example.citorapp.retrofit.response.MitraResponse
 import retrofit2.Call
 import retrofit2.http.Field
@@ -29,4 +30,11 @@ interface DataService {
         @Field("idmitra") idmitra: String,
         @Header("Authorization") token: String
     ): Call<MitraResponse>
+
+    @FormUrlEncoded
+    @POST("main/getPemesanan")
+    fun getPemesanan(
+        @Field("iduser") iduser: String,
+        @Header("Authorization") token: String
+    ): Call<HistoryResponse>
 }
