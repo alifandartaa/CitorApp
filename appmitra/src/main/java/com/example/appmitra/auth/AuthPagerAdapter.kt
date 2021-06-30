@@ -8,14 +8,14 @@ import com.example.appmitra.auth.register.RegisterFragment
 
 class AuthPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapter(activity) {
     override fun getItemCount(): Int {
-        return 2
+        return 1
     }
 
     override fun createFragment(position: Int): Fragment {
         var fragment: Fragment? = null
         when (position) {
             0 -> fragment = LoginFragment()
-            1 -> fragment = RegisterFragment()
+//            1 -> fragment = RegisterFragment()
         }
         return fragment as Fragment
     }

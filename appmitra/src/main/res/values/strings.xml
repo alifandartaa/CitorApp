@@ -20,7 +20,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="tab_text_1">Masuk</string>
     <string name="tab_text_2">Daftar</string>
-    <string name="value_email_login">E-Mail</string>
+    <string name="value_nohp_login">No HP</string>
     <string name="txt_example_washer">Jaya Makmur Wash</string>
     <string name="txt_example_washer_address">Jl. M.T. Haryono 13</string>
     <string name="txt_look_washer_map">Buka di Maps</string>
@@ -133,7 +133,7 @@
     <string name="txt_detail_history">Selengkapnya...</string>
     <string name="txt_complete_payment">Pembayaran Telah Berhasil!</string>
     <string name="harga">15.000</string>
-    <string name="halo_pak_jamal">Halo Pak Jamal !!</string>
+    <string name="halo_pak_jamal">Halo,</string>
     <string name="cuci_motor">Anda telah mencuci 50 sepeda motor pekan ini!</string>
     <string name="profil_usaha">Profil Usaha</string>
     <string name="antrean">Antrean</string>

@@ -45,26 +45,20 @@ class LoginFragment : Fragment() {
 
         if (activity != null) {
             loginBinding.btnLogin.setOnClickListener {
-                val email = loginBinding.tvValueEmailLogin.text.toString()
+                val nohp = loginBinding.tvValueNohpLogin.text.toString()
                 val pass = loginBinding.tvValuePasswordLogin.text.toString()
                 if (isDataFilled()) {
                     loginBinding.btnLogin.startAnimation()
-                    loginprocess(email, pass)
+                    loginprocess(nohp, pass)
                 }
             }
         }
     }
 
     private fun isDataFilled(): Boolean {
-        fun String.isValidEmail() =
-            isNotEmpty() && android.util.Patterns.EMAIL_ADDRESS.matcher(this).matches()
-        if (loginBinding.tvValueEmailLogin.text.toString() == "") {
-            loginBinding.tvValueEmailLogin.error = "Harap isi email dengan benar"
-            loginBinding.tvValueEmailLogin.requestFocus()
-            return false
-        } else if (!loginBinding.tvValueEmailLogin.text.toString().isValidEmail()) {
-            loginBinding.tvValueEmailLogin.error = "Format email salah"
-            loginBinding.tvValueEmailLogin.requestFocus()
+        if (loginBinding.tvValueNohpLogin.text.toString() == "") {
+            loginBinding.tvValueNohpLogin.error = "Harap isi email dengan benar"
+            loginBinding.tvValueNohpLogin.requestFocus()
             return false
         } else if (loginBinding.tvValuePasswordLogin.text.toString() == "") {
             loginBinding.tvValuePasswordLogin.error = "Harap isi password dengan benar"
@@ -74,9 +68,9 @@ class LoginFragment : Fragment() {
         return true
     }
 
-    private fun loginprocess(email: String, password: String) {
+    private fun loginprocess(nohp: String, password: String) {
         val service = RetrofitClient().apiRequest().create(AuthService::class.java)
-        service.login(email, password).enqueue(object : Callback<LoginResponse> {
+        service.login(nohp, password).enqueue(object : Callback<LoginResponse> {
             override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
                 if (response.isSuccessful) {
                     when (response.body()!!.status) {
@@ -86,10 +80,13 @@ class LoginFragment : Fragment() {
                             }
                             myPreferences.setValue(Constants.USER, Constants.LOGIN)
                             myPreferences.setValue(Constants.VENDOR_ID, response.body()!!.data[0].idmitra)
-                            myPreferences.setValue(Constants.VENDOR_NAMA, response.body()!!.data[0].nama)
-                            myPreferences.setValue(Constants.VENDOR_EMAIL, response.body()!!.data[0].email)
+                            myPreferences.setValue(Constants.VENDOR_OWNER, response.body()!!.data[0].nama_owner)
+                            myPreferences.setValue(Constants.VENDOR_NAMA, response.body()!!.data[0].nama_mitra)
+                            myPreferences.setValue(Constants.VENDOR_ADDRS, response.body()!!.data[0].alamat_mitra)
                             myPreferences.setValue(Constants.VENDOR_NOHP, response.body()!!.data[0].nohp)
-                            myPreferences.setValue(Constants.USER_POIN, response.body()!!.data[0].poin)
+                            myPreferences.setValue(Constants.VENDOR_STATUS, response.body()!!.data[0].statusBuka)
+                            myPreferences.setValue(Constants.LAT, response.body()!!.data[0].lat)
+                            myPreferences.setValue(Constants.LONG, response.body()!!.data[0].long)
                             myPreferences.setValue(Constants.DEVICE_TOKEN, response.body()!!.data[0].device_token)
                             myPreferences.setValue(Constants.VENDOR_FOTO, response.body()!!.data[0].foto_path)
                             myPreferences.setValue(Constants.TokenAuth, response.body()!!.tokenAuth)

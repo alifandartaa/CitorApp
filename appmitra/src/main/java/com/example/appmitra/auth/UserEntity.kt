@@ -2,11 +2,13 @@ package com.example.appmitra.auth
 
 class UserEntity(
     var idmitra: String = "",
-    var nama: String = "",
-    var email: String = "",
+    var nama_owner: String = "",
+    var nama_mitra: String = "",
+    var alamat_mitra: String = "",
     var nohp: String = "",
-    var tipe: String = "",
-    var poin: String = "",
+    var statusBuka: String = "",
+    var lat: String = "",
+    var long: String = "",
     var device_token: String = "",
     var foto_path: String = "",
 )

@@ -12,7 +12,7 @@ interface AuthService {
     @FormUrlEncoded
     @POST("auth_mitra/login")
     fun login(
-        @Field("email") email: String,
+        @Field("nohp") nohp: String,
         @Field("password") password: String,
     ): Call<LoginResponse>
 

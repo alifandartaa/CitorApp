@@ -18,12 +18,12 @@
         app:startIconDrawable="@drawable/ic_email_black_24dp">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/tv_value_email_login"
+            android:id="@+id/tv_value_nohp_login"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:backgroundTint="@color/white"
-            android:hint="@string/value_email_login"
-            android:inputType="textEmailAddress" />
+            android:hint="@string/value_nohp_login"
+            android:inputType="number" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
