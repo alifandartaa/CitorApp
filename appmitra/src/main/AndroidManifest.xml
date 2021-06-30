@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.CitorApp">
+        <activity android:name=".ServiceActivity"></activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".auth.AuthActivity">
             <intent-filter>

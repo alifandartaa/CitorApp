@@ -140,4 +140,9 @@
     <string name="pengaturan">Pengaturan</string>
     <string name="statistik">Statistik</string>
     <string name="buka_layanan_sekarang">BUKA LAYANAN SEKARANG</string>
+    <string name="service_time">07.00 - 07.30</string>
+    <string name="service_status">KOSONG</string>
+    <string name="service_confirm">KONFIRMASI</string>
+    <string name="service_late">TELAT</string>
+    <string name="service_cancel">GAGAL</string>
 </resources>
