@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.citor.app.R
 import com.citor.app.databinding.FragmentVendorServicesBinding
-import com.citor.app.retrofit.DataService
 import com.citor.app.retrofit.RetrofitClient
 import com.citor.app.retrofit.response.MitraResponse
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
+import com.example.citorapp.retrofit.DataService
 import es.dmoral.toasty.Toasty
 import retrofit2.Call
 import retrofit2.Callback

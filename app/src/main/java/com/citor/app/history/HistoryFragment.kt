@@ -8,9 +8,12 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.citorapp.databinding.FragmentHistoryBinding
-import com.example.citorapp.utils.Constants
-import com.example.citorapp.utils.MySharedPreferences
+import com.citor.app.databinding.FragmentHistoryBinding
+import com.citor.app.history.HistoryAdapter
+import com.citor.app.history.HistoryEntity
+import com.citor.app.history.HistoryViewModel
+import com.citor.app.utils.Constants
+import com.citor.app.utils.MySharedPreferences
 
 class HistoryFragment : Fragment() {
 

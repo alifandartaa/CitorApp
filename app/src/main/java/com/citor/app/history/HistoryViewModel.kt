@@ -3,8 +3,8 @@ package com.citor.app.history
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.citor.app.retrofit.RetrofitClient
 import com.example.citorapp.retrofit.DataService
-import com.example.citorapp.retrofit.RetrofitClient
 import com.example.citorapp.retrofit.response.HistoryResponse
 import retrofit2.Call
 import retrofit2.Callback

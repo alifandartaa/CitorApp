@@ -1,6 +1,6 @@
 package com.example.citorapp.retrofit.response
 
-import com.example.citorapp.history.HistoryEntity
+import com.citor.app.history.HistoryEntity
 
 class HistoryResponse(
     var status: String = "",

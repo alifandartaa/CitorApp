@@ -27,12 +27,9 @@ android {
 
     productFlavors{
         sandbox{
-            buildConfigField "String", "MERCHANT_BASE_URL", "\"https://citor-app.herokuapp.com/index.php/\""
-            buildConfigField "String", "MERCHANT_CLIENT_KEY", "\"SB-Mid-client-5CHnBFylQ2hoYARY\""
+            buildConfigField "String", "BASE_URL", "\"https://citor-app.herokuapp.com/index.php/\""
+            buildConfigField "String", "CLIENT_KEY", "\"SB-Mid-client-5CHnBFylQ2hoYARY\""
         }
-//        production{
-//
-//        }
     }
 
     compileOptions {
@@ -103,5 +100,4 @@ dependencies {
     // For using the Midtrans Sandbox
     implementation 'com.midtrans:uikit:1.28.0-SANDBOX'
     sandboxImplementation 'com.midtrans:uikit:1.28.0-SANDBOX'
-    implementation 'com.midtrans:uikit:1.28.0'
 }

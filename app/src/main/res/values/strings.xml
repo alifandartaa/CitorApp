@@ -58,7 +58,6 @@
     <string name="sunday">Minggu</string>
     <string name="value_sunday_hour">TUTUP</string>
     <string name="verify_success">Verifikasi Sukses!</string>
-    <string name="done">Selesai</string>
     <string name="otp_already_send">Kode OTP telah dikirim</string>
     <string name="title_activity_main">MainActivity</string>
     <string name="title_home">Home</string>
@@ -134,5 +133,4 @@
     <string name="txt_complete_payment">Pembayaran Telah Berhasil!</string>
     <string name="harga">15.000</string>
     <string name="on_progress">Sedang Berjalan</string>
-    <string name="done">Selesai</string>
 </resources>

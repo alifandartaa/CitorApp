@@ -1,7 +1,9 @@
 package com.citor.app.home.payment
 
+import android.Manifest
 import android.app.Activity
 import android.app.Dialog
+import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -10,6 +12,8 @@ import android.view.Window
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import com.citor.app.R
 import com.citor.app.databinding.ActivityFixPaymentBinding
 import com.google.android.material.button.MaterialButton
@@ -21,7 +25,6 @@ import com.midtrans.sdk.corekit.models.BillingAddress
 import com.midtrans.sdk.corekit.models.CustomerDetails
 import com.midtrans.sdk.corekit.models.ItemDetails
 import com.midtrans.sdk.corekit.models.ShippingAddress
-import com.midtrans.sdk.corekit.models.snap.TransactionResult
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 import java.text.DecimalFormat
 import java.util.*
@@ -91,24 +94,32 @@ class FixPaymentActivity : AppCompatActivity() {
             customChoosePaymentDialog()
         }
 
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(
+                this,
+                arrayOf(Manifest.permission.READ_PHONE_STATE), 101
+            );
+        }
+
         SdkUIFlowBuilder.init()
-            .setClientKey("SB-Mid-client-5CHnBFylQ2hoYARY")
+            .setClientKey(com.citor.app.BuildConfig.CLIENT_KEY)
             .setContext(this)
             .setTransactionFinishedCallback(TransactionFinishedCallback {
-                it
+//                it
             })
-            .setMerchantBaseUrl("https://citor-app.herokuapp.com/index.php/")
+            .setMerchantBaseUrl(com.citor.app.BuildConfig.BASE_URL)
             .enableLog(true)
             .setColorTheme(CustomColorTheme("#FFE51255", "#B61548", "#FFE51255"))
             .setLanguage("id")
             .buildSDK()
+
 
         fixPaymentBinding.btnConfirmPayment.setOnClickListener {
 //            val productPrice = fixPaymentBinding.tvPrice.text
             val quantity = 1
             val price = 15000.0
             val totalAmount = quantity * price
-            val transactionRequest = TransactionRequest("Andarta-Store-"+System.currentTimeMillis().toShort()+"", totalAmount)
+            val transactionRequest = TransactionRequest("Citor-App-" + System.currentTimeMillis().toShort() + "", totalAmount)
             val randomID = UUID.randomUUID().toString()
             val itemDetail = ItemDetails(randomID, price, quantity, "Motor")
             val listItem = ArrayList<ItemDetails>()

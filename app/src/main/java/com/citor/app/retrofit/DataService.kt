@@ -1,7 +1,7 @@
 package com.example.citorapp.retrofit
 
+import com.citor.app.retrofit.response.MitraResponse
 import com.example.citorapp.retrofit.response.HistoryResponse
-import com.example.citorapp.retrofit.response.MitraResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
