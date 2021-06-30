@@ -7,25 +7,25 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.example.citorapp.home.HomeFragment"
+        android:name="com.citor.app.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/navigation_history"
-        android:name="com.example.citorapp.history.HistoryFragment"
+        android:name="com.citor.app.history.HistoryFragment"
         android:label="@string/history"
         tools:layout="@layout/fragment_history" />
 
     <fragment
         android:id="@+id/navigation_notifications"
-        android:name="com.example.citorapp.notification.NotificationsFragment"
+        android:name="com.citor.app.notification.NotificationsFragment"
         android:label="@string/title_notifications"
         tools:layout="@layout/fragment_notifications" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.example.citorapp.profile.ProfileFragment"
+        android:name="com.citor.app.profile.ProfileFragment"
         android:label="@string/akun_saya"
         tools:layout="@layout/fragment_profile" />
 </navigation>
