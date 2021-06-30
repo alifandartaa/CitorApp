@@ -5,7 +5,6 @@ import android.app.Dialog
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.Window
 import androidx.activity.result.ActivityResult
@@ -14,7 +13,16 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.citorapp.R
 import com.example.citorapp.databinding.ActivityFixPaymentBinding
 import com.google.android.material.button.MaterialButton
+import com.midtrans.sdk.corekit.core.MidtransSDK
+import com.midtrans.sdk.corekit.core.TransactionRequest
+import com.midtrans.sdk.corekit.core.themes.CustomColorTheme
+import com.midtrans.sdk.corekit.models.BillingAddress
+import com.midtrans.sdk.corekit.models.CustomerDetails
+import com.midtrans.sdk.corekit.models.ItemDetails
+import com.midtrans.sdk.corekit.models.ShippingAddress
+import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 import java.text.DecimalFormat
+
 
 class FixPaymentActivity : AppCompatActivity() {
 
@@ -78,6 +86,55 @@ class FixPaymentActivity : AppCompatActivity() {
 //            startForResult.launch(Intent(this, ChoosePaymentActivity::class.java))
             customChoosePaymentDialog()
         }
+        SdkUIFlowBuilder.init()
+            .setClientKey("SB-Mid-client-5CHnBFylQ2hoYARY") //
+            .setContext(applicationContext) // context is mandatory
+            .setTransactionFinishedCallback {
+                result->
+            } // set transaction finish callback (sdk callback)
+            .setMerchantBaseUrl("localhost/midtrans-citor/") //set merchant url (required)
+            .enableLog(true) // enable sdk log (optional)
+            .setColorTheme(CustomColorTheme("#FFE51255", "#B61548", "#FFE51255")) // set  theme. it will replace theme on snap theme on MAP ( optional)
+            .setLanguage("id") //`en` for English and `id` for Bahasa
+            .buildSDK()
+
+        fixPaymentBinding.btnConfirmPayment.setOnClickListener {
+//            val productPrice = fixPaymentBinding.tvPrice.text
+            val productPrice = 15000.0
+            val transactionRequest = TransactionRequest("Citor App +"+System.currentTimeMillis().toShort()+"", productPrice)
+            val detailsItem = ItemDetails("Nama Item Id",productPrice,1,"Layanan cuci motor")
+            val itemDetails = ArrayList<ItemDetails>()
+            itemDetails.add(detailsItem)
+
+            uiKitdetails(transactionRequest,"Citor App")
+
+            MidtransSDK.getInstance().transactionRequest = transactionRequest
+            MidtransSDK.getInstance().startPaymentUiFlow(this)
+        }
+    }
+
+    private fun uiKitdetails(transactionRequest: TransactionRequest, name: String){
+        //get nama customer
+        val customerDetails = CustomerDetails()
+        customerDetails.customerIdentifier = "Coba nama"
+        customerDetails.phone = "08123123123"
+        customerDetails.firstName = "Coba"
+        customerDetails.lastName = "nama"
+        customerDetails.email = "coba@gmail.com"
+
+        val shippingAddress = ShippingAddress()
+        shippingAddress.address = "Nahelop"
+        shippingAddress.city ="Malang"
+        shippingAddress.postalCode = "656121"
+        customerDetails.shippingAddress = shippingAddress
+
+        val billingAddress = BillingAddress()
+        billingAddress.address = "Nahelop"
+        billingAddress.city ="Malang"
+        billingAddress.postalCode = "656121"
+        customerDetails.billingAddress = billingAddress
+
+        transactionRequest.customerDetails = customerDetails
     }
 
     private fun customChoosePaymentDialog() {

@@ -90,5 +90,7 @@ dependencies {
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     implementation 'br.com.simplepass:loading-button-android:2.2.0'
 
-
+    // For using the Midtrans Sandbox
+    implementation 'com.midtrans:uikit:1.28.0-SANDBOX'
+    implementation 'com.midtrans:uikit:1.28.0'
 }
