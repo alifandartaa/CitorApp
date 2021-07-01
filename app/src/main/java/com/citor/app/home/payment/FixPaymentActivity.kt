@@ -7,8 +7,10 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.view.Window
+import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -16,6 +18,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.citor.app.R
 import com.citor.app.databinding.ActivityFixPaymentBinding
+import com.citor.app.utils.Constants
+import com.citor.app.utils.MySharedPreferences
 import com.google.android.material.button.MaterialButton
 import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback
 import com.midtrans.sdk.corekit.core.MidtransSDK
@@ -25,6 +29,7 @@ import com.midtrans.sdk.corekit.models.BillingAddress
 import com.midtrans.sdk.corekit.models.CustomerDetails
 import com.midtrans.sdk.corekit.models.ItemDetails
 import com.midtrans.sdk.corekit.models.ShippingAddress
+import com.midtrans.sdk.corekit.models.snap.TransactionResult
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 import java.text.DecimalFormat
 import java.util.*
@@ -34,6 +39,7 @@ import kotlin.collections.ArrayList
 class FixPaymentActivity : AppCompatActivity() {
 
     private lateinit var fixPaymentBinding: ActivityFixPaymentBinding
+    private lateinit var mySharedPreferences: MySharedPreferences
 
     companion object {
         const val vendorId = "vendor_id"
@@ -45,8 +51,11 @@ class FixPaymentActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
         fixPaymentBinding = ActivityFixPaymentBinding.inflate(layoutInflater)
         setContentView(fixPaymentBinding.root)
+
+        mySharedPreferences = MySharedPreferences(this@FixPaymentActivity)
 
         fixPaymentBinding.btnBack.setOnClickListener {
             super.onBackPressed()
@@ -102,24 +111,38 @@ class FixPaymentActivity : AppCompatActivity() {
         }
 
         SdkUIFlowBuilder.init()
-            .setClientKey(com.citor.app.BuildConfig.CLIENT_KEY)
+            .setClientKey("SB-Mid-client-5CHnBFylQ2hoYARY")
             .setContext(this)
             .setTransactionFinishedCallback(TransactionFinishedCallback {
-//                it
+                if(it.response != null){
+                    when(it.status){
+                        "success" -> {
+                            Log.d("success", "Transaksi $it.response.transactionId Success")
+                        }
+                        "pending" -> {
+                            Log.d("pending", "Transaksi $it.response.transactionId Pending")
+                        }
+                        "invalid" -> {
+                            Log.d("invalid", "Transaksi $it.response.transactionId Invalid")
+                        }
+                        "failed" -> {
+                            Log.d("failed", "Transaksi $it.response.transactionId Failed")
+                        }
+                    }
+                }
             })
-            .setMerchantBaseUrl(com.citor.app.BuildConfig.BASE_URL)
+            .setMerchantBaseUrl("https://citor-app.herokuapp.com/index.php/")
             .enableLog(true)
             .setColorTheme(CustomColorTheme("#FFE51255", "#B61548", "#FFE51255"))
             .setLanguage("id")
             .buildSDK()
-
 
         fixPaymentBinding.btnConfirmPayment.setOnClickListener {
 //            val productPrice = fixPaymentBinding.tvPrice.text
             val quantity = 1
             val price = 15000.0
             val totalAmount = quantity * price
-            val transactionRequest = TransactionRequest("Citor-App-" + System.currentTimeMillis().toShort() + "", totalAmount)
+            val transactionRequest = TransactionRequest("Citor-APP-" + System.currentTimeMillis().toShort() + "", totalAmount)
             val randomID = UUID.randomUUID().toString()
             val itemDetail = ItemDetails(randomID, price, quantity, "Motor")
             val listItem = ArrayList<ItemDetails>()
@@ -134,24 +157,51 @@ class FixPaymentActivity : AppCompatActivity() {
         }
     }
 
-    private fun uiKitDetail(transactionRequest: TransactionRequest){
+    private fun uiKitDetail(transactionRequest: TransactionRequest) {
+
+//        val customerDetail = CustomerDetails()
+//        customerDetail.customerIdentifier = "Alif Andarta"
+//        customerDetail.phone = "081217915595"
+//        customerDetail.firstName = "Alif"
+//        customerDetail.lastName = "Andarta"
+//        customerDetail.email = "aliefazuka123@gmail.com"
+//        val shippingAddress = ShippingAddress()
+//        shippingAddress.address = "Perumdin PTKL F-2 Leces"
+//        shippingAddress.city = "Probolinggo"
+//        shippingAddress.postalCode = "67273"
+//        customerDetail.shippingAddress = shippingAddress
+//        val billingAddress = BillingAddress()
+//        billingAddress.address = "Perumdin PTKL F-2 Leces"
+//        billingAddress.city = "Probolinggo"
+//        billingAddress.postalCode = "67273"
+//        customerDetail.billingAddress = billingAddress
+//
         val customerDetail = CustomerDetails()
-        customerDetail.customerIdentifier = "Alif Andarta"
-        customerDetail.phone = "081217915595"
-        customerDetail.firstName = "Alif"
-        customerDetail.lastName = "Andarta"
-        customerDetail.email = "aliefazuka123@gmail.com"
+        val userName = mySharedPreferences.getValue(Constants.USER_NAMA)
+        val userPhone = mySharedPreferences.getValue(Constants.USER_NOHP)
+        val userEmail = mySharedPreferences.getValue(Constants.USER_EMAIL)
+
+        customerDetail.customerIdentifier = userName
+        customerDetail.phone = userPhone
+        customerDetail.email = userEmail
+        customerDetail.firstName = userName
+
         val shippingAddress = ShippingAddress()
-        shippingAddress.address = "Perumdin PTKL F-2 Leces"
-        shippingAddress.city = "Probolinggo"
-        shippingAddress.postalCode = "67273"
+        shippingAddress.address = "Malang"
+        shippingAddress.city = "Malang"
+        shippingAddress.postalCode = "65148"
         customerDetail.shippingAddress = shippingAddress
         val billingAddress = BillingAddress()
-        billingAddress.address = "Perumdin PTKL F-2 Leces"
-        billingAddress.city = "Probolinggo"
-        billingAddress.postalCode = "67273"
+        billingAddress.address = "Malang"
+        billingAddress.city = "Malang"
+        billingAddress.postalCode = "65148"
         customerDetail.billingAddress = billingAddress
 
+//        val shippingAddress = ShippingAddress()
+//
+//        val billingAddress = BillingAddress()
+
+//        val customerDetail = CustomerDetails()
         transactionRequest.customerDetails = customerDetail
     }
 
