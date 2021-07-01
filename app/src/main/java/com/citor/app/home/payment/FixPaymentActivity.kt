@@ -114,19 +114,19 @@ class FixPaymentActivity : AppCompatActivity() {
             .setClientKey("SB-Mid-client-5CHnBFylQ2hoYARY")
             .setContext(this)
             .setTransactionFinishedCallback(TransactionFinishedCallback {
-                if(it.response != null){
-                    when(it.status){
+                if (it.response != null) {
+                    when (it.status) {
                         "success" -> {
-                            Log.d("success", "Transaksi $it.response.transactionId Success")
+                            Log.d("success", "Transaksi ${it.response.transactionId} ${it.response.paymentType} Success")
                         }
                         "pending" -> {
-                            Log.d("pending", "Transaksi $it.response.transactionId Pending")
+                            Log.d("pending", "Transaksi ${it.response.transactionId} ${it.response.paymentType} Pending")
                         }
                         "invalid" -> {
-                            Log.d("invalid", "Transaksi $it.response.transactionId Invalid")
+                            Log.d("invalid", "Transaksi ${it.response.transactionId} ${it.response.paymentType} Invalid")
                         }
                         "failed" -> {
-                            Log.d("failed", "Transaksi $it.response.transactionId Failed")
+                            Log.d("failed", "Transaksi ${it.response.transactionId} ${it.response.paymentType} Failed")
                         }
                     }
                 }
