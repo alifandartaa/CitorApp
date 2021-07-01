@@ -11,6 +11,7 @@ import com.citor.app.databinding.FragmentHomeBinding
 import com.citor.app.home.searchVendor.SearchVendorActivity
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
+import com.google.firebase.messaging.FirebaseMessaging
 
 class HomeFragment : Fragment() {
 
@@ -34,6 +35,7 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         myPreferences = MySharedPreferences(requireContext())
+        FirebaseMessaging.getInstance().subscribeToTopic("notif")
 
         val userName = myPreferences.getValue(Constants.USER_NAMA).toString()
         val point = myPreferences.getValue(Constants.USER_POIN).toString()

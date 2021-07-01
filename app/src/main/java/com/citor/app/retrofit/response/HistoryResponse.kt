@@ -1,4 +1,4 @@
-package com.example.citorapp.retrofit.response
+package com.citor.app.retrofit.response
 
 import com.citor.app.history.HistoryEntity
 

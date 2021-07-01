@@ -1,4 +1,4 @@
-package com.example.citorapp.history
+package com.citor.app.history
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,9 +9,6 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.citor.app.databinding.FragmentHistoryBinding
-import com.citor.app.history.HistoryAdapter
-import com.citor.app.history.HistoryEntity
-import com.citor.app.history.HistoryViewModel
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
 

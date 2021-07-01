@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CitorApp"
         tools:replace="android:allowBackup">
-        <activity android:name=".home.payment.MidtransActivity"></activity>
-        <activity android:name=".home.searchVendor.SearchVendorActivity"></activity>
+<!--        <activity android:name=".home.payment.MidtransActivity" />-->
+        <activity android:name=".home.searchVendor.SearchVendorActivity" />
         <activity
             android:name=".MainActivity"
             android:label="@string/title_activity_main" />
@@ -33,6 +33,12 @@
         <activity android:name=".auth.login.OtpInputActivity" />
         <activity android:name=".home.detailBooking.BookingActivity" />
         <activity android:name=".home.payment.FixPaymentActivity" />
+
+        <service android:name=".utils.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
     </application>
 
 </manifest>
