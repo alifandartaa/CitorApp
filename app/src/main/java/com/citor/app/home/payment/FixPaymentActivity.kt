@@ -1,11 +1,13 @@
 package com.citor.app.home.payment
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.citor.app.MainActivity
 import com.citor.app.R
 import com.citor.app.databinding.ActivityFixPaymentBinding
 import com.citor.app.retrofit.DataService
@@ -46,7 +48,6 @@ class FixPaymentActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
 
         fixPaymentBinding = ActivityFixPaymentBinding.inflate(layoutInflater)
         setContentView(fixPaymentBinding.root)
@@ -91,13 +92,13 @@ class FixPaymentActivity : AppCompatActivity() {
                         "success" -> {
 //                            Log.d("success", "Transaksi ${result.response.transactionId} ${result.response.paymentType} Success")
                             val poin = mySharedPreferences.getValue(Constants.USER_POIN).toString()
-                            val poinInt = poin + 10
-                            mySharedPreferences.setValue(Constants.USER_POIN, poinInt)
-
+                            val poinInt = poin.toInt() + 10
+                            mySharedPreferences.setValue(Constants.USER_POIN, poinInt.toString())
                             changeStatus(idJamBuka, "penuh", tokenAuth)
 
                             updateStatusTransaction(tokenAuth, vendorId, idUser, transactionId, paymentType, transactionStatus)
-
+                            startActivity(Intent(this@FixPaymentActivity, MainActivity::class.java))
+                            finish()
                         }
                         "pending" -> {
                             //aksi 1. membuat button jam cuci mitra yang dipesan menjadi abu abu
