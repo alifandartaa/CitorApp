@@ -10,7 +10,6 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.view.Window
-import android.widget.Toast
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +19,7 @@ import com.citor.app.R
 import com.citor.app.databinding.ActivityFixPaymentBinding
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
+import com.citor.app.utils.NotificationHelper
 import com.google.android.material.button.MaterialButton
 import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback
 import com.midtrans.sdk.corekit.core.MidtransSDK
@@ -29,7 +29,6 @@ import com.midtrans.sdk.corekit.models.BillingAddress
 import com.midtrans.sdk.corekit.models.CustomerDetails
 import com.midtrans.sdk.corekit.models.ItemDetails
 import com.midtrans.sdk.corekit.models.ShippingAddress
-import com.midtrans.sdk.corekit.models.snap.TransactionResult
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder
 import java.text.DecimalFormat
 import java.util.*
@@ -118,6 +117,9 @@ class FixPaymentActivity : AppCompatActivity() {
                     when (it.status) {
                         "success" -> {
                             Log.d("success", "Transaksi ${it.response.transactionId} ${it.response.paymentType} Success")
+                            val title = "Pembayaran Selesai!"
+                            val body = "Selamat! Kamu Mendapatkan 10 Poin, Silahkan Cek Jumlah Poin Pada Beranda Aplikasi"
+                            NotificationHelper(this@FixPaymentActivity).displayNotification(title, body)
                         }
                         "pending" -> {
                             Log.d("pending", "Transaksi ${it.response.transactionId} ${it.response.paymentType} Pending")
@@ -140,11 +142,10 @@ class FixPaymentActivity : AppCompatActivity() {
         fixPaymentBinding.btnConfirmPayment.setOnClickListener {
 //            val productPrice = fixPaymentBinding.tvPrice.text
             val quantity = 1
-            val price = 15000.0
-            val totalAmount = quantity * price
+            val totalAmount = quantity * price.toDouble()
             val transactionRequest = TransactionRequest("Citor-APP-" + System.currentTimeMillis().toShort() + "", totalAmount)
             val randomID = UUID.randomUUID().toString()
-            val itemDetail = ItemDetails(randomID, price, quantity, "Motor")
+            val itemDetail = ItemDetails(randomID, price.toDouble(), quantity, "Motor")
             val listItem = ArrayList<ItemDetails>()
             listItem.add(itemDetail)
 
