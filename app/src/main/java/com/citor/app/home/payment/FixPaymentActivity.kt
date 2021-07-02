@@ -1,13 +1,8 @@
 package com.citor.app.home.payment
 
 import android.Manifest
-import android.app.Dialog
 import android.content.pm.PackageManager
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.view.View
-import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -19,7 +14,6 @@ import com.citor.app.retrofit.response.DefaultResponse
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
 import com.citor.app.utils.NotificationHelper
-import com.google.android.material.button.MaterialButton
 import com.midtrans.sdk.corekit.core.MidtransSDK
 import com.midtrans.sdk.corekit.core.TransactionRequest
 import com.midtrans.sdk.corekit.core.themes.CustomColorTheme
@@ -75,27 +69,6 @@ class FixPaymentActivity : AppCompatActivity() {
         val numbering = DecimalFormat("#,###")
         fixPaymentBinding.tvPriceValue.text = numbering.format(price.toInt())
         fixPaymentBinding.tvPointValue.text = "10"
-
-        fixPaymentBinding.btnConfirmPayment.setOnClickListener() {
-            if (fixPaymentBinding.tvCodeValue.text == "0") {
-                fixPaymentBinding.btnPaymentMethod.error = "Pilih jenis Pembayaran"
-            } else {
-                val dialog = Dialog(this)
-                dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-                dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-                dialog.setContentView(R.layout.alert_konfirmasi_pembayaran)
-                val btnFinishPaymentDialog = dialog.findViewById<MaterialButton>(R.id.btn_finish_payment_dialog)
-                btnFinishPaymentDialog.setOnClickListener {
-                    dialog.dismiss()
-                    finish()
-                }
-                dialog.show()
-            }
-        }
-
-        fixPaymentBinding.btnPaymentMethod.setOnClickListener() {
-            customChoosePaymentDialog()
-        }
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -232,28 +205,5 @@ class FixPaymentActivity : AppCompatActivity() {
         customerDetail.billingAddress = billingAddress
 
         transactionRequest.customerDetails = customerDetail
-    }
-
-    private fun customChoosePaymentDialog() {
-        val dialog = Dialog(this)
-        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
-        dialog.window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
-        dialog.setContentView(R.layout.choose_payment_dialog)
-
-        val btnChooseOvo = dialog.findViewById<MaterialButton>(R.id.btn_choose_ovo)
-        val btnChooseShopeePay = dialog.findViewById<MaterialButton>(R.id.btn_choose_shopeepay)
-        btnChooseOvo.setOnClickListener {
-            dialog.dismiss()
-            fixPaymentBinding.tvCodeValue.text = "OVO"
-            fixPaymentBinding.btnPaymentMethod.text = "OVO"
-            fixPaymentBinding.layoutCode.visibility = View.VISIBLE
-        }
-        btnChooseShopeePay.setOnClickListener {
-            dialog.dismiss()
-            fixPaymentBinding.tvCodeValue.text = "ShopeePay"
-            fixPaymentBinding.btnPaymentMethod.text = "ShopeePay"
-            fixPaymentBinding.layoutCode.visibility = View.VISIBLE
-        }
-        dialog.show()
     }
 }

@@ -140,22 +140,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_service" />
 
                     <TextView
-                        android:id="@+id/tv_method"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
-                        android:fontFamily="@font/poppins"
-                        android:paddingStart="8dp"
-                        android:paddingTop="8dp"
-                        android:paddingBottom="8dp"
-                        android:text="@string/metode_pembayaran"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="@+id/tv_time"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_time"
-                        tools:ignore="RtlSymmetry" />
-
-                    <TextView
                         android:id="@+id/tv_price"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -165,8 +149,8 @@
                         android:text="@string/harga_pesan"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="@+id/tv_method"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_method" />
+                        app:layout_constraintStart_toStartOf="@+id/tv_time"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_time" />
 
                     <TextView
                         android:id="@+id/tv_point"
@@ -219,18 +203,6 @@
                         app:layout_constraintStart_toStartOf="@+id/tv_colon_service"
                         app:layout_constraintTop_toTopOf="@+id/tv_time" />
 
-                    <TextView
-                        android:id="@+id/tv_colon_method"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="@string/titik_dua"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_method"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_colon_time"
-                        app:layout_constraintStart_toStartOf="@+id/tv_colon_time"
-                        app:layout_constraintTop_toTopOf="@+id/tv_method" />
 
                     <TextView
                         android:id="@+id/tv_colon_price"
@@ -241,8 +213,8 @@
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_price"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_colon_method"
-                        app:layout_constraintStart_toStartOf="@+id/tv_colon_method"
+                        app:layout_constraintEnd_toEndOf="@+id/tv_colon_time"
+                        app:layout_constraintStart_toStartOf="@+id/tv_colon_time"
                         app:layout_constraintTop_toTopOf="@+id/tv_price" />
 
                     <TextView
@@ -315,28 +287,6 @@
                             tools:ignore="HardcodedText" />
 
                     </LinearLayout>
-
-                    <com.google.android.material.button.MaterialButton
-                        android:id="@+id/btn_payment_method"
-                        style="@style/Widget.MaterialComponents.Button.TextButton"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:drawableEnd="@drawable/ic_arrow_forward_black_24dp"
-                        android:fontFamily="@font/poppins"
-                        android:padding="8dp"
-                        android:text="@string/metode1"
-                        android:textAllCaps="false"
-                        android:textColor="@color/md_grey_700"
-                        android:textColorHint="@color/bluePrimary"
-                        android:textSize="16sp"
-                        android:textStyle="italic"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_colon_method"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/tv_colon_method"
-                        app:layout_constraintTop_toTopOf="@+id/tv_colon_method"
-                        app:layout_constraintWidth_percent="0.5"
-                        app:rippleColor="@color/bluePrimary" />
 
                     <LinearLayout
                         android:layout_width="0dp"
