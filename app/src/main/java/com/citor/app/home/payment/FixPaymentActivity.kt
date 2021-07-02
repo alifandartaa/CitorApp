@@ -41,6 +41,7 @@ class FixPaymentActivity : AppCompatActivity() {
         const val service = "service"
         const val price = "price"
         const val timeService = "timeService"
+        const val idJamBuka = "idJamBuka"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,6 +64,7 @@ class FixPaymentActivity : AppCompatActivity() {
         val service = intent.getStringExtra(service).toString()
         val price = intent.getStringExtra(price).toString()
         val timeService = intent.getStringExtra(timeService).toString()
+        val idJamBuka = intent.getStringExtra(idJamBuka).toString()
 
         fixPaymentBinding.tvTypeServiceValue.text = service
         fixPaymentBinding.tvOrderTimeValue.text = timeService
@@ -88,22 +90,28 @@ class FixPaymentActivity : AppCompatActivity() {
                     when (result.status) {
                         "success" -> {
 //                            Log.d("success", "Transaksi ${result.response.transactionId} ${result.response.paymentType} Success")
+                            val poin = mySharedPreferences.getValue(Constants.USER_POIN).toString()
+                            val poinInt = poin + 10
+                            mySharedPreferences.setValue(Constants.USER_POIN, poinInt)
+
+                            changeStatus(idJamBuka, "penuh", tokenAuth)
+
                             updateStatusTransaction(tokenAuth, vendorId, idUser, transactionId, paymentType, transactionStatus)
 
                         }
                         "pending" -> {
                             //aksi 1. membuat button jam cuci mitra yang dipesan menjadi abu abu
-                            disableButtonWashHour(tokenAuth)
+                            changeStatus(idJamBuka, "kunci", tokenAuth)
 
                             //aksi 2. update status pencucian di database menjadi pending
-                            updateStatusTransaction(tokenAuth, vendorId, idUser, transactionId, paymentType, transactionStatus)
+//                            updateStatusTransaction(tokenAuth, vendorId, idUser, transactionId, paymentType, transactionStatus)
 //                            Log.d("pending", "Transaksi ${result.response.transactionId} ${result.response.paymentType} Pending")
                         }
                         "failed" -> {
-                            disableButtonWashHour(tokenAuth)
+                            changeStatus(idJamBuka, "tersedia", tokenAuth)
 
                             //aksi 1. membuat button jam cuci mitra yang dipesan menjadi hijau lagi
-                            updateStatusTransaction(tokenAuth, vendorId, idUser, transactionId, paymentType, transactionStatus)
+//                            updateStatusTransaction(tokenAuth, vendorId, idUser, transactionId, paymentType, transactionStatus)
 //                            Log.d("failed", "Transaksi ${result.response.transactionId} ${result.response.paymentType} Failed")
                         }
                     }
@@ -116,11 +124,13 @@ class FixPaymentActivity : AppCompatActivity() {
             .buildSDK()
 
         fixPaymentBinding.btnConfirmPayment.setOnClickListener {
+            changeStatus(idJamBuka, "kunci", tokenAuth)
+
             val quantity = 1
             val totalAmount = quantity * price.toDouble()
             val transactionRequest = TransactionRequest("Citor-APP-" + System.currentTimeMillis().toShort() + "", totalAmount)
             val randomID = UUID.randomUUID().toString()
-            val itemDetail = ItemDetails(randomID, price.toDouble(), quantity, "Motor")
+            val itemDetail = ItemDetails(randomID, price.toDouble(), quantity, service)
             val listItem = ArrayList<ItemDetails>()
             listItem.add(itemDetail)
 
@@ -132,9 +142,9 @@ class FixPaymentActivity : AppCompatActivity() {
         }
     }
 
-    private fun disableButtonWashHour(tokenAuth: String) {
+    private fun changeStatus(idJamBuka: String, status: String, tokenAuth: String) {
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
-        service.changeStatus(timeService, "tutup", "Bearer $tokenAuth").enqueue(object : Callback<DefaultResponse> {
+        service.changeStatus(idJamBuka, status, "Bearer $tokenAuth").enqueue(object : Callback<DefaultResponse> {
             override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == "success") {
@@ -145,7 +155,6 @@ class FixPaymentActivity : AppCompatActivity() {
             override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
                 Toasty.error(this@FixPaymentActivity, R.string.try_again, Toasty.LENGTH_LONG).show()
             }
-
         })
     }
 

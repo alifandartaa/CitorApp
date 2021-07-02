@@ -37,6 +37,7 @@ class BookingAdapter(private val listInfo: ArrayList<String>) : RecyclerView.Ada
                                     putExtra(FixPaymentActivity.service, service)
                                     putExtra(FixPaymentActivity.price, price)
                                     putExtra(FixPaymentActivity.timeService, bookingItem.jam_buka)
+                                    putExtra(FixPaymentActivity.idJamBuka, bookingItem.idjam_buka)
                                 }
                             itemView.context.startActivity(intent)
                         }

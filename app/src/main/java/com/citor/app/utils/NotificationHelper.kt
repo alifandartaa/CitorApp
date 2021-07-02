@@ -15,7 +15,6 @@ import com.citor.app.MainActivity
 import com.citor.app.R
 import kotlin.random.Random
 
-
 class NotificationHelper(private val context: Context) {
 
     fun displayNotification(title: String, message: String) {
@@ -32,8 +31,7 @@ class NotificationHelper(private val context: Context) {
             .setColor(ContextCompat.getColor(context, android.R.color.holo_green_light))
             .setContentTitle(title)
             .setSmallIcon(R.mipmap.ic_launcher)
-            .setStyle(NotificationCompat.BigTextStyle()
-                .bigText(message))
+            .setStyle(NotificationCompat.BigTextStyle().bigText(message))
             .setContentIntent(pendingIntent)
             .setAutoCancel(true)
             .setPriority(NotificationCompat.PRIORITY_HIGH)
