@@ -43,13 +43,9 @@ class HomeFragment : Fragment() {
         binding.tvName.text = userName
         binding.tvPoint.text = point
 
-        binding.btnSearch.setOnClickListener() {
+        binding.btnService.setOnClickListener() {
             val intent = Intent(this@HomeFragment.requireContext(), SearchVendorActivity::class.java)
             startActivity(intent)
-        }
-
-        binding.btnService.setOnClickListener() {
-
         }
 
         binding.btnRating.setOnClickListener() {

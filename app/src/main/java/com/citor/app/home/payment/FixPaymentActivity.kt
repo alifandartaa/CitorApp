@@ -1,27 +1,25 @@
 package com.citor.app.home.payment
 
 import android.Manifest
-import android.app.Activity
 import android.app.Dialog
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.view.Window
-import androidx.activity.result.ActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.citor.app.R
 import com.citor.app.databinding.ActivityFixPaymentBinding
+import com.citor.app.retrofit.DataService
+import com.citor.app.retrofit.RetrofitClient
+import com.citor.app.retrofit.response.DefaultResponse
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
 import com.citor.app.utils.NotificationHelper
 import com.google.android.material.button.MaterialButton
-import com.midtrans.sdk.corekit.callback.TransactionFinishedCallback
 import com.midtrans.sdk.corekit.core.MidtransSDK
 import com.midtrans.sdk.corekit.core.TransactionRequest
 import com.midtrans.sdk.corekit.core.themes.CustomColorTheme
@@ -30,6 +28,10 @@ import com.midtrans.sdk.corekit.models.CustomerDetails
 import com.midtrans.sdk.corekit.models.ItemDetails
 import com.midtrans.sdk.corekit.models.ShippingAddress
 import com.midtrans.sdk.uikit.SdkUIFlowBuilder
+import es.dmoral.toasty.Toasty
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -55,6 +57,9 @@ class FixPaymentActivity : AppCompatActivity() {
         setContentView(fixPaymentBinding.root)
 
         mySharedPreferences = MySharedPreferences(this@FixPaymentActivity)
+
+        val tokenAuth = mySharedPreferences.getValue(Constants.TokenAuth).toString()
+        val idUser = mySharedPreferences.getValue(Constants.USER_ID).toString()
 
         fixPaymentBinding.btnBack.setOnClickListener {
             super.onBackPressed()
@@ -88,17 +93,7 @@ class FixPaymentActivity : AppCompatActivity() {
             }
         }
 
-        val startForResult = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-            if (result.resultCode == Activity.RESULT_OK) {
-                val codePayment = result.data
-
-                fixPaymentBinding.tvCodeValue.text = codePayment.toString()
-                fixPaymentBinding.layoutCode.visibility = View.VISIBLE
-            }
-        }
-
         fixPaymentBinding.btnPaymentMethod.setOnClickListener() {
-//            startForResult.launch(Intent(this, ChoosePaymentActivity::class.java))
             customChoosePaymentDialog()
         }
 
@@ -112,27 +107,35 @@ class FixPaymentActivity : AppCompatActivity() {
         SdkUIFlowBuilder.init()
             .setClientKey("SB-Mid-client-5CHnBFylQ2hoYARY")
             .setContext(this)
-            .setTransactionFinishedCallback(TransactionFinishedCallback {
-                if (it.response != null) {
-                    when (it.status) {
+            .setTransactionFinishedCallback { result ->
+                if (result.response != null) {
+                    val transactionId = result.response.transactionId
+                    val paymentType = result.response.paymentType
+                    val transactionStatus = result.status
+                    when (result.status) {
                         "success" -> {
-                            Log.d("success", "Transaksi ${it.response.transactionId} ${it.response.paymentType} Success")
-                            val title = "Pembayaran Selesai!"
-                            val body = "Selamat! Kamu Mendapatkan 10 Poin, Silahkan Cek Jumlah Poin Pada Beranda Aplikasi"
-                            NotificationHelper(this@FixPaymentActivity).displayNotification(title, body)
+//                            Log.d("success", "Transaksi ${result.response.transactionId} ${result.response.paymentType} Success")
+                            updateStatusTransaction(tokenAuth, vendorId, idUser, transactionId, paymentType, transactionStatus)
+
                         }
                         "pending" -> {
-                            Log.d("pending", "Transaksi ${it.response.transactionId} ${it.response.paymentType} Pending")
-                        }
-                        "invalid" -> {
-                            Log.d("invalid", "Transaksi ${it.response.transactionId} ${it.response.paymentType} Invalid")
+                            //aksi 1. membuat button jam cuci mitra yang dipesan menjadi abu abu
+                            disableButtonWashHour(tokenAuth)
+
+                            //aksi 2. update status pencucian di database menjadi pending
+                            updateStatusTransaction(tokenAuth, vendorId, idUser, transactionId, paymentType, transactionStatus)
+//                            Log.d("pending", "Transaksi ${result.response.transactionId} ${result.response.paymentType} Pending")
                         }
                         "failed" -> {
-                            Log.d("failed", "Transaksi ${it.response.transactionId} ${it.response.paymentType} Failed")
+                            disableButtonWashHour(tokenAuth)
+
+                            //aksi 1. membuat button jam cuci mitra yang dipesan menjadi hijau lagi
+                            updateStatusTransaction(tokenAuth, vendorId, idUser, transactionId, paymentType, transactionStatus)
+//                            Log.d("failed", "Transaksi ${result.response.transactionId} ${result.response.paymentType} Failed")
                         }
                     }
                 }
-            })
+            }
             .setMerchantBaseUrl("https://citor-app.herokuapp.com/index.php/")
             .enableLog(true)
             .setColorTheme(CustomColorTheme("#FFE51255", "#B61548", "#FFE51255"))
@@ -140,7 +143,6 @@ class FixPaymentActivity : AppCompatActivity() {
             .buildSDK()
 
         fixPaymentBinding.btnConfirmPayment.setOnClickListener {
-//            val productPrice = fixPaymentBinding.tvPrice.text
             val quantity = 1
             val totalAmount = quantity * price.toDouble()
             val transactionRequest = TransactionRequest("Citor-APP-" + System.currentTimeMillis().toShort() + "", totalAmount)
@@ -153,30 +155,61 @@ class FixPaymentActivity : AppCompatActivity() {
             transactionRequest.itemDetails = listItem
 
             MidtransSDK.getInstance().transactionRequest = transactionRequest
-//            MidtransSDK.getInstance().startPaymentUiFlow(this, PaymentMethod.BANK_TRANSFER_MANDIRI)
             MidtransSDK.getInstance().startPaymentUiFlow(this)
         }
     }
 
+    private fun disableButtonWashHour(tokenAuth: String) {
+        val service = RetrofitClient().apiRequest().create(DataService::class.java)
+        service.changeStatus(timeService, "tutup", "Bearer $tokenAuth").enqueue(object : Callback<DefaultResponse> {
+            override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == "success") {
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                Toasty.error(this@FixPaymentActivity, R.string.try_again, Toasty.LENGTH_LONG).show()
+            }
+
+        })
+    }
+
+    private fun updateStatusTransactionToPending() {
+
+    }
+
+    private fun updateStatusTransaction(
+        tokenAuth: String,
+        vendorId: String,
+        idUser: String,
+        transactionId: String?,
+        paymentType: String?,
+        transactionStatus: String?
+    ) {
+        val service = RetrofitClient().apiRequest().create(DataService::class.java)
+        service.insertPemesanan(vendorId, idUser, transactionId!!, paymentType!!, transactionStatus!!, "Bearer $tokenAuth").enqueue(object :
+            Callback<DefaultResponse> {
+            override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == "success") {
+                        val title = "Pembayaran Selesai!"
+                        val body = "Selamat! Kamu Mendapatkan 10 Poin, Silahkan Cek Jumlah Poin Pada Beranda Aplikasi"
+                        NotificationHelper(this@FixPaymentActivity).displayNotification(title, body)
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                Toasty.error(this@FixPaymentActivity, R.string.try_again, Toasty.LENGTH_LONG).show()
+            }
+
+        })
+    }
+
     private fun uiKitDetail(transactionRequest: TransactionRequest) {
 
-//        val customerDetail = CustomerDetails()
-//        customerDetail.customerIdentifier = "Alif Andarta"
-//        customerDetail.phone = "081217915595"
-//        customerDetail.firstName = "Alif"
-//        customerDetail.lastName = "Andarta"
-//        customerDetail.email = "aliefazuka123@gmail.com"
-//        val shippingAddress = ShippingAddress()
-//        shippingAddress.address = "Perumdin PTKL F-2 Leces"
-//        shippingAddress.city = "Probolinggo"
-//        shippingAddress.postalCode = "67273"
-//        customerDetail.shippingAddress = shippingAddress
-//        val billingAddress = BillingAddress()
-//        billingAddress.address = "Perumdin PTKL F-2 Leces"
-//        billingAddress.city = "Probolinggo"
-//        billingAddress.postalCode = "67273"
-//        customerDetail.billingAddress = billingAddress
-//
         val customerDetail = CustomerDetails()
         val userName = mySharedPreferences.getValue(Constants.USER_NAMA)
         val userPhone = mySharedPreferences.getValue(Constants.USER_NOHP)
@@ -198,11 +231,6 @@ class FixPaymentActivity : AppCompatActivity() {
         billingAddress.postalCode = "65148"
         customerDetail.billingAddress = billingAddress
 
-//        val shippingAddress = ShippingAddress()
-//
-//        val billingAddress = BillingAddress()
-
-//        val customerDetail = CustomerDetails()
         transactionRequest.customerDetails = customerDetail
     }
 
