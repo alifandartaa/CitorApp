@@ -58,6 +58,8 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -81,7 +83,6 @@
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_pembayaran"
                     android:padding="8dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
@@ -101,30 +102,17 @@
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/tv_order"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="40dp"
-                        android:fontFamily="@font/poppins"
-                        android:padding="8dp"
-                        android:text="@string/kode_pesanan"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_summary" />
-
-                    <TextView
                         android:id="@+id/tv_service"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="8dp"
                         android:fontFamily="@font/poppins"
+                        android:layout_marginTop="32dp"
                         android:padding="8dp"
                         android:text="@string/jenis_layanan"
                         android:textColor="@color/black"
                         android:textSize="16sp"
-                        app:layout_constraintStart_toStartOf="@+id/tv_order"
-                        app:layout_constraintTop_toBottomOf="@+id/tv_order" />
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_summary" />
 
                     <TextView
                         android:id="@+id/tv_time"
@@ -166,18 +154,6 @@
                         app:layout_constraintTop_toBottomOf="@+id/tv_price" />
 
                     <TextView
-                        android:id="@+id/tv_colon_code"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="@font/poppins"
-                        android:text="@string/titik_dua"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_order"
-                        app:layout_constraintStart_toStartOf="@+id/guideline2"
-                        app:layout_constraintTop_toTopOf="@+id/tv_order" />
-
-                    <TextView
                         android:id="@+id/tv_colon_service"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -186,9 +162,8 @@
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_service"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_colon_code"
-                        app:layout_constraintStart_toStartOf="@+id/tv_colon_code"
-                        app:layout_constraintTop_toTopOf="@+id/tv_service" />
+                        app:layout_constraintTop_toTopOf="@+id/tv_service"
+                        tools:layout_editor_absoluteX="205dp" />
 
                     <TextView
                         android:id="@+id/tv_colon_time"
@@ -229,20 +204,6 @@
                         app:layout_constraintEnd_toEndOf="@+id/tv_colon_price"
                         app:layout_constraintStart_toStartOf="@+id/tv_colon_price"
                         app:layout_constraintTop_toTopOf="@+id/tv_point" />
-
-                    <TextView
-                        android:id="@+id/tv_order_code_value"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
-                        android:fontFamily="@font/poppins"
-                        android:padding="8dp"
-                        android:text="@string/kode1"
-                        android:textColor="@color/black"
-                        android:textSize="16sp"
-                        app:layout_constraintBottom_toBottomOf="@+id/tv_colon_code"
-                        app:layout_constraintStart_toEndOf="@+id/tv_colon_code"
-                        app:layout_constraintTop_toTopOf="@+id/tv_colon_code" />
 
                     <TextView
                         android:id="@+id/tv_type_service_value"
@@ -397,7 +358,7 @@
                         android:id="@+id/btn_confirm_payment"
                         android:layout_width="wrap_content"
                         android:layout_height="50dp"
-                        android:layout_marginTop="24dp"
+                        android:layout_marginTop="32dp"
                         android:layout_marginBottom="24dp"
                         android:background="@drawable/bg_button_pembayaran"
                         android:fontFamily="@font/poppins"
@@ -409,13 +370,6 @@
                         app:layout_constraintHorizontal_bias="0.517"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/layout_code" />
-
-                    <androidx.constraintlayout.widget.Guideline
-                        android:id="@+id/guideline2"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical"
-                        app:layout_constraintGuide_begin="189dp" />
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
