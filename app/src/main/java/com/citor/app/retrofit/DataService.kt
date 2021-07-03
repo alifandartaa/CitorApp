@@ -44,6 +44,7 @@ interface DataService {
     fun insertPemesanan(
         @Field("idmitra") idmitra: String,
         @Field("iduser") iduser: String,
+        @Field("idjam_buka") idjam_buka: String,
         @Field("kodePesan") kodePesan: String,
         @Field("metodeBayar") metodeBayar: String,
         @Field("status") status: String,

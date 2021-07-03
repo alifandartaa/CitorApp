@@ -90,7 +90,6 @@ class FixPaymentActivity : AppCompatActivity() {
                 if (result.response != null) {
                     val transactionId = result.response.transactionId
                     val paymentType = result.response.paymentType
-                    val transactionStatus = result.status
                     when (result.status) {
                         "success" -> {
 //                            Log.d("success", "Transaksi ${result.response.transactionId} ${result.response.paymentType} Success")
@@ -99,7 +98,7 @@ class FixPaymentActivity : AppCompatActivity() {
                             mySharedPreferences.setValue(Constants.USER_POIN, poinInt.toString())
                             changeStatus(idJamBuka, "penuh", tokenAuth)
 
-                            updateStatusTransaction(tokenAuth, vendorId, idUser, transactionId, paymentType, transactionStatus)
+                            updateStatusTransaction(tokenAuth, vendorId, idUser, idJamBuka, transactionId, paymentType, "berjalan")
                             startActivity(Intent(this@FixPaymentActivity, MainActivity::class.java))
                             finish()
                         }
@@ -170,28 +169,30 @@ class FixPaymentActivity : AppCompatActivity() {
         tokenAuth: String,
         vendorId: String,
         idUser: String,
+        idJamBuka: String,
         transactionId: String?,
         paymentType: String?,
         transactionStatus: String?
     ) {
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
-        service.insertPemesanan(vendorId, idUser, transactionId!!, paymentType!!, transactionStatus!!, "Bearer $tokenAuth").enqueue(object :
-            Callback<DefaultResponse> {
-            override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
-                if (response.isSuccessful) {
-                    if (response.body()!!.status == "success") {
-                        val title = "Pembayaran Selesai!"
-                        val body = "Selamat! Kamu Mendapatkan 10 Poin, Silahkan Cek Jumlah Poin Pada Beranda Aplikasi"
-                        NotificationHelper(this@FixPaymentActivity).displayNotification(title, body)
+        service.insertPemesanan(vendorId, idUser, idJamBuka, transactionId!!, paymentType!!, transactionStatus!!, "Bearer $tokenAuth")
+            .enqueue(object :
+                Callback<DefaultResponse> {
+                override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
+                    if (response.isSuccessful) {
+                        if (response.body()!!.status == "success") {
+                            val title = "Pembayaran Selesai!"
+                            val body = "Selamat! Kamu Mendapatkan 10 Poin, Silahkan Cek Jumlah Poin Pada Beranda Aplikasi"
+                            NotificationHelper(this@FixPaymentActivity).displayNotification(title, body)
+                        }
                     }
                 }
-            }
 
-            override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
-                Toasty.error(this@FixPaymentActivity, R.string.try_again, Toasty.LENGTH_LONG).show()
-            }
+                override fun onFailure(call: Call<DefaultResponse>, t: Throwable) {
+                    Toasty.error(this@FixPaymentActivity, R.string.try_again, Toasty.LENGTH_LONG).show()
+                }
 
-        })
+            })
     }
 
     private fun uiKitDetail(transactionRequest: TransactionRequest) {
