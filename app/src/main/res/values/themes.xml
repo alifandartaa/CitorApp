@@ -14,7 +14,7 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="customChipStyle" parent="Widget.MaterialComponents.Chip.Filter">
+    <style name="customChipStyle" parent="Widget.MaterialComponents.Chip.Choice">
         <item name="chipBackgroundColor">@color/chip_background_color</item>
         <item name="android:textColor">@color/chip_text_color</item>
         <item name="android:strokeColor">@color/md_grey_500</item>

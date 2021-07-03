@@ -29,6 +29,7 @@ class HistoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        historyBinding.chipCatProgress.isChecked = true
         myPreferences = MySharedPreferences(requireActivity())
         val idUser = myPreferences.getValue(Constants.USER_ID).toString()
         val tokenAuth = myPreferences.getValue(Constants.TokenAuth).toString()
@@ -55,6 +56,16 @@ class HistoryFragment : Fragment() {
                         listDone.add(it)
                     }
                 }
+
+                historyAdapter.setListHistoryItem(listProgress)
+                historyAdapter.notifyDataSetChanged()
+                with(historyBinding.rvHistory) {
+                    layoutManager = LinearLayoutManager(requireContext())
+                    itemAnimator = DefaultItemAnimator()
+                    setHasFixedSize(true)
+                    adapter = historyAdapter
+                }
+
                 historyBinding.cgStatusHistory.setOnCheckedChangeListener { group, checkedId ->
                     when (checkedId) {
                         historyBinding.chipCatProgress.id -> {
@@ -67,16 +78,10 @@ class HistoryFragment : Fragment() {
                         }
                     }
                 }
-
             }
         })
 
-        with(historyBinding.rvHistory) {
-            layoutManager = LinearLayoutManager(requireContext())
-            itemAnimator = DefaultItemAnimator()
-            setHasFixedSize(true)
-            adapter = historyAdapter
-        }
+
     }
 
 
