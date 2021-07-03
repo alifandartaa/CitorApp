@@ -32,9 +32,10 @@ class DetailVendorActivity : AppCompatActivity() {
         activityDetailVendorBinding = ActivityDetailVendorBinding.inflate(layoutInflater)
         setContentView(activityDetailVendorBinding.root)
 
-        val idVendor= intent.getStringExtra(vendorId).toString()
+        val idVendor = intent.getStringExtra(vendorId).toString()
+        val name = intent.getStringExtra(vendorName).toString()
         val vendorPagerAdapter = DetailVendorPagerAdapter(this)
-        vendorPagerAdapter.getVendorId(idVendor)
+        vendorPagerAdapter.getVendorIdAndName(idVendor, name)
         activityDetailVendorBinding.vpDetailWasher.adapter = vendorPagerAdapter
         TabLayoutMediator(
             activityDetailVendorBinding.tabsDetailWasher,
@@ -52,7 +53,6 @@ class DetailVendorActivity : AppCompatActivity() {
         activityDetailVendorBinding.tvVendorAddress.text = intent.getStringExtra(vendorAddress)
 
         activityDetailVendorBinding.tvVendorMap.setOnClickListener {
-            val name = intent.getStringExtra(vendorName).toString()
             val latitude = intent.getStringExtra(lat).toString()
             val longitude = intent.getStringExtra(long).toString()
             val uri = "http://maps.google.com/maps?q=loc:$latitude,$longitude ($name)"

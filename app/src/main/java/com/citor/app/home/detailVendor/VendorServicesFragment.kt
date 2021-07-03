@@ -9,11 +9,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.citor.app.R
 import com.citor.app.databinding.FragmentVendorServicesBinding
+import com.citor.app.retrofit.DataService
 import com.citor.app.retrofit.RetrofitClient
 import com.citor.app.retrofit.response.MitraResponse
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
-import com.citor.app.retrofit.DataService
 import es.dmoral.toasty.Toasty
 import retrofit2.Call
 import retrofit2.Callback
@@ -41,7 +41,8 @@ class VendorServicesFragment : Fragment() {
 
         if (activity != null) {
             val id = arguments?.getString("id").toString()
-            vendorWashTypeAdapter = VendorWashTypeAdapter(id)
+            val name = arguments?.getString("vendor_name").toString()
+            vendorWashTypeAdapter = VendorWashTypeAdapter(id, name)
             setupListWashType(id, tokenAuth)
             showLoading(true)
         }

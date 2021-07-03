@@ -28,8 +28,9 @@ class DetailVendorPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapt
         return fragment1
     }
 
-    fun getVendorId(vendorId: String) {
+    fun getVendorIdAndName(vendorId: String, vendorName: String) {
         bundle.putString("id", vendorId)
+        bundle.putString("vendor_name", vendorName)
     }
 
 }

@@ -9,7 +9,7 @@ import com.citor.app.home.detailBooking.BookingActivity
 import com.citor.app.home.searchVendor.VendorItemEntity
 import java.text.DecimalFormat
 
-class VendorWashTypeAdapter(private val vendorId: String) : RecyclerView.Adapter<VendorWashTypeAdapter.WashTypeHolder>() {
+class VendorWashTypeAdapter(private val vendorId: String, private val name: String) : RecyclerView.Adapter<VendorWashTypeAdapter.WashTypeHolder>() {
 
     private var listWashType = ArrayList<VendorItemEntity>()
 
@@ -21,7 +21,7 @@ class VendorWashTypeAdapter(private val vendorId: String) : RecyclerView.Adapter
 
     class WashTypeHolder(private val binding: ItemWashTypeBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(id: String, washType: VendorItemEntity) {
+        fun bind(id: String, vendorName: String, washType: VendorItemEntity) {
             with(binding) {
                 val numbering = DecimalFormat("#,###")
                 tvNameType.text = washType.judul
@@ -32,6 +32,7 @@ class VendorWashTypeAdapter(private val vendorId: String) : RecyclerView.Adapter
                             putExtra(BookingActivity.vendorId, id)
                             putExtra(BookingActivity.service, washType.judul)
                             putExtra(BookingActivity.price, washType.harga)
+                            putExtra(BookingActivity.vendorName, vendorName)
                         }
                     itemView.context.startActivity(intent)
                 }
@@ -48,7 +49,8 @@ class VendorWashTypeAdapter(private val vendorId: String) : RecyclerView.Adapter
     override fun onBindViewHolder(holder: WashTypeHolder, position: Int) {
         val washType = listWashType[position]
         val id = vendorId
-        holder.bind(id, washType)
+        val name = name
+        holder.bind(id, name, washType)
     }
 
     override fun getItemCount(): Int {

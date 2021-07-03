@@ -39,6 +39,7 @@ class FixPaymentActivity : AppCompatActivity() {
     private lateinit var mySharedPreferences: MySharedPreferences
 
     companion object {
+        const val vendorName = "nama_mitra"
         const val vendorId = "vendor_id"
         const val service = "service"
         const val price = "price"
@@ -61,12 +62,14 @@ class FixPaymentActivity : AppCompatActivity() {
             super.onBackPressed()
         }
 
+        val vendorNameOrdered = intent.getStringExtra(vendorName).toString()
         val vendorId = intent.getStringExtra(vendorId).toString()
         val service = intent.getStringExtra(service).toString()
         val price = intent.getStringExtra(price).toString()
         val timeService = intent.getStringExtra(timeService).toString()
         val idJamBuka = intent.getStringExtra(idJamBuka).toString()
 
+        fixPaymentBinding.tvVendorName.text = vendorNameOrdered
         fixPaymentBinding.tvTypeServiceValue.text = service
         fixPaymentBinding.tvOrderTimeValue.text = timeService
         val numbering = DecimalFormat("#,###")

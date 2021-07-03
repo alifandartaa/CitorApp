@@ -6,11 +6,11 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.GridLayoutManager
 import com.citor.app.R
 import com.citor.app.databinding.ActivityBookingBinding
+import com.citor.app.retrofit.DataService
 import com.citor.app.retrofit.RetrofitClient
 import com.citor.app.retrofit.response.MitraResponse
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
-import com.citor.app.retrofit.DataService
 import es.dmoral.toasty.Toasty
 import retrofit2.Call
 import retrofit2.Callback
@@ -23,6 +23,7 @@ class BookingActivity : AppCompatActivity() {
     private lateinit var myPreferences: MySharedPreferences
 
     companion object {
+        const val vendorName = "vendor_name"
         const val vendorId = "vendor_id"
         const val service = "service"
         const val price = "price"
@@ -40,6 +41,7 @@ class BookingActivity : AppCompatActivity() {
             super.onBackPressed()
         }
 
+        val vendorNameOrdered = intent.getStringExtra(vendorName).toString()
         val idVendor = intent.getStringExtra(vendorId).toString()
         val service = intent.getStringExtra(service).toString()
         val price = intent.getStringExtra(price).toString()
@@ -48,7 +50,7 @@ class BookingActivity : AppCompatActivity() {
         listInfo.add(service)
         listInfo.add(price)
 
-        bookingAdapter = BookingAdapter(listInfo)
+        bookingAdapter = BookingAdapter(listInfo, vendorNameOrdered)
         setupListItemBooking(idVendor, tokenAuth)
     }
 

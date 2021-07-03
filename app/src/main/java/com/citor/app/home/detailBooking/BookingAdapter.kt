@@ -10,7 +10,8 @@ import com.citor.app.databinding.ItemBookingBinding
 import com.citor.app.home.payment.FixPaymentActivity
 import com.citor.app.home.searchVendor.VendorItemEntity
 
-class BookingAdapter(private val listInfo: ArrayList<String>) : RecyclerView.Adapter<BookingAdapter.BookingItemViewHolder>() {
+class BookingAdapter(private val listInfo: ArrayList<String>, private val vendorNameOrdered: String) :
+    RecyclerView.Adapter<BookingAdapter.BookingItemViewHolder>() {
 
     private var listBookingItem = ArrayList<VendorItemEntity>()
 
@@ -21,9 +22,10 @@ class BookingAdapter(private val listInfo: ArrayList<String>) : RecyclerView.Ada
     }
 
     class BookingItemViewHolder(private val binding: ItemBookingBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(listInfo: ArrayList<String>, bookingItem: VendorItemEntity) {
+        fun bind(listInfo: ArrayList<String>, vendorNameOrdered: String, bookingItem: VendorItemEntity) {
             with(binding) {
                 tvJamBuka.text = bookingItem.jam_buka
+
 
                 when (bookingItem.status) {
                     "tersedia" -> {
@@ -33,6 +35,7 @@ class BookingAdapter(private val listInfo: ArrayList<String>) : RecyclerView.Ada
                         itemView.setOnClickListener {
                             val intent = Intent(itemView.context, FixPaymentActivity::class.java)
                                 .apply {
+                                    putExtra(FixPaymentActivity.vendorName, vendorNameOrdered)
                                     putExtra(FixPaymentActivity.vendorId, vendorId)
                                     putExtra(FixPaymentActivity.service, service)
                                     putExtra(FixPaymentActivity.price, price)
@@ -64,7 +67,8 @@ class BookingAdapter(private val listInfo: ArrayList<String>) : RecyclerView.Ada
     override fun onBindViewHolder(holder: BookingItemViewHolder, position: Int) {
         val bookingItem = listBookingItem[position]
         val infoList = listInfo
-        holder.bind(infoList, bookingItem)
+        val vendorName = vendorNameOrdered
+        holder.bind(infoList, vendorName, bookingItem)
     }
 
     override fun getItemCount(): Int {
