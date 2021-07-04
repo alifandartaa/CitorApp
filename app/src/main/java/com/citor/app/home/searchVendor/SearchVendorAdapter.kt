@@ -6,7 +6,9 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.citor.app.R
 import com.citor.app.databinding.ItemVendorBinding
 import com.citor.app.home.detailVendor.DetailVendorActivity
 import java.util.*
@@ -33,6 +35,8 @@ class SearchVendorAdapter : RecyclerView.Adapter<SearchVendorAdapter.VendorItemH
                 tvName.text = vendorItem.nama_mitra
                 tvAddress.text = vendorItem.alamat_mitra
                 if (vendorItem.statusBuka == "buka") {
+                    rlItemVendor.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.bluePrimary))
+                    cvItemBooking.isEnabled = true
                     tvStatus.text = "BUKA HARI INI"
                     itemView.setOnClickListener {
                         val intent = Intent(itemView.context, DetailVendorActivity::class.java)
@@ -45,7 +49,8 @@ class SearchVendorAdapter : RecyclerView.Adapter<SearchVendorAdapter.VendorItemH
                             }
                         itemView.context.startActivity(intent)
                     }
-                } else {
+                }
+                if (vendorItem.statusBuka == "tutup") {
                     tvStatus.text = "TUTUP"
                     rlItemVendor.setBackgroundColor(Color.parseColor("#455A64"))
                     cvItemBooking.isEnabled = false

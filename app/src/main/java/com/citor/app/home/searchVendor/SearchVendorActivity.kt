@@ -9,15 +9,16 @@ import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.citor.app.R
 import com.citor.app.databinding.ActivitySearchVendorBinding
+import com.citor.app.retrofit.DataService
 import com.citor.app.retrofit.RetrofitClient
 import com.citor.app.retrofit.response.MitraResponse
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
-import com.citor.app.retrofit.DataService
 import es.dmoral.toasty.Toasty
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.*
 
 
 class SearchVendorActivity : AppCompatActivity() {
@@ -25,14 +26,21 @@ class SearchVendorActivity : AppCompatActivity() {
     private lateinit var searchVendorBinding: ActivitySearchVendorBinding
     private lateinit var searchVendorAdapter: SearchVendorAdapter
     private lateinit var myPreferences: MySharedPreferences
-//    private lateinit var itemlist: ArrayList<VendorItemEntity>
+    private var listVendorSearch: ArrayList<VendorItemEntity> = arrayListOf()
+    private var listVendorStatusOpen: ArrayList<VendorItemEntity> = arrayListOf()
+    private var listVendorStatusClose: ArrayList<VendorItemEntity> = arrayListOf()
+    private var listVendorResultSearch: ArrayList<VendorItemEntity> = arrayListOf()
+//    lateinit var client: FusedLocationProviderClient
+
+    companion object {
+        private const val LOCATION_PERMISSION_CODE = 101
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         searchVendorBinding = ActivitySearchVendorBinding.inflate(layoutInflater)
         setContentView(searchVendorBinding.root)
-
 
         myPreferences = MySharedPreferences(this@SearchVendorActivity)
 
@@ -41,10 +49,32 @@ class SearchVendorActivity : AppCompatActivity() {
             super.onBackPressed()
         }
 
+//        client = LocationServices.getFusedLocationProviderClient(this)
+//        val geoCoder = Geocoder(this, Locale.getDefault())
+//        var addresses:List<Address>
+//
+//        if (ActivityCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.ACCESS_FINE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(
+//                this,
+//                Manifest.permission.ACCESS_COARSE_LOCATION
+//            ) != PackageManager.PERMISSION_GRANTED
+//        ) {
+//            return
+//        }
+//        client.lastLocation.addOnCompleteListener {
+//            val latitude = it.result.latitude
+//            val longitude = it.result.longitude
+//            addresses = geoCoder.getFromLocation(latitude, longitude, 1)
+//
+//            val address: String = addresses[0].getAddressLine(0)
+//            Log.d("Alamat", address)
+//            searchVendorBinding.tvLocation.text = address
+//        }
 
         searchVendorBinding.svLocation.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                searchVendorAdapter.filter.filter(query)
                 return true
             }
 
@@ -61,7 +91,41 @@ class SearchVendorActivity : AppCompatActivity() {
         val areaCategory = resources.getStringArray(R.array.area_category)
         val arrayAdapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, areaCategory)
         searchVendorBinding.ctvArea.setAdapter(arrayAdapter)
+
+        searchVendorBinding.ctvArea.setOnItemClickListener { parent, view, position, id ->
+            when (position) {
+                0 -> {
+                    listVendorStatusClose.clear()
+                    listVendorSearch.forEach { vendorItem ->
+                        if (vendorItem.statusBuka == "buka") {
+                            listVendorStatusOpen.add(vendorItem)
+                        }
+                    }
+                    searchVendorAdapter.setListVendorItem(listVendorStatusOpen)
+                }
+                1 -> {
+                    listVendorStatusOpen.clear()
+                    listVendorSearch.forEach { vendorItem ->
+                        if (vendorItem.statusBuka == "tutup") {
+                            listVendorStatusClose.add(vendorItem)
+                        }
+                    }
+                    searchVendorAdapter.setListVendorItem(listVendorStatusClose)
+                }
+            }
+        }
     }
+
+//    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+//        if(requestCode == LOCATION_PERMISSION_CODE && grantResults.size > 0){
+//            if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
+//                getCurrentAddress()
+//            }else{
+//                Toast.makeText(this, "Permission Location Denied", Toast.LENGTH_SHORT).show()
+//            }
+//        }
+//    }
 
     private fun setupListItemVendor(tokenAuth: String) {
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
@@ -70,7 +134,8 @@ class SearchVendorActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     if (response.body()!!.status == "success") {
                         val listData = response.body()!!.data
-                        searchVendorAdapter.setListVendorItem(listData)
+                        listVendorSearch = listData
+                        searchVendorAdapter.setListVendorItem(listVendorSearch)
                         showLoading(false)
                         searchVendorAdapter.notifyDataSetChanged()
 

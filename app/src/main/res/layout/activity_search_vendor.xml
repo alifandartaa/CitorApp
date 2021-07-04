@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -8,14 +8,10 @@
     android:padding="8dp"
     tools:context=".home.searchVendor.SearchVendorActivity">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <ImageButton
             android:id="@+id/btn_back"
-            android:layout_width="36dp"
-            android:layout_height="36dp"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
             android:layout_alignParentStart="true"
             android:background="@drawable/ic_arrow_back"
             app:layout_constraintStart_toStartOf="parent"
@@ -29,7 +25,7 @@
             android:fontFamily="@font/poppins"
             android:padding="8dp"
             android:text="@string/terdekat"
-            android:textSize="20sp"
+            android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="@+id/btn_back"
             app:layout_constraintStart_toEndOf="@+id/btn_back"
@@ -39,12 +35,11 @@
             android:id="@+id/tv_position"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins"
             android:padding="4sp"
             android:text="@string/posisi_kamu"
             android:textColor="@color/blue2"
-            android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn_back" />
@@ -54,9 +49,11 @@
             android:id="@+id/sv_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
             android:background="@drawable/bg_search"
             android:padding="8dp"
+            android:iconifiedByDefault="false"
+            android:queryHint="Nama tempat cuci motor"
             app:layout_constraintEnd_toEndOf="@+id/layout_location"
             app:layout_constraintStart_toStartOf="@+id/layout_location"
             app:layout_constraintTop_toBottomOf="@+id/layout_location" />
@@ -65,7 +62,7 @@
             android:id="@+id/layout_location"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="4dp"
             android:background="@drawable/bg_search"
             android:padding="8dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -100,32 +97,16 @@
             app:layout_constraintStart_toStartOf="@+id/sv_location"
             app:layout_constraintTop_toBottomOf="@+id/sv_location">
 
-            <AutoCompleteTextView
-                android:id="@+id/ctv_area"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:inputType="none"
-                android:text="Kategori" />
+                <AutoCompleteTextView
+                    android:id="@+id/ctv_area"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:inputType="none"
+                    android:text="Buka/Tutup" />
 
         </com.google.android.material.textfield.TextInputLayout>
 
-        <!--    <ScrollView-->
-        <!--        android:layout_width="match_parent"-->
-        <!--        android:layout_height="wrap_content"-->
-        <!--        android:scrollbars="vertical"-->
-        <!--        app:layout_constraintEnd_toEndOf="parent"-->
-        <!--        app:layout_constraintHorizontal_bias="0.491"-->
-        <!--        app:layout_constraintStart_toStartOf="parent"-->
-        <!--        app:layout_constraintTop_toBottomOf="@+id/sp_category">-->
-
-        <!--        <androidx.recyclerview.widget.RecyclerView-->
-        <!--            android:id="@+id/rv_location"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:layout_marginTop="16dp"-->
-        <!--            tools:listitem="@layout/item_tempat" />-->
-        <!--    </ScrollView>-->
 
         <ProgressBar
             android:id="@+id/progressBar"
@@ -141,14 +122,13 @@
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_location"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_height="350dp"
+            android:layout_marginTop="24dp"
             android:paddingHorizontal="16dp"
-            android:scrollbars="vertical"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/sp_category"
+            app:layout_constraintBottom_toBottomOf="parent"
             tools:listitem="@layout/item_vendor" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
-</ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
