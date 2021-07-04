@@ -71,8 +71,9 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/activity_horizontal_margin"
                 app:cardCornerRadius="20dp"
                 app:cardElevation="4dp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -83,7 +84,7 @@
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/constraintLayout"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@drawable/bg_pembayaran"
                     android:padding="8dp"
@@ -165,6 +166,7 @@
                         android:text="@string/titik_dua"
                         android:textColor="@color/black"
                         android:textSize="16sp"
+                        app:layout_constraintStart_toEndOf="@id/tv_service"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_service"
                         app:layout_constraintTop_toTopOf="@+id/tv_service"
                         tools:layout_editor_absoluteX="205dp" />
@@ -178,8 +180,7 @@
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_time"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_colon_service"
-                        app:layout_constraintStart_toStartOf="@+id/tv_colon_service"
+                        app:layout_constraintStart_toEndOf="@id/tv_time"
                         app:layout_constraintTop_toTopOf="@+id/tv_time" />
 
 
@@ -192,8 +193,7 @@
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         app:layout_constraintBottom_toBottomOf="@+id/tv_price"
-                        app:layout_constraintEnd_toEndOf="@+id/tv_colon_time"
-                        app:layout_constraintStart_toStartOf="@+id/tv_colon_time"
+                        app:layout_constraintStart_toEndOf="@id/tv_price"
                         app:layout_constraintTop_toTopOf="@+id/tv_price" />
 
                     <TextView
