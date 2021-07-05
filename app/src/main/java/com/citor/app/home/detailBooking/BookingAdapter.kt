@@ -3,12 +3,16 @@ package com.citor.app.home.detailBooking
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.citor.app.R
 import com.citor.app.databinding.ItemBookingBinding
 import com.citor.app.home.payment.FixPaymentActivity
 import com.citor.app.home.searchVendor.VendorItemEntity
+import java.text.DecimalFormat
+import java.util.*
+import kotlin.collections.ArrayList
 
 class BookingAdapter(private val listInfo: ArrayList<String>, private val vendorNameOrdered: String) :
     RecyclerView.Adapter<BookingAdapter.BookingItemViewHolder>() {
@@ -26,6 +30,12 @@ class BookingAdapter(private val listInfo: ArrayList<String>, private val vendor
             with(binding) {
                 tvJamBuka.text = bookingItem.jam_buka
 
+                //get currentTime
+                val calendar: Calendar = Calendar.getInstance()
+                val hour24hrs: Int = calendar.get(Calendar.HOUR_OF_DAY)
+                val minutes: Int = calendar.get(Calendar.MINUTE)
+                println("Pukul :  $hour24hrs.$minutes")
+//                tvJamBuka.text = "$hour24hrs.$minutes"
 
                 when (bookingItem.status) {
                     "tersedia" -> {
@@ -33,16 +43,34 @@ class BookingAdapter(private val listInfo: ArrayList<String>, private val vendor
                         val service = listInfo[1]
                         val price = listInfo[2]
                         itemView.setOnClickListener {
-                            val intent = Intent(itemView.context, FixPaymentActivity::class.java)
-                                .apply {
-                                    putExtra(FixPaymentActivity.vendorName, vendorNameOrdered)
-                                    putExtra(FixPaymentActivity.vendorId, vendorId)
-                                    putExtra(FixPaymentActivity.service, service)
-                                    putExtra(FixPaymentActivity.price, price)
-                                    putExtra(FixPaymentActivity.timeService, bookingItem.jam_buka)
-                                    putExtra(FixPaymentActivity.idJamBuka, bookingItem.idjam_buka)
-                                }
-                            itemView.context.startActivity(intent)
+
+                            val dfTimeNow = "$hour24hrs.$minutes".toDouble()
+//                            var bookTime = bookingItem.jam_buka.subSequence(0, 5).toString()
+                            val waktu = "08.00"//nanti dirubah dari bookingitem.jamBuka
+                            var newWaktu = 0.0
+
+                            newWaktu = if(waktu.subSequence(3,5) != "00") {
+                                waktu.toDouble()
+                            }else{
+                                waktu.toDouble()+0.6
+                            }
+                            val dfBookTime = newWaktu
+
+                            //cek kondisi pesan kurang dari 30mnt
+                            if (dfTimeNow < dfBookTime-0.3) {
+                                val intent = Intent(itemView.context, FixPaymentActivity::class.java)
+                                    .apply {
+                                        putExtra(FixPaymentActivity.vendorName, vendorNameOrdered)
+                                        putExtra(FixPaymentActivity.vendorId, vendorId)
+                                        putExtra(FixPaymentActivity.service, service)
+                                        putExtra(FixPaymentActivity.price, price)
+                                        putExtra(FixPaymentActivity.timeService, bookingItem.jam_buka)
+                                        putExtra(FixPaymentActivity.idJamBuka, bookingItem.idjam_buka)
+                                    }
+                                itemView.context.startActivity(intent)
+                            } else {
+                                Toast.makeText(itemView.context, "Tidak bisa pesan ", Toast.LENGTH_SHORT).show()
+                            }
                         }
                     }
                     "kunci" -> {
@@ -74,4 +102,6 @@ class BookingAdapter(private val listInfo: ArrayList<String>, private val vendor
     override fun getItemCount(): Int {
         return listBookingItem.size
     }
+
+
 }
