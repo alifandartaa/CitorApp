@@ -46,30 +46,36 @@ class BookingAdapter(private val listInfo: ArrayList<String>, private val vendor
 
                             val dfTimeNow = "$hour24hrs.$minutes".toDouble()
 //                            var bookTime = bookingItem.jam_buka.subSequence(0, 5).toString()
-                            val waktu = "08.00"//nanti dirubah dari bookingitem.jamBuka
-                            var newWaktu = 0.0
+                            val waktu = "15.00"//nanti dirubah dari bookingitem.jamBuka
+                            val waktu1 = "15.00 - 15.30"//dirubah dari akhir range bookingItem.jamBuka
 
+                            var newWaktu = 0.0
+                            val dfBookTimeEnd = waktu1.subSequence(8,13).toString().toDouble()
                             newWaktu = if(waktu.subSequence(3,5) != "00") {
                                 waktu.toDouble()
                             }else{
-                                waktu.toDouble()+0.6
+                                waktu.toDouble()-1+0.6
                             }
                             val dfBookTime = newWaktu
-
+                            val diffTime = (newWaktu - dfTimeNow).toString().subSequence(2,4)
                             //cek kondisi pesan kurang dari 30mnt
-                            if (dfTimeNow < dfBookTime-0.3) {
-                                val intent = Intent(itemView.context, FixPaymentActivity::class.java)
-                                    .apply {
-                                        putExtra(FixPaymentActivity.vendorName, vendorNameOrdered)
-                                        putExtra(FixPaymentActivity.vendorId, vendorId)
-                                        putExtra(FixPaymentActivity.service, service)
-                                        putExtra(FixPaymentActivity.price, price)
-                                        putExtra(FixPaymentActivity.timeService, bookingItem.jam_buka)
-                                        putExtra(FixPaymentActivity.idJamBuka, bookingItem.idjam_buka)
-                                    }
-                                itemView.context.startActivity(intent)
+                            if (dfTimeNow < dfBookTimeEnd) {
+                                if(dfTimeNow < dfBookTime-0.3) {
+                                    val intent = Intent(itemView.context, FixPaymentActivity::class.java)
+                                        .apply {
+                                            putExtra(FixPaymentActivity.vendorName, vendorNameOrdered)
+                                            putExtra(FixPaymentActivity.vendorId, vendorId)
+                                            putExtra(FixPaymentActivity.service, service)
+                                            putExtra(FixPaymentActivity.price, price)
+                                            putExtra(FixPaymentActivity.timeService, bookingItem.jam_buka)
+                                            putExtra(FixPaymentActivity.idJamBuka, bookingItem.idjam_buka)
+                                        }
+                                    itemView.context.startActivity(intent)
+                                }else{
+                                    Toast.makeText(itemView.context, "Anda Terlambat $diffTime menit", Toast.LENGTH_SHORT).show()
+                                }
                             } else {
-                                Toast.makeText(itemView.context, "Tidak bisa pesan ", Toast.LENGTH_SHORT).show()
+                                Toast.makeText(itemView.context, "Anda Melebihi Waktu Pemesanan ", Toast.LENGTH_SHORT).show()
                             }
                         }
                     }
