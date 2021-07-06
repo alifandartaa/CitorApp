@@ -46,7 +46,7 @@ class BookingAdapter(private val listInfo: ArrayList<String>, private val vendor
 
                             //convert currentTime ke double
                             val dfTimeNow = "$hour24hrs.$minutes".toFloat()
-//                            val dfTimeNow = 10.30f
+//                            val dfTimeNow = 10.40f
 
                             val jamBuka = bookingItem.jam_buka
 
@@ -62,8 +62,7 @@ class BookingAdapter(private val listInfo: ArrayList<String>, private val vendor
                             val dfBookTime = bookTime
 
                             //initials val perbedaan waktu dalam menit
-                            val diffTime = (dfBookTime - dfTimeNow).toString()
-                            val hasil : Float = 10.60f-10.30f
+                            val diffTime = (dfBookTime - dfTimeNow).toString().subSequence(2,4)
 
                             //cek kondisi pesan lebih dari waktu jamBuka
                             if (dfTimeNow < dfBookTime) {
@@ -78,7 +77,6 @@ class BookingAdapter(private val listInfo: ArrayList<String>, private val vendor
                                             putExtra(FixPaymentActivity.price, price)
                                             putExtra(FixPaymentActivity.timeService, bookingItem.jam_buka)
                                             putExtra(FixPaymentActivity.idJamBuka, bookingItem.idjam_buka)
-                                            Toast.makeText(itemView.context, "coba $hasil menit", Toast.LENGTH_SHORT).show()
                                         }
                                     itemView.context.startActivity(intent)
                                 }else{
