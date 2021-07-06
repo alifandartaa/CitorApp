@@ -44,22 +44,31 @@ class BookingAdapter(private val listInfo: ArrayList<String>, private val vendor
                         val price = listInfo[2]
                         itemView.setOnClickListener {
 
-                            val dfTimeNow = "$hour24hrs.$minutes".toDouble()
-//                            var bookTime = bookingItem.jam_buka.subSequence(0, 5).toString()
-                            val waktu = "15.00"//nanti dirubah dari bookingitem.jamBuka
-                            val waktu1 = "15.00 - 15.30"//dirubah dari akhir range bookingItem.jamBuka
+                            //convert currentTime ke double
+                            val dfTimeNow = "$hour24hrs.$minutes".toFloat()
+//                            val dfTimeNow = 10.30f
 
-                            var newWaktu = 0.0
-                            val dfBookTimeEnd = waktu1.subSequence(8,13).toString().toDouble()
-                            newWaktu = if(waktu.subSequence(3,5) != "00") {
-                                waktu.toDouble()
+                            val jamBuka = bookingItem.jam_buka
+
+//                            var bookTime = bookingItem.jam_buka.subSequence(0, 5).toString()
+                            var bookTime = 0.0f
+                            bookTime = if(jamBuka.subSequence(3,5) != "00") {
+                                jamBuka.toFloat()
                             }else{
-                                waktu.toDouble()-1+0.6
+                                jamBuka.toFloat()-1.0f+0.6f
                             }
-                            val dfBookTime = newWaktu
-                            val diffTime = (newWaktu - dfTimeNow).toString().subSequence(2,4)
-                            //cek kondisi pesan kurang dari 30mnt
-                            if (dfTimeNow < dfBookTimeEnd) {
+
+                            //convert bookTime ke format jam dan menit
+                            val dfBookTime = bookTime
+
+                            //initials val perbedaan waktu dalam menit
+                            val diffTime = (dfBookTime - dfTimeNow).toString()
+                            val hasil : Float = 10.60f-10.30f
+
+                            //cek kondisi pesan lebih dari waktu jamBuka
+                            if (dfTimeNow < dfBookTime) {
+
+                                //cek kondisi pesan kurang dari 30mnt
                                 if(dfTimeNow < dfBookTime-0.3) {
                                     val intent = Intent(itemView.context, FixPaymentActivity::class.java)
                                         .apply {
@@ -69,6 +78,7 @@ class BookingAdapter(private val listInfo: ArrayList<String>, private val vendor
                                             putExtra(FixPaymentActivity.price, price)
                                             putExtra(FixPaymentActivity.timeService, bookingItem.jam_buka)
                                             putExtra(FixPaymentActivity.idJamBuka, bookingItem.idjam_buka)
+                                            Toast.makeText(itemView.context, "coba $hasil menit", Toast.LENGTH_SHORT).show()
                                         }
                                     itemView.context.startActivity(intent)
                                 }else{
