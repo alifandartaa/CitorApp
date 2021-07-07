@@ -32,6 +32,15 @@ interface DataService {
         @Header("Authorization") token: String
     ): Call<MitraResponse>
 
+    //get jam buka status
+    @FormUrlEncoded
+    @POST("main/getJamBukaStatus")
+    fun getJamBukaStatus(
+        @Field("idmitra") idmitra: String,
+        @Field("idjam_buka") idjam_buka: String,
+        @Header("Authorization") token: String
+    ): Call<MitraResponse>
+
     @FormUrlEncoded
     @POST("main/getPemesanan")
     fun getPemesanan(

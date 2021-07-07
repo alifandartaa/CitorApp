@@ -127,8 +127,6 @@ class FixPaymentActivity : AppCompatActivity() {
             .buildSDK()
 
         fixPaymentBinding.btnConfirmPayment.setOnClickListener {
-            changeStatus(idJamBuka, "kunci", tokenAuth)
-
             val quantity = 1
             val totalAmount = quantity * price.toDouble()
             val transactionRequest = TransactionRequest("Citor-APP-" + System.currentTimeMillis().toShort() + "", totalAmount)
@@ -176,8 +174,7 @@ class FixPaymentActivity : AppCompatActivity() {
     ) {
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
         service.insertPemesanan(vendorId, idUser, idJamBuka, transactionId!!, paymentType!!, transactionStatus!!, "Bearer $tokenAuth")
-            .enqueue(object :
-                Callback<DefaultResponse> {
+            .enqueue(object : Callback<DefaultResponse> {
                 override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                     if (response.isSuccessful) {
                         if (response.body()!!.status == "success") {

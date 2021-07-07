@@ -49,8 +49,9 @@ class BookingActivity : AppCompatActivity() {
         listInfo.add(idVendor)
         listInfo.add(service)
         listInfo.add(price)
+        listInfo.add(vendorNameOrdered)
 
-        bookingAdapter = BookingAdapter(listInfo, vendorNameOrdered)
+        bookingAdapter = BookingAdapter(listInfo)
         setupListItemBooking(idVendor, tokenAuth)
     }
 
