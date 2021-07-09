@@ -44,6 +44,11 @@ class ProfileFragment : Fragment() {
             .error(R.drawable.user_photo_icon)
             .into(profileBinding.ivUserProfile)
 
+        profileBinding.btnEditProfile.setOnClickListener {
+            val intent = Intent(this@ProfileFragment.requireContext(), EditProfileActivity::class.java)
+            startActivity(intent)
+        }
+
         profileBinding.btnLogout.setOnClickListener {
             val mDialog = MaterialDialog.Builder(requireContext() as Activity)
                 .setTitle("Logout")

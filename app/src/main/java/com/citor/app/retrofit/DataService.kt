@@ -3,11 +3,10 @@ package com.citor.app.retrofit
 import com.citor.app.retrofit.response.DefaultResponse
 import com.citor.app.retrofit.response.HistoryResponse
 import com.citor.app.retrofit.response.MitraResponse
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
-import retrofit2.http.Field
-import retrofit2.http.FormUrlEncoded
-import retrofit2.http.Header
-import retrofit2.http.POST
+import retrofit2.http.*
 
 interface DataService {
     //get data mitra
@@ -65,6 +64,18 @@ interface DataService {
     fun changeStatus(
         @Field("idjam_buka") idjam_buka: String,
         @Field("status") status: String,
+        @Header("Authorization") token: String
+    ): Call<DefaultResponse>
+
+    @Multipart
+    @POST("main/editProfile")
+    fun editprofile(
+        @Part("iduser") iduser: RequestBody,
+        @Part("nama") nama: RequestBody,
+        @Part("email") email: RequestBody,
+        @Part("nohp") nohp: RequestBody,
+        @Part("password") password: RequestBody,
+        @Part filefoto: MultipartBody.Part? = null,
         @Header("Authorization") token: String
     ): Call<DefaultResponse>
 }
