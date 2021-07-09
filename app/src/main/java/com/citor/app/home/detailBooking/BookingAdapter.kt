@@ -1,5 +1,6 @@
 package com.citor.app.home.detailBooking
 
+import android.app.Activity
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.citor.app.retrofit.response.DefaultResponse
 import com.citor.app.retrofit.response.MitraResponse
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
+import dev.shreyaspatil.MaterialDialog.MaterialDialog
 import es.dmoral.toasty.Toasty
 import retrofit2.Call
 import retrofit2.Callback
@@ -83,19 +85,41 @@ class BookingAdapter(private val listInfo: ArrayList<String>) :
                                         override fun onResponse(call: Call<MitraResponse>, response: Response<MitraResponse>) {
                                             if (response.isSuccessful) {
                                                 if (response.body()!!.data[0].status == "tersedia") {
-                                                    changeStatus(bookingItem.idjam_buka, "kunci", tokenAuth)
-                                                    val intent = Intent(itemView.context, FixPaymentActivity::class.java)
-                                                        .apply {
-                                                            putExtra(FixPaymentActivity.vendorName, vendorNameOrdered)
-                                                            putExtra(FixPaymentActivity.vendorId, vendorId)
-                                                            putExtra(FixPaymentActivity.service, service)
-                                                            putExtra(FixPaymentActivity.price, price)
-                                                            putExtra(FixPaymentActivity.timeService, jamBuka)
-                                                            putExtra(FixPaymentActivity.idJamBuka, idJamBuka)
+                                                    val mDialog = MaterialDialog.Builder(itemView.context as Activity)
+                                                        .setTitle("Apakah Anda Yakin Ingin Memilih Jam ini?")
+                                                        .setMessage("Anda Tidak Bisa Memilih Jam Ini Selama 10 Menit Jika Melakukan Pembatalan Pesanan")
+                                                        .setCancelable(true)
+                                                        .setPositiveButton(
+                                                            itemView.context.getString(R.string.yes)
+                                                        ) { dialogInterface, _ ->
+                                                            changeStatus(bookingItem.idjam_buka, "kunci", tokenAuth)
+                                                            val intent = Intent(itemView.context, FixPaymentActivity::class.java)
+                                                                .apply {
+                                                                    putExtra(FixPaymentActivity.vendorName, vendorNameOrdered)
+                                                                    putExtra(FixPaymentActivity.vendorId, vendorId)
+                                                                    putExtra(FixPaymentActivity.service, service)
+                                                                    putExtra(FixPaymentActivity.price, price)
+                                                                    putExtra(FixPaymentActivity.timeService, jamBuka)
+                                                                    putExtra(FixPaymentActivity.idJamBuka, idJamBuka)
+                                                                }
+                                                            itemView.context.startActivity(intent)
+                                                            dialogInterface.dismiss()
                                                         }
-                                                    itemView.context.startActivity(intent)
+                                                        .setNegativeButton(
+                                                            itemView.context.getString(R.string.no)
+                                                        ) { dialogInterface, _ ->
+                                                            dialogInterface.dismiss()
+                                                        }
+                                                        .build()
+                                                    // Show Dialog
+                                                    mDialog.show()
+
                                                 } else {
-                                                    Toasty.warning(itemView.context, "Jam Yang Anda Pesan Sedang Dipesan Pelanggan Lain", Toasty.LENGTH_LONG).show()
+                                                    Toasty.warning(
+                                                        itemView.context,
+                                                        "Jam Yang Anda Pesan Sedang Dipesan Pelanggan Lain",
+                                                        Toasty.LENGTH_LONG
+                                                    ).show()
                                                 }
                                             }
                                         }
