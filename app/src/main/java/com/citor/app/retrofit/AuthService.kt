@@ -16,6 +16,13 @@ interface AuthService {
         @Field("password") password: String,
     ): Call<LoginResponse>
 
+    //get Foto User
+    @FormUrlEncoded
+    @POST("auth/getUserFoto")
+    fun getUserFoto(
+        @Field("iduser") iduser: String
+    ): Call<LoginResponse>
+
     //precheck email
     @FormUrlEncoded
     @POST("auth/precheckEmail")

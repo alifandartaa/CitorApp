@@ -74,7 +74,6 @@ interface DataService {
         @Part("nama") nama: RequestBody,
         @Part("email") email: RequestBody,
         @Part("nohp") nohp: RequestBody,
-        @Part("password") password: RequestBody,
         @Part filefoto: MultipartBody.Part? = null,
         @Header("Authorization") token: String
     ): Call<DefaultResponse>
