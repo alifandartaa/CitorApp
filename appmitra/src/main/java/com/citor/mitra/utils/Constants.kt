@@ -9,7 +9,7 @@ object Constants {
     const val VENDOR_NAMA = "nama_mitra"
     const val VENDOR_ADDRS = "alamat_mitra"
     const val VENDOR_NOHP = "nohp_user"
-    const val VENDOR_STATUS = "status"
+    const val VENDOR_STATUS = "statusBuka"
     const val LAT = "lat"
     const val LONG = "long"
     const val DEVICE_TOKEN = "device_token"

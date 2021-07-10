@@ -134,12 +134,13 @@
     <string name="txt_complete_payment">Pembayaran Telah Berhasil!</string>
     <string name="harga">15.000</string>
     <string name="halo_pak_jamal">Halo,</string>
-    <string name="cuci_motor">Anda telah mencuci 50 sepeda motor pekan ini!</string>
+    <string name="cuci_motor">Yuk mulai Buka Usaha Cuci Motormu!</string>
     <string name="profil_usaha">Profil Usaha</string>
     <string name="antrean">Antrean</string>
     <string name="pengaturan">Pengaturan</string>
     <string name="statistik">Statistik</string>
     <string name="buka_layanan_sekarang">BUKA LAYANAN SEKARANG</string>
+    <string name="tutup_layanan_sekarang">TUTUP LAYANAN SEKARANG</string>
     <string name="service_time">07.00 - 07.30</string>
     <string name="service_status">KOSONG</string>
     <string name="service_confirm">KONFIRMASI</string>

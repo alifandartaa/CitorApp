@@ -18,14 +18,14 @@ interface AuthService {
 
     //precheck email
     @FormUrlEncoded
-    @POST("auth/precheckEmail")
+    @POST("auth_mitra/precheckEmail")
     fun precheck(
         @Field("email") email: String
     ): Call<DefaultResponse>
 
     //register
     @FormUrlEncoded
-    @POST("auth/register")
+    @POST("auth_mitra/register")
     fun register(
         @Field("nama") nama: String,
         @Field("email") email: String,
@@ -35,31 +35,31 @@ interface AuthService {
 
     //request OTP
     @FormUrlEncoded
-    @POST("auth/requestOtp")
+    @POST("auth_mitra/requestOtp")
     fun requestOtp(
         @Field("email") email: String
     ): Call<DefaultResponse>
 
     //verify OTP
     @FormUrlEncoded
-    @POST("auth/verifyOtp")
+    @POST("auth_mitra/verifyOtp")
     fun verifyOtp(
         @Field("email") email: String,
         @Field("otp") otp: String
     ): Call<DefaultResponse>
 
     @FormUrlEncoded
-    @POST("auth/addToken")
+    @POST("auth_mitra/addToken")
     fun addToken(
-        @Field("iduser") iduser: String,
+        @Field("idmitra") idmitra: String,
         @Field("device_token") device_token: String,
     ): Call<DefaultResponse>
 
     //refresh auth token
     @FormUrlEncoded
-    @POST("auth/refreshToken")
+    @POST("auth_mitra/refreshToken")
     fun refreshAuthToken(
-        @Field("iduser") iduser: String
+        @Field("idmitra") idmitra: String
     ): Call<LoginResponse>
 
 

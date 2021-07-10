@@ -86,8 +86,8 @@ class BookingAdapter(private val listInfo: ArrayList<String>) :
                                             if (response.isSuccessful) {
                                                 if (response.body()!!.data[0].status == "tersedia") {
                                                     val mDialog = MaterialDialog.Builder(itemView.context as Activity)
-                                                        .setTitle("Apakah Anda Yakin Ingin Memilih Jam ini?")
-                                                        .setMessage("Anda Tidak Bisa Memilih Jam Ini Selama 10 Menit Jika Melakukan Pembatalan Pesanan")
+                                                        .setTitle(itemView.context.getString(R.string.title_modal_choose_time))
+                                                        .setMessage(itemView.context.getString(R.string.message_modal_choose_time))
                                                         .setCancelable(true)
                                                         .setPositiveButton(
                                                             itemView.context.getString(R.string.yes)

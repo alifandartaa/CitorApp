@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -8,9 +9,11 @@
     <LinearLayout
         android:id="@+id/lnr_hello"
         android:layout_width="match_parent"
-        android:layout_height="240dp"
-        android:background="@color/bluePrimary"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@color/primaryColor"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:paddingTop="20dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -21,7 +24,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                android:layout_marginTop="40dp"
                 android:text="@string/halo_pak_jamal"
                 android:textColor="@color/white"
                 android:textSize="44sp"
@@ -32,7 +34,6 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="10dp"
-                android:layout_marginTop="40dp"
                 android:text="nama owner"
                 android:textColor="@color/white"
                 android:textSize="44sp"
@@ -41,38 +42,48 @@
         </LinearLayout>
 
         <TextView
-            android:id="@+id/tv_week"
+            android:id="@+id/tv_info"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="20dp"
             android:layout_marginTop="8dp"
-            android:text="@string/cuci_motor"
+            android:gravity="center_horizontal"
             android:textColor="@color/white"
-            android:textSize="20sp" />
-    </LinearLayout>
+            android:textSize="22sp" />
 
-    <FrameLayout
-        android:id="@+id/fl_open_order"
-        android:layout_width="300dp"
-        android:layout_height="108dp"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="180dp"
-        android:background="@drawable/bg_open_order">
-
-        <TextView
-            android:id="@+id/tv_open"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cv_open_close_order"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/buka_layanan_sekarang"
-            android:textAlignment="center"
-            android:textColor="@color/white"
-            android:textSize="28sp"
-            android:textStyle="bold" />
+            android:layout_gravity="center_horizontal"
+            android:layout_marginVertical="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            app:cardBackgroundColor="@color/greenOpen"
+            app:cardCornerRadius="15dp"
+            app:cardElevation="10dp"
+            app:cardUseCompatPadding="true"
+            app:rippleColor="@color/secondaryLightColor">
 
-    </FrameLayout>
+            <TextView
+                android:id="@+id/tv_open"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:padding="16dp"
+                android:text="@string/buka_layanan_sekarang"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </LinearLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_menu"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/lnr_hello"
@@ -92,7 +103,7 @@
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginBottom="16dp"
                 android:text="@string/profil_usaha"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
         </FrameLayout>
 
@@ -111,7 +122,7 @@
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginBottom="16dp"
                 android:text="@string/antrean"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
         </FrameLayout>
 
@@ -131,7 +142,7 @@
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginBottom="16dp"
                 android:text="@string/statistik"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
         </FrameLayout>
 
@@ -152,7 +163,7 @@
                 android:layout_gravity="bottom|center_horizontal"
                 android:layout_marginBottom="16dp"
                 android:text="@string/pengaturan"
-                android:textColor="@color/black"
+                android:textColor="@color/white"
                 android:textSize="16sp" />
         </FrameLayout>
 

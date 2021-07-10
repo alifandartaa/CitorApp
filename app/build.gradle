@@ -9,7 +9,7 @@ android {
     buildToolsVersion "30.0.2"
     flavorDimensions "mode:"
     defaultConfig {
-        applicationId "com.example.citorapp"
+        applicationId "com.citor.app"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

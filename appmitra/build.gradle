@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'com.google.gms.google-services'
 }
 
 android {
@@ -12,7 +13,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.example.appmitra"
+        applicationId "com.citor.mitra"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

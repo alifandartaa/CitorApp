@@ -13,6 +13,14 @@
     <color name="greenOpen">#6DCE53</color>
     <color name="redClose">#ED4040</color>
 
+    <color name="primaryColor">#f9a825</color>
+    <color name="primaryLightColor">#ffd95a</color>
+    <color name="primaryDarkColor">#c17900</color>
+    <color name="secondaryColor">#005f63</color>
+    <color name="secondaryLightColor">#428d90</color>
+    <color name="secondaryDarkColor">#003539</color>
+    <color name="primaryTextColor">#004d40</color>
+    <color name="secondaryTextColor">#ffffff</color>
 
     <!--reds-->
     <color name="md_red_50">#FFEBEE</color>
