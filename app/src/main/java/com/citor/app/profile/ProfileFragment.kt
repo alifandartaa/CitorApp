@@ -45,8 +45,11 @@ class ProfileFragment : Fragment() {
             .into(profileBinding.ivUserProfile)
 
         profileBinding.btnEditProfile.setOnClickListener {
-            val intent = Intent(this@ProfileFragment.requireContext(), EditProfileActivity::class.java)
-            startActivity(intent)
+            startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+        }
+
+        profileBinding.btnEditPass.setOnClickListener {
+            startActivity(Intent(requireContext(), EditPassActivity::class.java))
         }
 
         profileBinding.btnLogout.setOnClickListener {

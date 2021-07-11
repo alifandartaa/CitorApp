@@ -68,4 +68,12 @@ interface AuthService {
     fun refreshAuthToken(
         @Field("iduser") iduser: String
     ): Call<LoginResponse>
+
+    //change password
+    @FormUrlEncoded
+    @POST("auth/editPass")
+    fun editPass(
+        @Field("iduser") iduser: String,
+        @Field("password") password: String
+    ): Call<DefaultResponse>
 }

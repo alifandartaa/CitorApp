@@ -8,6 +8,7 @@
     <string name="value_email_register">E-Mail</string>
     <string name="value_phone_register">Nomor Telepon</string>
     <string name="value_password_register">Kata Sandi</string>
+    <string name="value_password_validation_register">Masukkan Kata Sandi Lagi</string>
     <string name="value_password_verify_register">Konfirmasi Kata Sandi</string>
     <string name="verify">Verifikasi Akun</string>
     <string name="term1">Setujui</string>

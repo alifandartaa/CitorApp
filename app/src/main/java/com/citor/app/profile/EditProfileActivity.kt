@@ -1,6 +1,5 @@
 package com.citor.app.profile
 
-
 import android.app.Activity
 import android.content.Intent
 import android.net.Uri
@@ -32,7 +31,6 @@ import retrofit2.Response
 import java.io.File
 import java.util.*
 
-
 class EditProfileActivity : AppCompatActivity() {
 
     private lateinit var editProfileBinding: ActivityEditProfileBinding
@@ -57,7 +55,7 @@ class EditProfileActivity : AppCompatActivity() {
 
         Glide.with(this@EditProfileActivity)
             .load(fotoTv)
-            .apply(RequestOptions().override(130))
+            .apply(RequestOptions().override(200))
             .placeholder(R.drawable.user_photo_icon)
             .error(R.drawable.user_photo_icon)
             .into(editProfileBinding.ivUserProfile)
@@ -166,7 +164,7 @@ class EditProfileActivity : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
-
+                Toasty.error(this@EditProfileActivity, R.string.try_again, Toasty.LENGTH_LONG).show()
             }
 
         })
