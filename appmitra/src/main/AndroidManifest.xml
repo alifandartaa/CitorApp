@@ -20,6 +20,7 @@
         </activity>
         <activity android:name=".auth.login.OtpInputActivity" />
         <activity android:name=".auth.register.EmailConfirmActivity" />
+        <activity android:name=".ServiceDetailActivity"/>
     </application>
 
 </manifest>
