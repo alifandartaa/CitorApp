@@ -1,6 +1,7 @@
 package com.citor.mitra
 
 import android.os.Bundle
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DefaultItemAnimator
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -52,6 +53,9 @@ class ServiceActivity : AppCompatActivity() {
                             setHasFixedSize(true)
                             adapter = adapterRvService
                         }
+                    } else {
+                        serviceBinding.svService.visibility = View.GONE
+                        serviceBinding.rvListCatEmpty.visibility = View.VISIBLE
                     }
                 }
             }

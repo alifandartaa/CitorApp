@@ -161,4 +161,5 @@
     <string name="detail_booking_price">Rp 10.000</string>
     <string name="detail_booking_order">USR-009000</string>
     <string name="detail_booking_payment">880912039012930</string>
+    <string name="data_empty">Belum ada data antrian yang tersedia</string>
 </resources>
