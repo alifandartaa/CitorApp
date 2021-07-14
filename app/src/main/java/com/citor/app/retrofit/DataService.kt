@@ -55,6 +55,7 @@ interface DataService {
         @Field("idjam_buka") idjam_buka: String,
         @Field("kodePesan") kodePesan: String,
         @Field("metodeBayar") metodeBayar: String,
+        @Field("harga") harga: String,
         @Field("status") status: String,
         @Header("Authorization") token: String
     ): Call<DefaultResponse>

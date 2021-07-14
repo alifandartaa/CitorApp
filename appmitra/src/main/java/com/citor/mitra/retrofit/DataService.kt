@@ -2,6 +2,7 @@ package com.citor.mitra.retrofit
 
 import com.citor.mitra.retrofit.response.DefaultResponse
 import com.citor.mitra.retrofit.response.MitraResponse
+import com.citor.mitra.retrofit.response.ServiceResponse
 import retrofit2.Call
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
@@ -55,4 +56,12 @@ interface DataService {
         @Field("idmitra") idmitra: String,
         @Header("Authorization") token: String
     ): Call<MitraResponse>
+
+    //get pemesanan
+    @FormUrlEncoded
+    @POST("main_mitra/getPemesanan")
+    fun getPemesanan(
+        @Field("idmitra") idmitra: String,
+        @Header("Authorization") token: String
+    ): Call<ServiceResponse>
 }

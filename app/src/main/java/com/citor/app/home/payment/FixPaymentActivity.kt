@@ -32,7 +32,6 @@ import java.text.DecimalFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-
 class FixPaymentActivity : AppCompatActivity() {
 
     private lateinit var fixPaymentBinding: ActivityFixPaymentBinding
@@ -74,7 +73,7 @@ class FixPaymentActivity : AppCompatActivity() {
         fixPaymentBinding.tvOrderTimeValue.text = timeService
         val numbering = DecimalFormat("#,###")
         fixPaymentBinding.tvPriceValue.text = numbering.format(price.toInt())
-        fixPaymentBinding.tvPointValue.text = "10"
+        fixPaymentBinding.tvPointValue.text = "5"
 
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -94,11 +93,11 @@ class FixPaymentActivity : AppCompatActivity() {
                         "success" -> {
 //                            Log.d("success", "Transaksi ${result.response.transactionId} ${result.response.paymentType} Success")
                             val poin = mySharedPreferences.getValue(Constants.USER_POIN).toString()
-                            val poinInt = poin.toInt() + 10
+                            val poinInt = poin.toInt() + 5
                             mySharedPreferences.setValue(Constants.USER_POIN, poinInt.toString())
                             changeStatus(idJamBuka, "penuh", tokenAuth)
 
-                            updateStatusTransaction(tokenAuth, vendorId, idUser, idJamBuka, transactionId, paymentType, "berjalan")
+                            updateStatusTransaction(tokenAuth, vendorId, idUser, idJamBuka, transactionId, paymentType, price,"berjalan")
                             startActivity(Intent(this@FixPaymentActivity, MainActivity::class.java))
                             finish()
                         }
@@ -159,10 +158,6 @@ class FixPaymentActivity : AppCompatActivity() {
         })
     }
 
-    private fun updateStatusTransactionToPending() {
-
-    }
-
     private fun updateStatusTransaction(
         tokenAuth: String,
         vendorId: String,
@@ -170,16 +165,17 @@ class FixPaymentActivity : AppCompatActivity() {
         idJamBuka: String,
         transactionId: String?,
         paymentType: String?,
+        price: String,
         transactionStatus: String?
     ) {
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
-        service.insertPemesanan(vendorId, idUser, idJamBuka, transactionId!!, paymentType!!, transactionStatus!!, "Bearer $tokenAuth")
+        service.insertPemesanan(vendorId, idUser, idJamBuka, transactionId!!, paymentType!!, price, transactionStatus!!, "Bearer $tokenAuth")
             .enqueue(object : Callback<DefaultResponse> {
                 override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                     if (response.isSuccessful) {
                         if (response.body()!!.status == "success") {
                             val title = "Pembayaran Selesai!"
-                            val body = "Selamat! Kamu Mendapatkan 10 Poin, Silahkan Cek Jumlah Poin Pada Beranda Aplikasi"
+                            val body = "Selamat! Kamu Mendapatkan 5 Poin, Silahkan Cek Jumlah Poin Pada Beranda Aplikasi"
                             NotificationHelper(this@FixPaymentActivity).displayNotification(title, body)
                         }
                     }
