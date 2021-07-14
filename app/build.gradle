@@ -26,9 +26,10 @@ android {
     }
 
     productFlavors{
-        sandbox{
+
+        production{
             buildConfigField "String", "BASE_URL", "\"https://citor-app.herokuapp.com/index.php/\""
-            buildConfigField "String", "CLIENT_KEY", "\"SB-Mid-client-5CHnBFylQ2hoYARY\""
+            buildConfigField "String", "CLIENT_KEY", "\"Mid-client-qRlatAZ-N-G9Bg_O\""
         }
     }
 
@@ -98,12 +99,14 @@ dependencies {
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     implementation 'br.com.simplepass:loading-button-android:2.2.0'
 
-    // For using the Midtrans Sandbox
-    implementation 'com.midtrans:uikit:1.28.0-SANDBOX'
-    sandboxImplementation 'com.midtrans:uikit:1.28.0-SANDBOX'
+    //For Mitra Production
+    implementation 'com.midtrans:uikit:1.28.0'
 
     // For pict image
     implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
     implementation 'com.github.florent37:inline-activity-result-kotlin:1.0.4'
     implementation 'com.makeramen:roundedimageview:2.3.0'
+
+    //For Image Slider
+    implementation 'org.imaginativeworld.whynotimagecarousel:whynotimagecarousel:1.2.1'
 }

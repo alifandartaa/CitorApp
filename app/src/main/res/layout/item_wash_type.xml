@@ -7,6 +7,7 @@
     android:layout_gravity="center"
     android:layout_marginTop="4dp"
     android:orientation="vertical"
+    android:padding="8dp"
     app:cardCornerRadius="4dp"
     app:cardElevation="4dp"
     app:cardMaxElevation="4dp"
@@ -24,7 +25,7 @@
             android:layout_marginHorizontal="32dp"
             android:layout_marginTop="16dp"
             android:scaleType="fitXY"
-            android:src="@drawable/img_item_type_washer"
+            android:src="@drawable/img_washing_reguler"
             tools:ignore="ContentDescription" />
 
         <TextView

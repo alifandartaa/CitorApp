@@ -20,7 +20,7 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="103dp"
-            android:background="@drawable/bg_motorcycle">
+            android:background="@drawable/img_washing_service">
 
             <ToggleButton
                 android:id="@+id/btn_like"

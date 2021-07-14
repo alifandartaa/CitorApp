@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_home"
     android:padding="8dp"
+    android:scrollbars="none"
     tools:context=".home.HomeFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -45,9 +46,9 @@
             android:id="@+id/tv_hi"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="40dp"
             android:text="@string/hi"
-            android:layout_marginStart="16dp"
             android:textColor="@color/md_cyan_500"
             android:textSize="18sp"
             android:textStyle="bold"
@@ -99,55 +100,25 @@
             app:layout_constraintTop_toBottomOf="@+id/tv_greeting"
             app:rippleColor="@color/bluePrimary" />
 
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_promotion"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/layout_first_image_slider"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
-            android:background="#ABEDD8"
-            android:padding="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_search">
-
-            <ImageView
-                android:id="@+id/img_promotion"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/img_promo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/layout_advertisement"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="16dp"
-            android:background="#ABEDD8"
-            android:padding="16dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/layout_menu">
+            app:layout_constraintTop_toBottomOf="@id/btn_search">
 
-            <ImageView
-                android:id="@+id/img_advertisement"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:background="@drawable/img_promo"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:ignore="ContentDescription" />
-
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:id="@+id/carousel_view_first"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:autoPlay="true"
+                app:autoPlayDelay="3000"
+                app:imageScaleType="centerCrop"
+                app:showNavigationButtons="false" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/layout_menu"
@@ -156,9 +127,9 @@
             android:layout_marginTop="24dp"
             android:orientation="horizontal"
             android:weightSum="4"
-            app:layout_constraintEnd_toEndOf="@+id/layout_promotion"
-            app:layout_constraintStart_toStartOf="@+id/layout_promotion"
-            app:layout_constraintTop_toBottomOf="@+id/layout_promotion">
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_first_image_slider">
 
             <androidx.cardview.widget.CardView
                 android:id="@+id/btn_service"
@@ -345,5 +316,389 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.cardview.widget.CardView>
         </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/layout_second_image_slider"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/layout_menu">
+
+            <org.imaginativeworld.whynotimagecarousel.ImageCarousel
+                android:id="@+id/carousel_view_second"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                app:autoPlay="true"
+                app:autoPlayDelay="5000"
+                app:imageScaleType="centerCrop"
+                app:showNavigationButtons="false" />
+        </LinearLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-</androidx.core.widget.NestedScrollView>
+</ScrollView>
+
+
+    <!--    <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="match_parent"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toTopOf="parent">-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv_text_point"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="16dp"-->
+    <!--            android:layout_marginEnd="16dp"-->
+    <!--            android:text="@string/poin_kamu"-->
+    <!--            android:textColor="@color/md_cyan_900"-->
+    <!--            android:textSize="18sp"-->
+    <!--            android:textStyle="bold"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv_point"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:padding="4dp"-->
+    <!--            android:text="@string/point_user"-->
+    <!--            android:textColor="@color/md_cyan_A700"-->
+    <!--            android:textSize="35sp"-->
+    <!--            android:textStyle="bold"-->
+    <!--            app:layout_constraintEnd_toEndOf="@+id/tv_text_point"-->
+    <!--            app:layout_constraintStart_toStartOf="@+id/tv_text_point"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/tv_text_point" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv_hi"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="40dp"-->
+    <!--            android:text="@string/hi"-->
+    <!--            android:layout_marginStart="16dp"-->
+    <!--            android:textColor="@color/md_cyan_500"-->
+    <!--            android:textSize="18sp"-->
+    <!--            android:textStyle="bold"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toTopOf="parent" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv_name"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginStart="4dp"-->
+    <!--            android:text="@string/nama_user"-->
+    <!--            android:textColor="@color/md_cyan_500"-->
+    <!--            android:textSize="18sp"-->
+    <!--            android:textStyle="bold"-->
+    <!--            app:layout_constraintBottom_toBottomOf="@+id/tv_hi"-->
+    <!--            app:layout_constraintStart_toEndOf="@+id/tv_hi"-->
+    <!--            app:layout_constraintTop_toTopOf="@+id/tv_hi" />-->
+
+    <!--        <TextView-->
+    <!--            android:id="@+id/tv_greeting"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:text="@string/apa_kabar"-->
+    <!--            android:textColor="@color/md_cyan_500"-->
+    <!--            android:textSize="18sp"-->
+    <!--            android:textStyle="bold"-->
+    <!--            app:layout_constraintStart_toStartOf="@+id/tv_hi"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/tv_hi" />-->
+
+    <!--        <androidx.appcompat.widget.AppCompatButton-->
+    <!--            android:id="@+id/btn_search"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="32dp"-->
+    <!--            android:background="@drawable/bg_search"-->
+    <!--            android:clickable="true"-->
+    <!--            android:focusable="true"-->
+    <!--            android:fontFamily="@font/poppins"-->
+    <!--            android:padding="16dp"-->
+    <!--            android:text="@string/cuci_dimana"-->
+    <!--            android:textAllCaps="false"-->
+    <!--            android:textColor="#A39696"-->
+    <!--            android:textSize="16sp"-->
+    <!--            android:textStyle="bold"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintHorizontal_bias="0.507"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/tv_greeting"-->
+    <!--            app:rippleColor="@color/bluePrimary" />-->
+
+    <!--        <org.imaginativeworld.whynotimagecarousel.ImageCarousel-->
+    <!--            android:id="@+id/carousel_view"-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="150dp"-->
+    <!--            android:layout_marginHorizontal="16dp"-->
+    <!--            android:layout_marginTop="16dp"-->
+    <!--            app:autoPlay="true"-->
+    <!--            app:autoPlayDelay="3000"-->
+    <!--            app:imageScaleType="centerCrop"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@id/btn_search"-->
+    <!--            app:showNavigationButtons="false" />-->
+    <!--        -->
+    <!--        <LinearLayout-->
+    <!--            android:layout_width="match_parent"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            app:layout_constraintTop_toTopOf="@id/carousel_view">-->
+    <!--            -->
+    <!--            -->
+    <!--        </LinearLayout>-->
+
+
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:id="@+id/layout_promotion"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="32dp"-->
+    <!--            android:background="#ABEDD8"-->
+    <!--            android:padding="16dp"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/btn_search">-->
+
+    <!--            <ImageView-->
+    <!--                android:id="@+id/img_promotion"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:background="@drawable/img_promo"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                tools:ignore="ContentDescription" />-->
+
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--            android:id="@+id/layout_advertisement"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="24dp"-->
+    <!--            android:layout_marginBottom="16dp"-->
+    <!--            android:background="#ABEDD8"-->
+    <!--            android:padding="16dp"-->
+    <!--            app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--            app:layout_constraintEnd_toEndOf="parent"-->
+    <!--            app:layout_constraintStart_toStartOf="parent"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/layout_menu">-->
+
+    <!--            <ImageView-->
+    <!--                android:id="@+id/img_advertisement"-->
+    <!--                android:layout_width="wrap_content"-->
+    <!--                android:layout_height="wrap_content"-->
+    <!--                android:background="@drawable/img_promo"-->
+    <!--                app:layout_constraintBottom_toBottomOf="parent"-->
+    <!--                app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                app:layout_constraintStart_toStartOf="parent"-->
+    <!--                app:layout_constraintTop_toTopOf="parent"-->
+    <!--                tools:ignore="ContentDescription" />-->
+
+    <!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+    <!--        <LinearLayout-->
+    <!--            android:id="@+id/layout_menu"-->
+    <!--            android:layout_width="wrap_content"-->
+    <!--            android:layout_height="wrap_content"-->
+    <!--            android:layout_marginTop="24dp"-->
+    <!--            android:orientation="horizontal"-->
+    <!--            android:weightSum="4"-->
+    <!--            app:layout_constraintEnd_toEndOf="@+id/layout_promotion"-->
+    <!--            app:layout_constraintStart_toStartOf="@+id/layout_promotion"-->
+    <!--            app:layout_constraintTop_toBottomOf="@+id/layout_promotion">-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:id="@+id/btn_service"-->
+    <!--                android:layout_width="80dp"-->
+    <!--                android:layout_height="105dp"-->
+    <!--                android:layout_gravity="center_vertical"-->
+    <!--                android:layout_marginStart="8dp"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:clickable="true"-->
+    <!--                android:focusable="true"-->
+    <!--                app:cardCornerRadius="5dp"-->
+    <!--                app:cardElevation="5dp"-->
+    <!--                app:rippleColor="@color/bluePrimary">-->
+
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:id="@+id/img_vespa"-->
+    <!--                        android:layout_width="50dp"-->
+    <!--                        android:layout_height="40dp"-->
+    <!--                        android:layout_marginTop="20dp"-->
+    <!--                        android:background="@drawable/ic_vespa"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+    <!--                        tools:ignore="ContentDescription" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/tv_service"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_gravity="center_vertical"-->
+    <!--                        android:layout_marginTop="10dp"-->
+    <!--                        android:fontFamily="@font/poppins"-->
+    <!--                        android:text="@string/layanan"-->
+    <!--                        android:textColor="#458CAD"-->
+    <!--                        android:textSize="14sp"-->
+    <!--                        android:textStyle="bold"-->
+    <!--                        app:layout_constraintEnd_toEndOf="@+id/img_vespa"-->
+    <!--                        app:layout_constraintStart_toStartOf="@+id/img_vespa"-->
+    <!--                        app:layout_constraintTop_toBottomOf="@+id/img_vespa" />-->
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:id="@+id/btn_rating"-->
+    <!--                android:layout_width="80dp"-->
+    <!--                android:layout_height="105dp"-->
+    <!--                android:layout_gravity="center_vertical"-->
+    <!--                android:layout_marginVertical="8dp"-->
+    <!--                android:layout_marginStart="8dp"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:clickable="true"-->
+    <!--                android:focusable="true"-->
+    <!--                app:cardCornerRadius="5dp"-->
+    <!--                app:cardElevation="5dp"-->
+    <!--                app:rippleColor="@color/bluePrimary">-->
+
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:id="@+id/img_jempol"-->
+    <!--                        android:layout_width="40dp"-->
+    <!--                        android:layout_height="50dp"-->
+    <!--                        android:layout_marginTop="8dp"-->
+    <!--                        android:background="@drawable/ic_jempol"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+    <!--                        tools:ignore="ContentDescription" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/tv_rating"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_gravity="center_vertical"-->
+    <!--                        android:layout_marginTop="10dp"-->
+    <!--                        android:fontFamily="@font/poppins"-->
+    <!--                        android:text="@string/teratas"-->
+    <!--                        android:textColor="#458CAD"-->
+    <!--                        android:textSize="14sp"-->
+    <!--                        android:textStyle="bold"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toBottomOf="@+id/img_jempol" />-->
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:id="@+id/btn_location"-->
+    <!--                android:layout_width="80dp"-->
+    <!--                android:layout_height="105dp"-->
+    <!--                android:layout_gravity="center_vertical"-->
+    <!--                android:layout_marginStart="8dp"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:clickable="true"-->
+    <!--                android:focusable="true"-->
+    <!--                app:cardCornerRadius="5dp"-->
+    <!--                app:cardElevation="5dp"-->
+    <!--                app:rippleColor="@color/bluePrimary">-->
+
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:id="@+id/img_map"-->
+    <!--                        android:layout_width="50dp"-->
+    <!--                        android:layout_height="40dp"-->
+    <!--                        android:layout_marginTop="20dp"-->
+    <!--                        android:background="@drawable/ic_peta"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+    <!--                        tools:ignore="ContentDescription" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/tv_location"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_gravity="center_vertical"-->
+    <!--                        android:layout_marginTop="10dp"-->
+    <!--                        android:fontFamily="@font/poppins"-->
+    <!--                        android:text="@string/terdekat"-->
+    <!--                        android:textColor="#458CAD"-->
+    <!--                        android:textSize="14sp"-->
+    <!--                        android:textStyle="bold"-->
+    <!--                        app:layout_constraintEnd_toEndOf="@+id/img_map"-->
+    <!--                        app:layout_constraintStart_toStartOf="@+id/img_map"-->
+    <!--                        app:layout_constraintTop_toBottomOf="@+id/img_map" />-->
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+
+    <!--            <androidx.cardview.widget.CardView-->
+    <!--                android:id="@+id/btn_voucher"-->
+    <!--                android:layout_width="80dp"-->
+    <!--                android:layout_height="105dp"-->
+    <!--                android:layout_gravity="center_vertical"-->
+    <!--                android:layout_marginHorizontal="8dp"-->
+    <!--                android:layout_weight="1"-->
+    <!--                android:clickable="true"-->
+    <!--                android:focusable="true"-->
+    <!--                app:cardCornerRadius="5dp"-->
+    <!--                app:cardElevation="5dp"-->
+    <!--                app:rippleColor="@color/bluePrimary">-->
+
+    <!--                <androidx.constraintlayout.widget.ConstraintLayout-->
+    <!--                    android:layout_width="match_parent"-->
+    <!--                    android:layout_height="match_parent">-->
+
+    <!--                    <ImageView-->
+    <!--                        android:id="@+id/img_voucher"-->
+    <!--                        android:layout_width="50dp"-->
+    <!--                        android:layout_height="40dp"-->
+    <!--                        android:layout_marginTop="20dp"-->
+    <!--                        android:background="@drawable/ic_voucher"-->
+    <!--                        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--                        app:layout_constraintStart_toStartOf="parent"-->
+    <!--                        app:layout_constraintTop_toTopOf="parent"-->
+    <!--                        tools:ignore="ContentDescription" />-->
+
+    <!--                    <TextView-->
+    <!--                        android:id="@+id/tv_voucher"-->
+    <!--                        android:layout_width="wrap_content"-->
+    <!--                        android:layout_height="wrap_content"-->
+    <!--                        android:layout_gravity="center_vertical"-->
+    <!--                        android:layout_marginTop="8dp"-->
+    <!--                        android:fontFamily="@font/poppins"-->
+    <!--                        android:text="@string/voucher"-->
+    <!--                        android:textColor="#458CAD"-->
+    <!--                        android:textSize="14sp"-->
+    <!--                        android:textStyle="bold"-->
+    <!--                        app:layout_constraintEnd_toEndOf="@+id/img_voucher"-->
+    <!--                        app:layout_constraintStart_toStartOf="@+id/img_voucher"-->
+    <!--                        app:layout_constraintTop_toBottomOf="@+id/img_voucher" />-->
+
+    <!--                </androidx.constraintlayout.widget.ConstraintLayout>-->
+    <!--            </androidx.cardview.widget.CardView>-->
+    <!--        </LinearLayout>-->
+    <!--    </androidx.constraintlayout.widget.ConstraintLayout>-->

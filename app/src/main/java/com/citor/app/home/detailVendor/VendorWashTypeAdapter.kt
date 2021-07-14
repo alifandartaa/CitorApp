@@ -1,15 +1,18 @@
 package com.citor.app.home.detailVendor
 
+import android.content.Context
 import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.citor.app.databinding.ItemWashTypeBinding
 import com.citor.app.home.detailBooking.BookingActivity
 import com.citor.app.home.searchVendor.VendorItemEntity
 import java.text.DecimalFormat
 
 class VendorWashTypeAdapter(private val vendorId: String, private val name: String) : RecyclerView.Adapter<VendorWashTypeAdapter.WashTypeHolder>() {
+
 
     private var listWashType = ArrayList<VendorItemEntity>()
 

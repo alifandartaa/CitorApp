@@ -7,11 +7,14 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.citor.app.R
 import com.citor.app.databinding.FragmentHomeBinding
 import com.citor.app.home.searchVendor.SearchVendorActivity
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
 import com.google.firebase.messaging.FirebaseMessaging
+import org.imaginativeworld.whynotimagecarousel.CarouselItem
+import org.imaginativeworld.whynotimagecarousel.ImageCarousel
 
 class HomeFragment : Fragment() {
 
@@ -43,6 +46,11 @@ class HomeFragment : Fragment() {
         binding.tvName.text = userName
         binding.tvPoint.text = point
 
+        firstImageSlider()
+
+        secondImageSlider()
+
+
         binding.btnService.setOnClickListener() {
             val intent = Intent(this@HomeFragment.requireContext(), SearchVendorActivity::class.java)
             startActivity(intent)
@@ -59,5 +67,79 @@ class HomeFragment : Fragment() {
         binding.btnVoucher.setOnClickListener() {
 
         }
+    }
+
+    private fun firstImageSlider() {
+        //first image slider
+        val firstCarousel: ImageCarousel = requireView().findViewById(R.id.carousel_view_first)
+        val firstList = mutableListOf<CarouselItem>()
+        //first image
+        firstList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.img_top_ads
+            )
+        )
+        //second image
+        firstList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.img_main_service
+            )
+        )
+        //third image slider
+        firstList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.img_washing_reguler
+            )
+        )
+        //fourth image slider
+        firstList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.img_washing_snow
+            )
+        )
+        //fifth image slider
+        firstList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.img_washing_service
+            )
+        )
+        firstCarousel.addData(firstList)
+    }
+
+    private fun secondImageSlider() {
+        //second image slider
+        val secondCarousel: ImageCarousel = requireView().findViewById(R.id.carousel_view_second)
+        val secondList = mutableListOf<CarouselItem>()
+        //first image
+        secondList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.img_top_ads
+            )
+        )
+        //second image
+        secondList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.img_main_service
+            )
+        )
+        //third image slider
+        secondList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.img_washing_reguler
+            )
+        )
+        //fourth image slider
+        secondList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.img_washing_snow
+            )
+        )
+        //fifth image slider
+        secondList.add(
+            CarouselItem(
+                imageDrawable = R.drawable.img_washing_service
+            )
+        )
+        secondCarousel.addData(secondList)
     }
 }
