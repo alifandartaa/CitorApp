@@ -83,7 +83,7 @@ class FixPaymentActivity : AppCompatActivity() {
         }
 
         SdkUIFlowBuilder.init()
-            .setClientKey("Mid-client-qRlatAZ-N-G9Bg_O")
+            .setClientKey("SB-Mid-client-5CHnBFylQ2hoYARY")
             .setContext(this)
             .setTransactionFinishedCallback { result ->
                 if (result.response != null) {

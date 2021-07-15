@@ -27,15 +27,15 @@ android {
 
     productFlavors{
 
-//        sandbox{
-//            buildConfigField "String", "MERCHANT_BASE_URL", "\"https://citor-app.herokuapp.com/index.php/\""
-//            buildConfigField "String", "MERCHANT_CLIENT_KEY", "\"SB-Mid-client-5CHnBFylQ2hoYARY\""
-//        }
-
-        production{
-            buildConfigField "String", "BASE_URL", "\"https://citor-app.herokuapp.com/index.php/\""
-            buildConfigField "String", "CLIENT_KEY", "\"Mid-client-qRlatAZ-N-G9Bg_O\""
+        sandbox{
+            buildConfigField "String", "MERCHANT_BASE_URL", "\"https://citor-app.herokuapp.com/index.php/\""
+            buildConfigField "String", "MERCHANT_CLIENT_KEY", "\"SB-Mid-client-5CHnBFylQ2hoYARY\""
         }
+
+//        production{
+//            buildConfigField "String", "BASE_URL", "\"https://citor-app.herokuapp.com/index.php/\""
+//            buildConfigField "String", "CLIENT_KEY", "\"Mid-client-qRlatAZ-N-G9Bg_O\""
+//        }
     }
 
     compileOptions {
@@ -105,10 +105,10 @@ dependencies {
     implementation 'br.com.simplepass:loading-button-android:2.2.0'
 
     //For Midtrans Sandbox
-//    implementation 'com.midtrans:uikit:1.28.0-SANDBOX'
+    implementation 'com.midtrans:uikit:1.28.0-SANDBOX'
 
     //For Midtrans Production
-    implementation 'com.midtrans:uikit:1.28.0'
+//    implementation 'com.midtrans:uikit:1.28.0'
 
     // For pict image
     implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
