@@ -27,6 +27,11 @@ android {
 
     productFlavors{
 
+//        sandbox{
+//            buildConfigField "String", "MERCHANT_BASE_URL", "\"https://citor-app.herokuapp.com/index.php/\""
+//            buildConfigField "String", "MERCHANT_CLIENT_KEY", "\"SB-Mid-client-5CHnBFylQ2hoYARY\""
+//        }
+
         production{
             buildConfigField "String", "BASE_URL", "\"https://citor-app.herokuapp.com/index.php/\""
             buildConfigField "String", "CLIENT_KEY", "\"Mid-client-qRlatAZ-N-G9Bg_O\""
@@ -99,7 +104,10 @@ dependencies {
     implementation 'com.github.ybq:Android-SpinKit:1.4.0'
     implementation 'br.com.simplepass:loading-button-android:2.2.0'
 
-    //For Mitra Production
+    //For Midtrans Sandbox
+//    implementation 'com.midtrans:uikit:1.28.0-SANDBOX'
+
+    //For Midtrans Production
     implementation 'com.midtrans:uikit:1.28.0'
 
     // For pict image

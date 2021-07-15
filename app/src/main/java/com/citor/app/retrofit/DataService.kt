@@ -3,6 +3,7 @@ package com.citor.app.retrofit
 import com.citor.app.retrofit.response.DefaultResponse
 import com.citor.app.retrofit.response.HistoryResponse
 import com.citor.app.retrofit.response.MitraResponse
+import com.citor.app.retrofit.response.NotificationResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -46,6 +47,13 @@ interface DataService {
         @Field("iduser") iduser: String,
         @Header("Authorization") token: String
     ): Call<HistoryResponse>
+
+    @FormUrlEncoded
+    @POST("main/getNotif")
+    fun getNotification(
+        @Field("iduser") iduser: String,
+        @Header("Authorization") token: String
+    ): Call<NotificationResponse>
 
     @FormUrlEncoded
     @POST("main/insertPemesanan")

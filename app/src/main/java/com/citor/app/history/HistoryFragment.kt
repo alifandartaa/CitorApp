@@ -60,7 +60,7 @@ class HistoryFragment : Fragment() {
                 historyAdapter.setListHistoryItem(listProgress)
                 historyAdapter.notifyDataSetChanged()
                 with(historyBinding.rvHistory) {
-                    layoutManager = LinearLayoutManager(requireContext())
+                    layoutManager = LinearLayoutManager(activity)
                     itemAnimator = DefaultItemAnimator()
                     setHasFixedSize(true)
                     adapter = historyAdapter

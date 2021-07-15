@@ -18,9 +18,7 @@ class NotificationsAdapter : RecyclerView.Adapter<NotificationsAdapter.Notificat
     class NotificationItemViewHolder(private val binding: ItemNotificationsBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(notificationItem: NotifEntity) {
             with(binding) {
-                if (notificationItem.type == "point") {
-                    tvNotifications.text = "Kamu mendapatkan ${notificationItem.poin} poin dari pencucian motor pertama kamu!"
-                }
+                tvNotifications.text = notificationItem.message
             }
         }
 

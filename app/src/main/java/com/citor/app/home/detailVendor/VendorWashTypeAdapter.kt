@@ -1,18 +1,18 @@
 package com.citor.app.home.detailVendor
 
-import android.content.Context
 import android.content.Intent
+import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.citor.app.R
 import com.citor.app.databinding.ItemWashTypeBinding
 import com.citor.app.home.detailBooking.BookingActivity
 import com.citor.app.home.searchVendor.VendorItemEntity
 import java.text.DecimalFormat
 
 class VendorWashTypeAdapter(private val vendorId: String, private val name: String) : RecyclerView.Adapter<VendorWashTypeAdapter.WashTypeHolder>() {
-
 
     private var listWashType = ArrayList<VendorItemEntity>()
 
@@ -27,7 +27,23 @@ class VendorWashTypeAdapter(private val vendorId: String, private val name: Stri
         fun bind(id: String, vendorName: String, washType: VendorItemEntity) {
             with(binding) {
                 val numbering = DecimalFormat("#,###")
+
                 tvNameType.text = washType.judul
+
+                if(washType.judul.subSequence(0, 10).contains("cuci salju", ignoreCase = true)){
+                    Glide.with(itemView.context)
+                        .asDrawable()
+                        .load(R.drawable.img_washing_snow)
+                        .into(imgWashType)
+                }
+
+                else if(washType.judul.subSequence(0, 12).contains("cuci reguler", ignoreCase = true)){
+                    Glide.with(itemView.context)
+                        .asDrawable()
+                        .load(R.drawable.img_washing_reguler)
+                        .into(imgWashType)
+                }
+
                 tvPrice.text = numbering.format(washType.harga.toInt())
                 btnChooseType.setOnClickListener {
                     val intent = Intent(itemView.context, BookingActivity::class.java)
