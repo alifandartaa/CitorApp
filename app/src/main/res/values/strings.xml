@@ -149,5 +149,10 @@
     </string-array>
     <string name="title_modal_choose_time">Apakah Anda Yakin Ingin Memilih Jam ini?</string>
     <string name="message_modal_choose_time">Anda Tidak Bisa Memilih Jam Ini Selama 10 Menit Jika Melakukan Pembatalan Pesanan</string>
+    <string name="support">Bantuan</string>
+    <string name="support_caption">Dengan senang hati memberikan pelayanan terbaik untuk Anda</string>
+    <string name="support_instagram">citor.official</string>
+    <string name="support_number">+62 812 32 590 761</string>
+    <string name="support_email">citorapps@gmail.com</string>
 
 </resources>

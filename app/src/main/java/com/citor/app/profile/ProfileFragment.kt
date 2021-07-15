@@ -52,6 +52,10 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(requireContext(), EditPassActivity::class.java))
         }
 
+        profileBinding.btnSupport.setOnClickListener {
+            startActivity(Intent(requireContext(), SupportActivity::class.java))
+        }
+
         profileBinding.btnLogout.setOnClickListener {
             val mDialog = MaterialDialog.Builder(requireContext() as Activity)
                 .setTitle("Logout")
