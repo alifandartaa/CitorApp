@@ -8,6 +8,7 @@ class ServiceEntity(
     var jam_buka: String,
     var nama: String,
     var nama_mitra: String,
+    var layanan: String,
     var kode_pemesanan: String,
     var metode_pembayaran: String,
     var harga: String,

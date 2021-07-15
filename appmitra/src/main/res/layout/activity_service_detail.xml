@@ -11,31 +11,29 @@
         android:id="@+id/btn_back"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         android:background="@drawable/ic_close_black_24dp"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Konfirmasi"
+        android:text="Detail Pesanan"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
         android:id="@+id/ll_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_back"
-        app:layout_constraintStart_toStartOf="parent"
         android:orientation="vertical"
-        android:paddingTop="16dp">
+        android:paddingTop="16dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -44,7 +42,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/detail_name"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -53,25 +51,16 @@
             android:layout_marginBottom="16dp"
             android:text="@string/detail_queue"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="16dp"
-            android:text="@string/detail_type"
+            android:text="@string/detail_service"
             android:textSize="16sp"
-            android:textStyle="bold"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="16dp"
-            android:text="@string/detail_cc"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -80,7 +69,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/detail_rate"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -89,27 +78,36 @@
             android:layout_marginBottom="16dp"
             android:text="@string/detail_order"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginBottom="16dp"
             android:text="@string/detail_payment"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/detail_timestamp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_back"
-        app:layout_constraintStart_toEndOf="@id/ll_left"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
-        android:paddingTop="16dp">
+        android:paddingTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/ll_left"
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -118,7 +116,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -127,7 +125,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -136,7 +134,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -145,7 +143,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -154,7 +152,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -163,15 +161,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/separator"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
@@ -179,12 +169,12 @@
         android:id="@+id/ll_separator"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_back"
-        app:layout_constraintStart_toEndOf="@id/ll_left"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
-        android:paddingTop="16dp">
+        android:paddingTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/ll_left"
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -193,7 +183,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -202,7 +192,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -211,7 +201,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -220,7 +210,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -229,7 +219,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:layout_width="wrap_content"
@@ -238,27 +228,19 @@
             android:layout_marginBottom="16dp"
             android:text="@string/separator"
             android:textSize="16sp"
-            android:textStyle="bold"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:text="@string/separator"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:layout_marginStart="16dp"
-        app:layout_constraintTop_toBottomOf="@id/btn_back"
-        app:layout_constraintStart_toEndOf="@id/ll_separator"
+        android:layout_marginTop="16dp"
         android:orientation="vertical"
-        android:paddingTop="16dp">
+        android:paddingTop="16dp"
+        app:layout_constraintStart_toEndOf="@id/ll_separator"
+        app:layout_constraintTop_toBottomOf="@id/btn_back">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detail_booking_name"
@@ -268,7 +250,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/detail_booking_name"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detail_booking_time"
@@ -278,27 +260,17 @@
             android:layout_marginBottom="16dp"
             android:text="@string/detail_booking_time"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detail_booking_type"
+            android:id="@+id/detail_booking_service"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
             android:layout_marginBottom="16dp"
-            android:text="@string/detail_booking_type"
+            android:text="@string/detail_booking_service"
             android:textSize="16sp"
-            android:textStyle="bold"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/detail_booking_cc"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="16dp"
-            android:text="@string/detail_booking_cc"
-            android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detail_booking_price"
@@ -308,7 +280,7 @@
             android:layout_marginBottom="16dp"
             android:text="@string/detail_booking_price"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detail_booking_order"
@@ -318,29 +290,38 @@
             android:layout_marginBottom="16dp"
             android:text="@string/detail_booking_order"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/detail_booking_payment"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
+            android:layout_marginBottom="16dp"
             android:text="@string/detail_booking_payment"
             android:textSize="16sp"
-            android:textStyle="bold"/>
+            android:textStyle="bold" />
 
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/detail_booking_timestamp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="@string/detail_booking_timestamp"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_action"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toBottomOf="@id/ll_left"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:cornerRadius="100dp"
-        android:layout_marginTop="16dp"
-        android:hint="KONFIRMASI"
-        android:textColorHint="@color/white"/>
+    <!--    <com.google.android.material.button.MaterialButton-->
+    <!--        android:id="@+id/btn_action"-->
+    <!--        android:layout_width="wrap_content"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="16dp"-->
+    <!--        android:hint="KONFIRMASI"-->
+    <!--        android:textColorHint="@color/white"-->
+    <!--        app:cornerRadius="100dp"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent"-->
+    <!--        app:layout_constraintTop_toBottomOf="@id/ll_left" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

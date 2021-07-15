@@ -151,15 +151,17 @@
     <string name="detail_type">Jenis Motor</string>
     <string name="detail_cc">CC</string>
     <string name="detail_rate">Tarif</string>
-    <string name="detail_order">No. Pemesanan</string>
-    <string name="detail_payment">No. Pembayaran</string>
+    <string name="detail_service">Jenis Layanan</string>
+    <string name="detail_order">Kode Pemesanan</string>
+    <string name="detail_payment">Metode Pembayaran</string>
+    <string name="detail_timestamp">Waktu Pemesanan</string>
     <string name="separator">:</string>
     <string name="detail_booking_name">Ahmad Wicaksono</string>
     <string name="detail_booking_time">08.00 - 08.30</string>
-    <string name="detail_booking_type">Revo 110</string>
-    <string name="detail_booking_cc"><![CDATA[< 150 CC]]></string>
     <string name="detail_booking_price">Rp 10.000</string>
+    <string name="detail_booking_service">Cuci Reguler</string>
     <string name="detail_booking_order">USR-009000</string>
-    <string name="detail_booking_payment">880912039012930</string>
+    <string name="detail_booking_payment">Shopee</string>
+    <string name="detail_booking_timestamp">08.00</string>
     <string name="data_empty">Belum ada data antrian yang tersedia</string>
 </resources>

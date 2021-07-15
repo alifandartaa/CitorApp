@@ -1,10 +1,14 @@
 package com.citor.mitra.adapter
 
+import android.app.Activity
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.citor.mitra.ServiceDetailActivity
 import com.citor.mitra.ServiceEntity
 import com.citor.mitra.databinding.ItemServiceBinding
+
 
 class AdapterRvService : RecyclerView.Adapter<AdapterRvService.ServiceItemViewHolder>() {
 
@@ -21,6 +25,20 @@ class AdapterRvService : RecyclerView.Adapter<AdapterRvService.ServiceItemViewHo
             with(binding) {
                 tvClock.text = serviceItem.jam_buka
                 tvUserName.text = serviceItem.nama
+                cvDetail.setOnClickListener {
+                    val intent = Intent(itemView.context, ServiceDetailActivity::class.java)
+                        .apply {
+                            putExtra(ServiceDetailActivity.name, serviceItem.nama)
+                            putExtra(ServiceDetailActivity.timeService, serviceItem.jam_buka)
+                            putExtra(ServiceDetailActivity.service, serviceItem.layanan)
+                            putExtra(ServiceDetailActivity.price, serviceItem.harga)
+                            putExtra(ServiceDetailActivity.orderId, serviceItem.kode_pemesanan)
+                            putExtra(ServiceDetailActivity.paymentMethod, serviceItem.metode_pembayaran)
+                            putExtra(ServiceDetailActivity.timestamp, serviceItem.timestamp)
+                        }
+                    itemView.context.startActivity(intent)
+                    (itemView.context as Activity).finish()
+                }
             }
         }
     }
