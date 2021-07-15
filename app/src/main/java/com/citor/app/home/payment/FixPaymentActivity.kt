@@ -97,7 +97,7 @@ class FixPaymentActivity : AppCompatActivity() {
                             mySharedPreferences.setValue(Constants.USER_POIN, poinInt.toString())
                             changeStatus(idJamBuka, "penuh", tokenAuth)
 
-                            updateStatusTransaction(tokenAuth, vendorId, idUser, idJamBuka, transactionId, paymentType, price,"berjalan")
+                            updateStatusTransaction(tokenAuth, vendorId, idUser, idJamBuka, service,transactionId, paymentType, price,"berjalan")
                             startActivity(Intent(this@FixPaymentActivity, MainActivity::class.java))
                             finish()
                         }
@@ -163,13 +163,14 @@ class FixPaymentActivity : AppCompatActivity() {
         vendorId: String,
         idUser: String,
         idJamBuka: String,
+        layanan: String,
         transactionId: String?,
         paymentType: String?,
         price: String,
         transactionStatus: String?
     ) {
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
-        service.insertPemesanan(vendorId, idUser, idJamBuka, transactionId!!, paymentType!!, price, transactionStatus!!, "Bearer $tokenAuth")
+        service.insertPemesanan(vendorId, idUser, idJamBuka, layanan, transactionId!!, paymentType!!, price, transactionStatus!!, "Bearer $tokenAuth")
             .enqueue(object : Callback<DefaultResponse> {
                 override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                     if (response.isSuccessful) {

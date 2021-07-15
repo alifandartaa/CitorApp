@@ -61,6 +61,7 @@ interface DataService {
         @Field("idmitra") idmitra: String,
         @Field("iduser") iduser: String,
         @Field("idjam_buka") idjam_buka: String,
+        @Field("layanan") layanan: String,
         @Field("kodePesan") kodePesan: String,
         @Field("metodeBayar") metodeBayar: String,
         @Field("harga") harga: String,

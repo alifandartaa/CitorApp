@@ -1,7 +1,6 @@
 package com.citor.app.home.detailVendor
 
 import android.content.Intent
-import android.content.res.Resources
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -30,18 +29,25 @@ class VendorWashTypeAdapter(private val vendorId: String, private val name: Stri
 
                 tvNameType.text = washType.judul
 
-                if(washType.judul.subSequence(0, 10).contains("cuci salju", ignoreCase = true)){
-                    Glide.with(itemView.context)
-                        .asDrawable()
-                        .load(R.drawable.img_washing_snow)
-                        .into(imgWashType)
-                }
-
-                else if(washType.judul.subSequence(0, 12).contains("cuci reguler", ignoreCase = true)){
-                    Glide.with(itemView.context)
-                        .asDrawable()
-                        .load(R.drawable.img_washing_reguler)
-                        .into(imgWashType)
+                when {
+                    washType.judul.contains("cuci salju", ignoreCase = true) -> {
+                        Glide.with(itemView.context)
+                            .asDrawable()
+                            .load(R.drawable.img_washing_snow)
+                            .into(imgWashType)
+                    }
+                    washType.judul.contains("cuci reguler", ignoreCase = true) -> {
+                        Glide.with(itemView.context)
+                            .asDrawable()
+                            .load(R.drawable.img_washing_reguler)
+                            .into(imgWashType)
+                    }
+                    else -> {
+                        Glide.with(itemView.context)
+                            .asDrawable()
+                            .load(R.drawable.img_washing_reguler)
+                            .into(imgWashType)
+                    }
                 }
 
                 tvPrice.text = numbering.format(washType.harga.toInt())
