@@ -2,10 +2,12 @@ package com.citor.mitra
 
 import android.animation.ArgbEvaluator
 import android.animation.ValueAnimator
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.citor.mitra.auth.AuthActivity
 import com.citor.mitra.databinding.ActivityMainBinding
 import com.citor.mitra.retrofit.AuthService
 import com.citor.mitra.retrofit.DataService
@@ -17,6 +19,7 @@ import com.citor.mitra.utils.Constants
 import com.citor.mitra.utils.MySharedPreferences
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
+import dev.shreyaspatil.MaterialDialog.MaterialDialog
 import es.dmoral.toasty.Toasty
 import retrofit2.Call
 import retrofit2.Callback
@@ -51,6 +54,39 @@ class MainActivity : AppCompatActivity() {
             } else {
                 changeBukaTutup(idmitra, "buka", tokenAuth)
             }
+        }
+
+        mainBinding.btnLogout.setOnClickListener {
+            val mDialog = MaterialDialog.Builder(this@MainActivity)
+                .setTitle("Logout")
+                .setMessage(getString(R.string.confirm_logout))
+                .setCancelable(true)
+                .setPositiveButton(
+                    getString(R.string.no), R.drawable.dialog_close
+                ) { dialogInterface, _ ->
+                    dialogInterface.dismiss()
+                }
+                .setNegativeButton(
+                    getString(R.string.yes), R.drawable.ic_logout
+                ) { dialogInterface, _ ->
+                    myPreferences.setValue(Constants.USER, "")
+                    myPreferences.setValue(Constants.VENDOR_ID, "")
+                    myPreferences.setValue(Constants.VENDOR_OWNER, "")
+                    myPreferences.setValue(Constants.VENDOR_NAMA, "")
+                    myPreferences.setValue(Constants.VENDOR_ADDRS, "")
+                    myPreferences.setValue(Constants.VENDOR_NOHP, "")
+                    myPreferences.setValue(Constants.VENDOR_STATUS, "")
+                    myPreferences.setValue(Constants.LAT, "")
+                    myPreferences.setValue(Constants.LONG, "")
+                    myPreferences.setValue(Constants.DEVICE_TOKEN, "")
+                    myPreferences.setValue(Constants.VENDOR_FOTO, "")
+                    startActivity(Intent(this@MainActivity, AuthActivity::class.java))
+                    finish()
+                    dialogInterface.dismiss()
+                }
+                .build()
+            // Show Dialog
+            mDialog.show()
         }
 
         FirebaseInstanceId.getInstance().instanceId

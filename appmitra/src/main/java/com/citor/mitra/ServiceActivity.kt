@@ -41,6 +41,7 @@ class ServiceActivity : AppCompatActivity() {
         service.getPemesanan(idmitra, "Bearer $tokenAuth").enqueue(object : Callback<ServiceResponse> {
             override fun onResponse(call: Call<ServiceResponse>, response: Response<ServiceResponse>) {
                 if (response.isSuccessful) {
+                    serviceBinding.spinKit.visibility = View.GONE
                     if (response.body()!!.status == "success") {
                         val listData = response.body()!!.data
 
