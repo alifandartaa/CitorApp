@@ -23,7 +23,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.CitorApp"
         tools:replace="android:allowBackup">
-        <activity android:name=".profile.SupportActivity"></activity>
+        <activity android:name=".profile.TermsConditionActivity"></activity>
+        <activity android:name=".profile.SupportActivity" />
         <activity android:name=".profile.EditPassActivity" />
         <activity android:name=".profile.EditProfileActivity" />
 

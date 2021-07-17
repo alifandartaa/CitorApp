@@ -46,14 +46,21 @@ class ProfileFragment : Fragment() {
 
         profileBinding.btnEditProfile.setOnClickListener {
             startActivity(Intent(requireContext(), EditProfileActivity::class.java))
+            activity?.finish()
         }
 
         profileBinding.btnEditPass.setOnClickListener {
             startActivity(Intent(requireContext(), EditPassActivity::class.java))
+            activity?.finish()
         }
 
         profileBinding.btnSupport.setOnClickListener {
             startActivity(Intent(requireContext(), SupportActivity::class.java))
+            activity?.finish()
+        }
+
+        profileBinding.btnTermsCondition.setOnClickListener {
+            startActivity(Intent(requireContext(), TermsConditionActivity::class.java))
         }
 
         profileBinding.btnLogout.setOnClickListener {

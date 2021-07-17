@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.citor.app.R.string
 import com.citor.app.databinding.FragmentRegisterBinding
+import com.citor.app.profile.TermsConditionActivity
 import com.citor.app.retrofit.AuthService
 import com.citor.app.retrofit.RetrofitClient
 import com.citor.app.retrofit.response.DefaultResponse
@@ -30,6 +31,10 @@ class RegisterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        registerBinding.btnTermsCondition.setOnClickListener {
+            startActivity(Intent(requireContext(), TermsConditionActivity::class.java))
+        }
 
         registerBinding.cbTermsRegister.setOnCheckedChangeListener { buttonView, isChecked ->
             registerBinding.btnRegister.isEnabled = isChecked

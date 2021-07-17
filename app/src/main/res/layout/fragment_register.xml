@@ -110,7 +110,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/tv_open_term_register"
+                android:id="@+id/btn_terms_condition"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="2dp"
@@ -127,7 +127,7 @@
                 android:layout_marginStart="2dp"
                 android:text="@string/txt_term2"
                 app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toEndOf="@id/tv_open_term_register"
+                app:layout_constraintStart_toEndOf="@id/btn_terms_condition"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
