@@ -32,7 +32,7 @@ class SupportActivity : AppCompatActivity() {
             val intent =
                 Intent(
                     Intent.ACTION_VIEW,
-                    Uri.parse("https://api.whatsapp.com/send?phone=$number" + "&text=" + URLEncoder.encode("test", "UTF-8"))
+                    Uri.parse("https://api.whatsapp.com/send?phone=$number" + "&text=" + URLEncoder.encode("", "UTF-8"))
                 )
             startActivity(intent)
         }
