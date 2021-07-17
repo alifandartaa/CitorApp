@@ -11,8 +11,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/operation_hour"
-        android:textSize="16sp"
-        android:textColor="@color/black" />
+        android:textColor="@color/black"
+        android:textSize="16sp" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -87,8 +87,8 @@
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:paddingTop="16dp"
-            android:paddingStart="8dp">
+            android:paddingStart="8dp"
+            android:paddingTop="16dp">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -152,72 +152,72 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/value_monday_hour"
                 android:layout_marginBottom="16dp"
-                android:textSize="16sp"
-                android:textColor="#69CE58" />
+                android:text="@string/value_monday_hour"
+                android:textColor="#69CE58"
+                android:textSize="16sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/value_tuesday_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/value_tuesday_hour"
                 android:layout_marginBottom="16dp"
-                android:textSize="16sp"
-                android:textColor="#69CE58" />
+                android:text="@string/value_tuesday_hour"
+                android:textColor="#69CE58"
+                android:textSize="16sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/value_wednesday_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/value_wednesday_hour"
                 android:layout_marginBottom="16dp"
-                android:textSize="16sp"
-                android:textColor="#69CE58" />
+                android:text="@string/value_wednesday_hour"
+                android:textColor="#69CE58"
+                android:textSize="16sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/value_thursday_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/value_thursday_hour"
                 android:layout_marginBottom="16dp"
-                android:textSize="16sp"
-                android:textColor="#69CE58" />
+                android:text="@string/value_thursday_hour"
+                android:textColor="#69CE58"
+                android:textSize="16sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/value_friday_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/value_friday_hour"
                 android:layout_marginBottom="16dp"
-                android:textSize="16sp"
-                android:textColor="#69CE58" />
+                android:text="@string/value_friday_hour"
+                android:textColor="#69CE58"
+                android:textSize="16sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/value_saturday_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/value_saturday_hour"
                 android:layout_marginBottom="16dp"
-                android:textSize="16sp"
-                android:textColor="@android:color/holo_red_dark" />
+                android:text="@string/value_saturday_hour"
+                android:textColor="#69CE58"
+                android:textSize="16sp" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/value_sunday_hour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text="@string/value_sunday_hour"
                 android:layout_marginBottom="16dp"
-                android:textSize="16sp"
-                android:textColor="@android:color/holo_red_dark" />
+                android:text="@string/value_sunday_hour"
+                android:textColor="#69CE58"
+                android:textSize="16sp" />
         </LinearLayout>
 
-
     </LinearLayout>
+
 </LinearLayout>

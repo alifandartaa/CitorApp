@@ -12,5 +12,6 @@ data class VendorItemEntity(
     var harga: String,
     var idjam_buka: String,
     var jam_buka: String,
-    var status: String
+    var status: String,
+    var jamMitra: String,
 )

@@ -87,4 +87,12 @@ interface DataService {
         @Part filefoto: MultipartBody.Part? = null,
         @Header("Authorization") token: String
     ): Call<DefaultResponse>
+
+    //get mitra jam buka
+    @FormUrlEncoded
+    @POST("main/getJamMitra")
+    fun getJamMitra(
+        @Field("idmitra") idmitra: String,
+        @Header("Authorization") token: String
+    ): Call<MitraResponse>
 }

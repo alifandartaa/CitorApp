@@ -16,7 +16,7 @@ class DetailVendorPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapt
         var fragment: Fragment? = null
         when (position) {
             0 -> fragment = makeVendorService()
-            1 -> fragment = VendorScheduleFragment()
+            1 -> fragment = makeVendorSchedule()
         }
         return fragment as Fragment
     }
@@ -24,6 +24,13 @@ class DetailVendorPagerAdapter(activity: AppCompatActivity) : FragmentStateAdapt
     private fun makeVendorService(): Fragment? {
         val fragment1: Fragment?
         fragment1 = VendorServicesFragment()
+        fragment1.arguments = bundle
+        return fragment1
+    }
+
+    private fun makeVendorSchedule(): Fragment? {
+        val fragment1: Fragment?
+        fragment1 = VendorScheduleFragment()
         fragment1.arguments = bundle
         return fragment1
     }
