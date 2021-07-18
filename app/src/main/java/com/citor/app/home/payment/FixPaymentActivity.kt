@@ -7,6 +7,8 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.citor.app.BuildConfig.BASE_URL
+import com.citor.app.BuildConfig.CLIENT_KEY
 import com.citor.app.MainActivity
 import com.citor.app.R
 import com.citor.app.databinding.ActivityFixPaymentBinding
@@ -83,7 +85,7 @@ class FixPaymentActivity : AppCompatActivity() {
         }
 
         SdkUIFlowBuilder.init()
-            .setClientKey("SB-Mid-client-5CHnBFylQ2hoYARY")
+            .setClientKey(CLIENT_KEY)
             .setContext(this)
             .setTransactionFinishedCallback { result ->
                 if (result.response != null) {
@@ -119,7 +121,7 @@ class FixPaymentActivity : AppCompatActivity() {
                     }
                 }
             }
-            .setMerchantBaseUrl("https://citor-app.herokuapp.com/index.php/")
+            .setMerchantBaseUrl(BASE_URL)
             .enableLog(true)
             .setColorTheme(CustomColorTheme("#FFE51255", "#B61548", "#FFE51255"))
             .setLanguage("id")

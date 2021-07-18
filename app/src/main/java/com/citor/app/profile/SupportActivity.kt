@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.citor.app.MainActivity
 import com.citor.app.R
 import com.citor.app.databinding.ActivitySupportBinding
 import java.net.URLEncoder
@@ -41,6 +42,11 @@ class SupportActivity : AppCompatActivity() {
             val uri = Uri.parse("https://www.instagram.com/citor.official/")
             val likeIng = Intent(Intent.ACTION_VIEW, uri)
             startActivity(likeIng)
+        }
+
+        supportBinding.btnNext.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
         }
     }
 

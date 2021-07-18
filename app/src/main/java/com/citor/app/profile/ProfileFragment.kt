@@ -60,6 +60,8 @@ class ProfileFragment : Fragment() {
             startActivity(Intent(requireContext(), TermsConditionActivity::class.java))
         }
 
+
+
         profileBinding.btnLogout.setOnClickListener {
             val mDialog = MaterialDialog.Builder(requireContext() as Activity)
                 .setTitle("Logout")
