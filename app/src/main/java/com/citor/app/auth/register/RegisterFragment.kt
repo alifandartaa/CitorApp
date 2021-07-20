@@ -69,7 +69,7 @@ class RegisterFragment : Fragment() {
             registerBinding.tvValuePhoneRegister.error = "Harap isi nomor telepon dengan benar"
             registerBinding.tvValuePhoneRegister.requestFocus()
             return false
-        } else if (registerBinding.tvValuePhoneRegister.length() != 12) {
+        } else if (registerBinding.tvValuePhoneRegister.length() <= 10 || registerBinding.tvValuePhoneRegister.length() >= 14 ) {
             registerBinding.tvValuePhoneRegister.error = "Harap isi nomor telepon dengan benar"
             registerBinding.tvValuePhoneRegister.requestFocus()
             return false
@@ -99,7 +99,7 @@ class RegisterFragment : Fragment() {
                                     putExtra(EmailConfirmActivity.password, password)
                                 }
                             startActivity(emailConfirm)
-                            activity?.finish()
+//                            activity?.finish()
                         }
                         "failed" -> {
                             Toasty.warning(requireContext(), response.body()!!.message, Toasty.LENGTH_LONG).show()

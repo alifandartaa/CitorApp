@@ -33,6 +33,10 @@ class EmailConfirmActivity : AppCompatActivity() {
         val email = intent.getStringExtra(email)
         emailConfirmBinding.tvAskEmailVerify.text = email
 
+        emailConfirmBinding.btnBack.setOnClickListener {
+            onBackPressed()
+        }
+
         emailConfirmBinding.btnSendOtp.setOnClickListener {
             emailConfirmBinding.btnSendOtp.startAnimation()
             requestOtp("$email")
@@ -48,6 +52,7 @@ class EmailConfirmActivity : AppCompatActivity() {
                         emailConfirmBinding.btnSendOtp.revertAnimation {
                             emailConfirmBinding.btnSendOtp.text = "Terkirim"
                         }
+
                         val nama = intent.getStringExtra(nama)
                         val nohp = intent.getStringExtra(nohp)
                         val password = intent.getStringExtra(password)
