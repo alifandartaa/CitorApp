@@ -33,31 +33,27 @@
             app:iconTint="@null"
             app:strokeColor="@color/white" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:layout_marginStart="20dp"
+            android:text="@string/halo_pak_jamal"
+            android:textColor="@color/white"
+            android:textSize="44sp"
+            android:layout_gravity="start"
+            android:textStyle="bold" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:text="@string/halo_pak_jamal"
-                android:textColor="@color/white"
-                android:textSize="44sp"
-                android:textStyle="bold" />
-
-            <TextView
-                android:id="@+id/tv_owner_name"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:text="nama owner"
-                android:textColor="@color/white"
-                android:textSize="44sp"
-                android:textStyle="bold" />
-
-        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_owner_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="20dp"
+            android:maxLines="2"
+            android:text="REYNALDO FERDIAN SAPUTRA SHOLEH RAJIN IBADAH"
+            android:textColor="@color/white"
+            android:layout_gravity="start"
+            android:textSize="32sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_info"

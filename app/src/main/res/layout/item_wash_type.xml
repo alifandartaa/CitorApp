@@ -15,7 +15,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/img_wash_type"
@@ -36,6 +36,7 @@
             android:layout_marginStart="32dp"
             android:layout_marginTop="8dp"
             android:maxWidth="180dp"
+            android:maxLines="2"
             android:text="@string/first_type_wash"
             android:textColor="@color/bluePrimary"
             android:textSize="16sp" />

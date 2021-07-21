@@ -49,7 +49,9 @@
             android:layout_marginTop="8dp"
             android:layout_marginEnd="8dp"
             android:textStyle="bold"
-            android:text="@string/txt_example_washer_address"
+            android:gravity="end"
+            android:maxLines="2"
+            android:text="Pangkalan Angkot AT Jalan Himalaya, Tidar, Karang Besuki, Kota Malang, Jawa Timur, Indonesia"
             android:textColor="@color/white"
             android:textSize="14sp" />
 

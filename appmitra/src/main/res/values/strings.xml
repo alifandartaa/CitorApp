@@ -147,7 +147,7 @@
     <string name="service_late">TELAT</string>
     <string name="service_cancel">GAGAL</string>
     <string name="detail_name">Nama</string>
-    <string name="detail_queue">Waktu Andrean</string>
+    <string name="detail_queue">Waktu Antrean</string>
     <string name="detail_type">Jenis Motor</string>
     <string name="detail_cc">CC</string>
     <string name="detail_rate">Tarif</string>
@@ -164,4 +164,5 @@
     <string name="detail_booking_payment">Shopee</string>
     <string name="detail_booking_timestamp">08.00</string>
     <string name="data_empty">Belum ada data antrian yang tersedia</string>
+    <string name="detail_pesanan">Detail Pesanan</string>
 </resources>

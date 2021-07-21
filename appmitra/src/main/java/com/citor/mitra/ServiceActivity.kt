@@ -28,6 +28,10 @@ class ServiceActivity : AppCompatActivity() {
         serviceBinding = ActivityServiceBinding.inflate(layoutInflater)
         setContentView(serviceBinding.root)
 
+        serviceBinding.btnBack.setOnClickListener{
+            onBackPressed()
+        }
+
         myPreferences = MySharedPreferences(this@ServiceActivity)
 
         val tokenAuth = myPreferences.getValue(Constants.TokenAuth).toString()
@@ -35,6 +39,8 @@ class ServiceActivity : AppCompatActivity() {
         adapterRvService = AdapterRvService()
         getPemesanan(idmitra, tokenAuth)
     }
+
+
 
     private fun getPemesanan(idmitra: String, tokenAuth: String) {
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
