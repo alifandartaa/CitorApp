@@ -3,6 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <LinearLayout
+        android:id="@+id/ly_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:orientation="horizontal">
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/img_item_photo"
@@ -12,23 +18,40 @@
             android:layout_marginEnd="16dp"
             android:background="@drawable/ic_notifications2" />
 
-        <TextView
-            android:id="@+id/tv_notifications"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:layout_toEndOf="@id/img_item_photo"
-            android:fontFamily="@font/poppins"
-            android:textColor="@color/bluePrimary"
-            android:text="@string/pembayaran"
-            android:textSize="16sp" />
-
-        <View
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:layout_below="@+id/tv_notifications"
-            android:layout_marginVertical="24dp"
-            android:background="#C4C4C4" />
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
+            <TextView
+                android:id="@+id/tv_notifications"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins"
+                android:text="@string/pembayaran"
+                android:textColor="@color/bluePrimary"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tv_notifications_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="8dp"
+                android:fontFamily="@font/poppins"
+                android:text="20/07/21 18.59"
+                android:textColor="@color/bluePrimary"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:layout_below="@+id/ly_text"
+        android:layout_marginVertical="12dp"
+        android:background="@color/md_blue_grey_500" />
 
 </RelativeLayout>

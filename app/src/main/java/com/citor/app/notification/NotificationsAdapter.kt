@@ -19,6 +19,7 @@ class NotificationsAdapter : RecyclerView.Adapter<NotificationsAdapter.Notificat
         fun bind(notificationItem: NotifEntity) {
             with(binding) {
                 tvNotifications.text = notificationItem.message
+                tvNotificationsTime.text = notificationItem.time
             }
         }
 

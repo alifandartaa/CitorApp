@@ -18,6 +18,7 @@ class HistoryAdapter : RecyclerView.Adapter<HistoryAdapter.HistoryItemViewHolder
     class HistoryItemViewHolder(private val binding: ItemHistoryBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(historyItem: HistoryEntity) {
             with(binding) {
+                tvTime.text = historyItem.timestamp
                 if (historyItem.status == "berjalan") {
                     tvHistory.text = "Pencucian motor pada ${historyItem.nama_mitra} sedang berjalan"
                 } else if (historyItem.status == "selesai") {
