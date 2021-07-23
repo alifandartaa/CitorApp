@@ -40,7 +40,7 @@
                 android:layout_marginTop="8dp"
                 android:fontFamily="@font/poppins"
                 android:text="20/07/21 18.59"
-                android:textColor="@color/bluePrimary"
+                android:textColor="@color/black"
                 android:textSize="12sp" />
 
         </LinearLayout>
