@@ -26,9 +26,9 @@ class AuthActivity : AppCompatActivity() {
 
         val sectionsPagerAdapter = AuthPagerAdapter(this)
         authBinding.vpAuth.adapter = sectionsPagerAdapter
-        TabLayoutMediator(authBinding.tabsAuth, authBinding.vpAuth) { tab, position ->
-            tab.text = resources.getString(TAB_TITLES[position])
-        }.attach()
+//        TabLayoutMediator(authBinding.tabsAuth, authBinding.vpAuth) { tab, position ->
+//            tab.text = resources.getString(TAB_TITLES[position])
+//        }.attach()
         supportActionBar?.elevation = 0f
     }
 }
