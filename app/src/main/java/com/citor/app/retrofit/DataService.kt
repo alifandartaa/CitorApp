@@ -63,6 +63,7 @@ interface DataService {
         @Field("idjam_buka") idjam_buka: String,
         @Field("layanan") layanan: String,
         @Field("kodePesan") kodePesan: String,
+        @Field("kodeTransaksi") kodeTransaksi: String,
         @Field("metodeBayar") metodeBayar: String,
         @Field("harga") harga: String,
         @Field("status") status: String,
@@ -95,4 +96,13 @@ interface DataService {
         @Field("idmitra") idmitra: String,
         @Header("Authorization") token: String
     ): Call<MitraResponse>
+
+    @FormUrlEncoded
+    @POST("main/insertRating")
+    fun insertRating(
+        @Field("idpemesanan") idpemesanan: String,
+        @Field("nilai") nilai: String,
+        @Field("ulasan") ulasan: String,
+        @Header("Authorization") token: String
+    ): Call<DefaultResponse>
 }

@@ -45,15 +45,15 @@ class HistoryFragment : Fragment() {
         viewModel.loadListHistoryFromDatabase(idUser, tokenAuth)
 
         viewModel.getListDataHistory().observe(requireActivity(), { historyItems ->
-
             val listProgress = ArrayList<HistoryEntity>()
             val listDone = ArrayList<HistoryEntity>()
             if (historyItems != null) {
+                historyBinding.spinKit.visibility = View.GONE
                 historyItems.forEach {
-                    if (it.status == "berjalan") {
-                        listProgress.add(it)
-                    } else if (it.status == "selesai") {
+                    if (it.status == "selesai") {
                         listDone.add(it)
+                    } else if (it.status == "berjalan") {
+                        listProgress.add(it)
                     }
                 }
 
@@ -68,21 +68,19 @@ class HistoryFragment : Fragment() {
 
                 historyBinding.cgStatusHistory.setOnCheckedChangeListener { group, checkedId ->
                     when (checkedId) {
-                        historyBinding.chipCatProgress.id -> {
-                            historyAdapter.setListHistoryItem(listProgress)
-                            historyAdapter.notifyDataSetChanged()
-                        }
                         historyBinding.chipCatDone.id -> {
                             historyAdapter.setListHistoryItem(listDone)
                             historyAdapter.notifyDataSetChanged()
                         }
+                        historyBinding.chipCatProgress.id -> {
+                            historyAdapter.setListHistoryItem(listProgress)
+                            historyAdapter.notifyDataSetChanged()
+                        }
+
                     }
                 }
             }
         })
-
-
     }
-
 
 }

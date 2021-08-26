@@ -38,6 +38,7 @@ class SearchVendorAdapter : RecyclerView.Adapter<SearchVendorAdapter.VendorItemH
                     rlItemVendor.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.bluePrimary))
                     cvItemBooking.isEnabled = true
                     tvStatus.text = "BUKA HARI INI"
+                    tvRatingNumber.text = vendorItem.rating
                     itemView.setOnClickListener {
                         val intent = Intent(itemView.context, DetailVendorActivity::class.java)
                             .apply {

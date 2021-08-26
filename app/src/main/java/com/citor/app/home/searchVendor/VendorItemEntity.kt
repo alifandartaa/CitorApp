@@ -4,6 +4,7 @@ data class VendorItemEntity(
     var idmitra: String,
     var nama_mitra: String,
     var alamat_mitra: String,
+    var rating: String,
     var statusBuka: String,
     var lat: String,
     var long: String,

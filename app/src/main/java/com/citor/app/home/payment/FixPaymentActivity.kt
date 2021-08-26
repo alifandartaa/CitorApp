@@ -90,6 +90,7 @@ class FixPaymentActivity : AppCompatActivity() {
             .setTransactionFinishedCallback { result ->
                 if (result.response != null) {
                     val transactionId = result.response.transactionId
+                    val orderId = result.response.orderId
                     val paymentType = result.response.paymentType
                     when (result.status) {
                         "success" -> {
@@ -99,7 +100,7 @@ class FixPaymentActivity : AppCompatActivity() {
                             mySharedPreferences.setValue(Constants.USER_POIN, poinInt.toString())
                             changeStatus(idJamBuka, "penuh", tokenAuth)
 
-                            updateStatusTransaction(tokenAuth, vendorId, idUser, idJamBuka, service,transactionId, paymentType, price,"berjalan")
+                            updateStatusTransaction(tokenAuth, vendorId, idUser, idJamBuka, service, orderId, transactionId, paymentType, price, "berjalan")
                             startActivity(Intent(this@FixPaymentActivity, MainActivity::class.java))
                             finish()
                         }
@@ -129,8 +130,9 @@ class FixPaymentActivity : AppCompatActivity() {
 
         fixPaymentBinding.btnConfirmPayment.setOnClickListener {
             val quantity = 1
+            val rnds = (1..99999).random()
             val totalAmount = quantity * price.toDouble()
-            val transactionRequest = TransactionRequest("Citor-APP-" + System.currentTimeMillis().toShort() + "", totalAmount)
+            val transactionRequest = TransactionRequest("Citor-APP[" + System.currentTimeMillis().toShort() + rnds + "]", totalAmount)
             val randomID = UUID.randomUUID().toString()
             val itemDetail = ItemDetails(randomID, price.toDouble(), quantity, service)
             val listItem = ArrayList<ItemDetails>()
@@ -166,13 +168,14 @@ class FixPaymentActivity : AppCompatActivity() {
         idUser: String,
         idJamBuka: String,
         layanan: String,
+        orderId: String?,
         transactionId: String?,
         paymentType: String?,
         price: String,
         transactionStatus: String?
     ) {
         val service = RetrofitClient().apiRequest().create(DataService::class.java)
-        service.insertPemesanan(vendorId, idUser, idJamBuka, layanan, transactionId!!, paymentType!!, price, transactionStatus!!, "Bearer $tokenAuth")
+        service.insertPemesanan(vendorId, idUser, idJamBuka, layanan, orderId!!, transactionId!!, paymentType!!, price, transactionStatus!!, "Bearer $tokenAuth")
             .enqueue(object : Callback<DefaultResponse> {
                 override fun onResponse(call: Call<DefaultResponse>, response: Response<DefaultResponse>) {
                     if (response.isSuccessful) {

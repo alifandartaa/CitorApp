@@ -5,11 +5,14 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.RatingBar
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import com.citor.app.R
 import com.citor.app.databinding.FragmentVendorScheduleBinding
 import com.citor.app.retrofit.DataService
 import com.citor.app.retrofit.RetrofitClient
+import com.citor.app.retrofit.response.DefaultResponse
 import com.citor.app.retrofit.response.MitraResponse
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences

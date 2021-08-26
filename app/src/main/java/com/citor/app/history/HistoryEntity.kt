@@ -1,6 +1,7 @@
 package com.citor.app.history
 
 data class HistoryEntity(
+    var idpemesanan: String = "",
     var nama: String = "",
     var nama_mitra: String = "",
     var layanan: String = "",
@@ -8,5 +9,6 @@ data class HistoryEntity(
     var metode_pembayaran: String = "",
     var harga: String = "",
     var timestamp: String = "",
-    var status: String = ""
+    var status: String = "",
+    var rating: String = ""
 )

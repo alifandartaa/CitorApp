@@ -57,7 +57,7 @@ class ProfileFragment : Fragment() {
         }
 
         profileBinding.btnTermsCondition.setOnClickListener {
-            startActivity(Intent(requireContext(), TermsConditionActivity::class.java))
+            startActivity(Intent(requireContext(), PrivacyPolicyActivity::class.java))
         }
 
 
