@@ -89,7 +89,7 @@ class LoginFragment : Fragment() {
                             myPreferences.setValue(Constants.USER_NAMA, response.body()!!.data[0].nama)
                             myPreferences.setValue(Constants.USER_EMAIL, response.body()!!.data[0].email)
                             myPreferences.setValue(Constants.USER_NOHP, response.body()!!.data[0].nohp)
-                            myPreferences.setValue(Constants.USER_POIN, response.body()!!.data[0].poin)
+//                            myPreferences.setValue(Constants.USER_POIN, response.body()!!.data[0].poin)
                             myPreferences.setValue(Constants.DEVICE_TOKEN, response.body()!!.data[0].device_token)
                             myPreferences.setValue(Constants.USER_FOTO, response.body()!!.data[0].foto_path)
                             myPreferences.setValue(Constants.TokenAuth, response.body()!!.tokenAuth)

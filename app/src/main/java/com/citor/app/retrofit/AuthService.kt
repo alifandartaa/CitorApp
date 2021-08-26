@@ -76,4 +76,11 @@ interface AuthService {
         @Field("iduser") iduser: String,
         @Field("password") password: String
     ): Call<DefaultResponse>
+
+    //get Poin
+    @FormUrlEncoded
+    @POST("auth/getPoin")
+    fun getPoin(
+        @Field("iduser") iduser: String
+    ): Call<LoginResponse>
 }

@@ -2,6 +2,7 @@ package com.citor.app.home
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +11,18 @@ import androidx.lifecycle.ViewModelProvider
 import com.citor.app.R
 import com.citor.app.databinding.FragmentHomeBinding
 import com.citor.app.home.searchVendor.SearchVendorActivity
+import com.citor.app.retrofit.AuthService
+import com.citor.app.retrofit.RetrofitClient
+import com.citor.app.retrofit.response.LoginResponse
 import com.citor.app.utils.Constants
 import com.citor.app.utils.MySharedPreferences
 import com.google.firebase.messaging.FirebaseMessaging
+import es.dmoral.toasty.Toasty
 import org.imaginativeworld.whynotimagecarousel.CarouselItem
 import org.imaginativeworld.whynotimagecarousel.ImageCarousel
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class HomeFragment : Fragment() {
 
@@ -41,10 +49,12 @@ class HomeFragment : Fragment() {
         FirebaseMessaging.getInstance().subscribeToTopic("notif")
 
         val userName = myPreferences.getValue(Constants.USER_NAMA).toString()
-        val point = myPreferences.getValue(Constants.USER_POIN).toString()
+//        val point = myPreferences.getValue(Constants.USER_POIN).toString()
+        val iduser = myPreferences.getValue(Constants.USER_ID).toString()
 
         binding.tvName.text = userName
-        binding.tvPoint.text = point
+
+        getPoin(iduser)
 
         firstImageSlider()
 
@@ -67,6 +77,25 @@ class HomeFragment : Fragment() {
         binding.btnVoucher.setOnClickListener() {
 
         }
+    }
+
+    private fun getPoin(iduser: String) {
+        val service = RetrofitClient().apiRequest().create(AuthService::class.java)
+        service.getPoin(iduser).enqueue(object : Callback<LoginResponse> {
+            override fun onResponse(call: Call<LoginResponse>, response: Response<LoginResponse>) {
+                if (response.isSuccessful) {
+                    if (response.body()!!.status == "success") {
+                        myPreferences.setValue(Constants.USER_POIN, response.body()!!.data[0].poin)
+                        binding.tvPoint.text = response.body()!!.data[0].poin
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<LoginResponse>, t: Throwable) {
+                Toasty.error(requireContext(), R.string.try_again, Toasty.LENGTH_LONG).show()
+            }
+
+        })
     }
 
     private fun firstImageSlider() {
