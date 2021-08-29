@@ -183,4 +183,7 @@ class BookingAdapter(private val listInfo: ArrayList<String>) :
         return listBookingItem.size
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return position
+    }
 }
