@@ -14,6 +14,7 @@ import com.citor.app.utils.MySharedPreferences
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.iid.FirebaseInstanceId
+import com.google.firebase.messaging.FirebaseMessaging
 import es.dmoral.toasty.Toasty
 import retrofit2.Call
 import retrofit2.Callback
@@ -45,17 +46,15 @@ class MainActivity : AppCompatActivity() {
         navView.setupWithNavController(navController)
 
         val iduser = myPreferences.getValue(Constants.USER_ID).toString()
-        FirebaseInstanceId.getInstance().instanceId
-            .addOnCompleteListener(OnCompleteListener { task ->
-                if (!task.isSuccessful) {
-                    //stopping the further execution
-                    return@OnCompleteListener
-                }
+        FirebaseMessaging.getInstance().token.addOnCompleteListener(OnCompleteListener { task ->
+            if (!task.isSuccessful) {
+                return@OnCompleteListener
+            }
 
-                //Getting the token if everything is fine
-                val deviceToken = task.result?.token.toString()
-                insertToken(iduser, deviceToken)
-            })
+            // Get new FCM registration token
+            val deviceToken = task.result
+            insertToken(iduser, deviceToken)
+        })
         refreshAuthToken(iduser)
     }
 

@@ -112,6 +112,7 @@ dependencies {
 
     // For using the Midtrans Production
     implementation 'com.midtrans:uikit:1.28.0' // change the version to latest one
+    implementation 'com.koushikdutta.ion:ion:3.1.0'
 
     // For pict image
     implementation 'com.github.dhaval2404:imagepicker-support:1.7.1'
