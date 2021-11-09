@@ -50,7 +50,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".home.detailVendor.DetailVendorActivity" />
-        <activity android:name=".auth.login.OtpInputActivity" />
+        <activity android:name=".auth.register.OtpInputActivity" />
         <activity android:name=".home.detailBooking.BookingActivity" />
         <activity android:name=".home.payment.FixPaymentActivity" />
 

@@ -1,4 +1,4 @@
-package com.citor.app.auth.login
+package com.citor.app.auth.register
 
 import android.app.Dialog
 import android.content.Intent
@@ -11,7 +11,6 @@ import android.view.Window
 import androidx.appcompat.app.AppCompatActivity
 import com.citor.app.R
 import com.citor.app.auth.AuthActivity
-import com.citor.app.auth.register.EmailConfirmActivity
 import com.citor.app.databinding.ActivityOtpInputBinding
 import com.citor.app.retrofit.AuthService
 import com.citor.app.retrofit.RetrofitClient

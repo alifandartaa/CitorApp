@@ -4,7 +4,6 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.citor.app.R
-import com.citor.app.auth.login.OtpInputActivity
 import com.citor.app.databinding.ActivityEmailConfirmBinding
 import com.citor.app.retrofit.AuthService
 import com.citor.app.retrofit.RetrofitClient
